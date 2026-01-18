@@ -5,22 +5,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Laman Rasmi Sekolah</title>
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; background-color: #f4f4f4; }
-        .container { max-width: 600px; margin: 50px auto; background: white; padding: 20px; border-radius: 10px; shadow: 0 4px 8px rgba(0,0,0,0.1); }
-        .btn { display: block; width: 80%; margin: 10px auto; padding: 15px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; }
-        .btn:hover { background: #0056b3; }
-        img { width: 150px; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            text-align: center; 
+            background-color: #f0f2f5; 
+            margin: 0; 
+            padding: 20px; 
+        }
+        .container { 
+            max-width: 500px; 
+            margin: auto; 
+            background: white; 
+            padding: 30px; 
+            border-radius: 15px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+        }
+        
+        /* Gaya Logo */
+        .logo-sekolah { 
+            width: 120px; 
+            height: auto; 
+            margin-bottom: 20px; 
+        }
+        
+        h1 { color: #333; font-size: 24px; margin-bottom: 5px; }
+        p { color: #666; margin-bottom: 25px; }
+        
+        .btn { 
+            display: block; 
+            width: 100%; 
+            margin: 12px 0; 
+            padding: 15px; 
+            background: #007bff; 
+            color: white; 
+            text-decoration: none; 
+            border-radius: 8px; 
+            font-weight: bold; 
+            transition: 0.3s;
+            box-sizing: border-box;
+        }
+        .btn:hover { 
+            background: #0056b3; 
+            transform: translateY(-2px); 
+        }
+
+        /* Warna khusus untuk membezakan butang (Opsional) */
+        .btn-green { background: #28a745; }
+        .btn-green:hover { background: #218838; }
+        
+        .btn-orange { background: #fd7e14; }
+        .btn-orange:hover { background: #e36209; }
     </style>
 </head>
 <body>
     <div class="container">
-        <img src="logo.png" alt="Logo Sekolah" style="width: 150px; height: auto;">
-        <h1>SMK AGAMA TOK BACHOK</h1>
-        <p>Pautan Rasmi & Hebahan TMUATB</p>
+        <img src="logo.png" alt="Logo Sekolah" class="logo-sekolah">
         
-        <a href="https://idme.moe.gov.my/" class="btn">Sistem idMe</a>
-        <a href="https://delima.edu.my/" class="btn">Portal DELIMa</a>
-        <a href="#" class="btn">Takwim Sekolah</a>
+        <h1>Laman Hub Sekolah</h1>
+        <p>Pautan Pantas Prestasi & Maklumat</p>
+        
+        <a href="https://drive.google.com/drive/folders/1R4FdjBu_MviJWC51DVcEiyQpBSGGm-PG?usp=sharing" class="btn" target="_blank">REKOD PRESTASI HAFAZAN INDIVIDU</a>
+        
+        <a href="https://aimanbum.github.io/dashboardhafazan/" class="btn btn-green" target="_blank">DASHBOARD PRESTASI HAFAZAN</a>
+        
+        <a href="https://docs.google.com/spreadsheets/d/1xx5BP8lhLu6eqke5RfqEZUs3BnPgLS9u/edit?gid=1105382656#gid=1105382656" class="btn" target="_blank">RPT HIFZ 2026</a>
+        
+        <a href="https://mylink.la/sekolah-3315" class="btn btn-orange" target="_blank">SMKATB ONE STOP CENTRE</a>
     </div>
 </body>
 </html>
