@@ -3,145 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TMUA TOK BACHOK</title>
-    
-    <link rel="icon" type="image/png" href="logo.png">
-
+    <title>Laman Rasmi Sekolah</title>
     <style>
-        /* Animasi Fade In */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
         body { 
-            font-family: 'Times New Roman', serif; /* Font lebih klasik & rasmi */
-            background-color: #f4f7f9; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            text-align: center; 
+            background-color: #f0f2f5; 
             margin: 0; 
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            color: #2c3e50;
+            padding: 20px; 
         }
-
-        /* Border atas tebal untuk gaya portal kerajaan */
         .container { 
-            max-width: 550px; 
-            width: 90%;
-            background: #ffffff; 
-            padding: 40px; 
-            border-radius: 8px; 
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
-            border-top: 8px solid #003366; /* Biru Navy Rasmi */
-            animation: fadeIn 1.2s ease-in-out;
-            text-align: center;
+            max-width: 500px; 
+            margin: auto; 
+            background: white; 
+            padding: 30px; 
+            border-radius: 15px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
         }
         
+        /* Gaya Logo */
         .logo-sekolah { 
-            width: 110px; 
+            width: 120px; 
             height: auto; 
-            margin-bottom: 15px;
+            margin-bottom: 20px; 
         }
         
-        .header-text {
-            border-bottom: 2px solid #eeeeee;
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-        }
-
-        h1 { 
-            font-size: 20px; 
-            margin: 0; 
-            color: #003366; 
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        h2 {
-            font-size: 16px;
-            margin: 5px 0;
-            font-weight: normal;
-            color: #555;
-        }
-
-        .link-section {
-            display: grid;
-            gap: 12px;
-        }
+        h1 { color: #333; font-size: 24px; margin-bottom: 5px; }
+        p { color: #666; margin-bottom: 25px; }
         
         .btn { 
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 14px; 
-            background: #ffffff; 
-            color: #003366; 
+            display: block; 
+            width: 100%; 
+            margin: 12px 0; 
+            padding: 15px; 
+            background: #007bff; 
+            color: white; 
             text-decoration: none; 
-            border: 1px solid #003366;
-            border-radius: 4px; 
+            border-radius: 8px; 
             font-weight: bold; 
-            font-size: 14px;
-            transition: all 0.2s ease;
-            text-transform: uppercase;
+            transition: 0.3s;
+            box-sizing: border-box;
         }
-
-        /* Hover: Warna bertukar kepada biru navy penuh */
         .btn:hover { 
-            background: #003366; 
-            color: #ffffff;
-            transform: scale(1.01);
+            background: #0056b3; 
+            transform: translateY(-2px); 
         }
 
-        /* Penanda pautan penting */
-        .btn-primary {
-            background: #003366;
-            color: white;
-        }
+        /* Warna khusus untuk membezakan butang */
+        .btn-green { background: #28a745; }
+        .btn-green:hover { background: #218838; }
+        
+        .btn-orange { background: #fd7e14; }
+        .btn-orange:hover { background: #e36209; }
 
-        .footer { 
-            margin-top: 30px; 
-            font-size: 11px; 
-            color: #95a5a6;
-            text-transform: uppercase;
-            border-top: 1px solid #eee;
-            padding-top: 15px;
-        }
-
-        .timestamp {
-            font-style: italic;
-            font-size: 10px;
-            margin-top: 5px;
-        }
+        .btn-purple { background: #6f42c1; }
+        .btn-purple:hover { background: #59359a; }
     </style>
 </head>
 <body>
     <div class="container">
-        <img src="logo.png" alt="Logo SMKATB" class="logo-sekolah">
+        <img src="logo.png" alt="Logo Sekolah" class="logo-sekolah">
         
-        <div class="header-text">
-            <h1>LAMAN TMUA TOK BACHOK</h1>
-            <h2>Pautan Pantas Prestasi & Maklumat</h2>
-        </div>
+        <h1>LAMAN TMUA TOK BACHOK</h1>
+        <p>Pautan Pantas Prestasi & Maklumat</p>
         
-        <div class="link-section">
-            <a href="https://drive.google.com/drive/folders/1Z07QYsqg-YRuqNiR4YXg7hQLwHGhCt8p?usp=sharing" class="btn btn-primary" target="_blank">HALAQAH 2026</a>
+        <a href="https://drive.google.com/drive/folders/1Z07QYsqg-YRuqNiR4YXg7hQLwHGhCt8p?usp=sharing" class="btn btn-purple" target="_blank">HALAQAH 2026</a>
 
-            <a href="https://drive.google.com/drive/folders/1R4FdjBu_MviJWC51DVcEiyQpBSGGm-PG?usp=sharing" class="btn" target="_blank">REKOD PRESTASI HAFAZAN INDIVIDU</a>
-            
-            <a href="https://aimanbum.github.io/dashboardhafazan/" class="btn" target="_blank">DASHBOARD PRESTASI HAFAZAN</a>
-            
-            <a href="https://docs.google.com/spreadsheets/d/1xx5BP8lhLu6eqke5RfqEZUs3BnPgLS9u/edit?gid=1105382656#gid=1105382656" class="btn" target="_blank">RPT HIFZ 2026</a>
-            
-            <a href="https://mylink.la/sekolah-3315" class="btn" target="_blank">SMKATB ONE STOP CENTRE</a>
-        </div>
-
-        <div class="footer">
-             <br>
-            SMKA TOK BACHOK © 2026
-            <div class="timestamp">Dikemaskini pada: 18 Januari 2026</div>
-        </div>
+        <a href="https://drive.google.com/drive/folders/1R4FdjBu_MviJWC51DVcEiyQpBSGGm-PG?usp=sharing" class="btn" target="_blank">REKOD PRESTASI HAFAZAN INDIVIDU</a>
+        
+        <a href="https://aimanbum.github.io/dashboardhafazan/" class="btn btn-green" target="_blank">DASHBOARD PRESTASI HAFAZAN BULANAN</a>
+        
+        <a href="https://docs.google.com/spreadsheets/d/1xx5BP8lhLu6eqke5RfqEZUs3BnPgLS9u/edit?gid=1105382656#gid=1105382656" class="btn" target="_blank">RPT HIFZ 2026</a>
+        
+        <a href="https://mylink.la/sekolah-3315" class="btn btn-orange" target="_blank">SMKATB ONE STOP CENTRE</a>
     </div>
 </body>
 </html>
