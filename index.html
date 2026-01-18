@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="ms">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>PORTAL SEMAKAN PRESTASI HAFAZAN SMKA TOK BACHOK</title>
+<link rel="icon" href="logo.png"/>
+<link rel="stylesheet" href="styles.css"/>
+</head>
+
+<body>
+
+<!-- HEADER WEB -->
+<div class="topbar no-print">
+  <div class="container nav">
+    <div class="brand">
+      <img src="logo.png" class="logo" alt="Logo SMKA Tok Bachok">
+      <div class="site-title">
+        PORTAL SEMAKAN PRESTASI HAFAZAN SMKA TOK BACHOK
+      </div>
+    </div>
+
+    <button class="btn pdf-btn" onclick="window.print()" style="display:none">
+      Muat Turun PDF
+    </button>
+  </div>
+</div>
+
+<!-- HEADER CETAK RASMI -->
+<div class="print-header">
+  <div class="kpm-header">
+    <div class="kpm-logo">
+      <img src="logo.png" alt="Logo SMKA Tok Bachok">
+    </div>
+
+    <div class="kpm-title">
+      <div class="kpm-school">
+        SEKOLAH MENENGAH KEBANGSAAN AGAMA TOK BACHOK
+      </div>
+      <div class="kpm-portal">
+        PORTAL SEMAKAN PRESTASI HAFAZAN
+      </div>
+      <div class="kpm-sub">
+        SMKA TOK BACHOK
+      </div>
+    </div>
+
+    <div class="kpm-date">
+      Tarikh:<br>
+      <span id="printDate"></span>
+    </div>
+  </div>
+  <hr class="kpm-line">
+</div>
+
+<main class="container">
+
+<!-- LOGIN -->
+<section id="login" class="no-print">
+  <div class="card">
+    <strong>Masukkan No IC Pelajar</strong><br>
+    <span class="small">Tanpa sengkang. Contoh: 100318030457</span><br><br>
+    <input id="ic" class="input" placeholder="No IC Pelajar">
+    <button class="btn" onclick="doLogin()">Semak</button>
+    <div id="msg" class="small"></div>
+  </div>
+</section>
+
+<!-- DATA -->
+<section id="view" style="display:none">
+
+  <div class="cards">
+    <div class="card"><div class="small">Nama Pelajar</div><div id="v_nama"></div></div>
+    <div class="card"><div class="small">Kelas</div><div id="v_kelas"></div></div>
+    <div class="card"><div class="small">Guru Halaqah</div><div id="v_guru"></div></div>
+    <div class="card"><div class="small">Ranking</div><div id="v_rank"></div></div>
+  </div>
+
+  <div class="table">
+    <table>
+      <thead>
+        <tr>
+          <th class="center">Muka Surat</th>
+          <th class="center">Juzuk</th>
+          <th class="center">Sukatan Semasa</th>
+          <th class="center">Prestasi</th>
+        </tr>
+      </thead>
+      <tbody id="rows"></tbody>
+    </table>
+  </div>
+
+</section>
+
+<!-- TANDATANGAN -->
+<div class="print-signature">
+  <div class="sign-box">
+    <div class="sign-line"></div>
+    Guru Halaqah
+  </div>
+
+  <div class="sign-box">
+    <img src="sign-pengetua.png" class="sign-img">
+  </div>
+</div>
+
+</main>
+
+<footer class="footer">
+  © 2026 SMKA Tok Bachok
+</footer>
+
+<script>
+// ===== CSV T1–T5 (LIVE) =====
+const CSV_LIST = [
+ "https://docs.google.com/spreadsheets/d/e/2PACX-1vQd8KR9lDaJaaU5Ba_m-AtrsSxFXJXdPHzjGCbN8rH0dcwbRp1lQ5GaoNHI_cQpKejriavr2Ycj9-h9/pub?gid=864006815&output=csv",
+ "https://docs.google.com/spreadsheets/d/e/2PACX-1vQd8KR9lDaJaaU5Ba_m-AtrsSxFXJXdPHzjGCbN8rH0dcwbRp1lQ5GaoNHI_cQpKejriavr2Ycj9-h9/pub?gid=0&output=csv",
+ "https://docs.google.com/spreadsheets/d/e/2PACX-1vQd8KR9lDaJaaU5Ba_m-AtrsSxFXJXdPHzjGCbN8rH0dcwbRp1lQ5GaoNHI_cQpKejriavr2Ycj9-h9/pub?gid=1239159275&output=csv",
+ "https://docs.google.com/spreadsheets/d/e/2PACX-1vQd8KR9lDaJaaU5Ba_m-AtrsSxFXJXdPHzjGCbN8rH0dcwbRp1lQ5GaoNHI_cQpKejriavr2Ycj9-h9/pub?gid=619009113&output=csv",
+ "https://docs.google.com/spreadsheets/d/e/2PACX-1vQd8KR9lDaJaaU5Ba_m-AtrsSxFXJXdPHzjGCbN8rH0dcwbRp1lQ5GaoNHI_cQpKejriavr2Ycj9-h9/pub?gid=1591484628&output=csv"
+];
+
+let data = [];
+
+CSV_LIST.forEach(url=>{
+ fetch(url).then(r=>r.text()).then(t=>{
+  const lines = t.split(/\r?\n/);
+  const head = lines[0].split(",");
+  const idx = k => head.indexOf(k);
+
+  for(let i=1;i<lines.length;i++){
+    const c = lines[i].split(",");
+    if(c.length < head.length) continue;
+
+    data.push({
+      ic:(c[idx("NO IC")]||"").replace(/\D/g,""),
+      nama:c[idx("NAMA PELAJAR")],
+      kelas:c[idx("KELAS")],
+      guru:c[idx("GURU HALAQAH")],
+      muka:c[idx("MUKA SURAT")],
+      juzuk:c[idx("JUZUK")],
+      sukatan:c[idx("SUKATAN SEMASA")],
+      prestasi:c[idx("INDIKATOR")],
+      ranking:c[idx("RANKING")]
+    });
+  }
+ });
+});
+
+function doLogin(){
+  const ic = document.getElementById("ic").value.replace(/\D/g,"");
+  const r = data.find(x=>x.ic===ic);
+  if(!r){
+    document.getElementById("msg").textContent="No IC tidak ditemui.";
+    return;
+  }
+
+  document.getElementById("login").style.display="none";
+  document.getElementById("view").style.display="block";
+
+  document.getElementById("v_nama").textContent=r.nama||"-";
+  document.getElementById("v_kelas").textContent=r.kelas||"-";
+  document.getElementById("v_guru").textContent=r.guru||"-";
+  document.getElementById("v_rank").textContent=r.ranking||"-";
+
+  document.getElementById("rows").innerHTML =
+    "<tr>"+
+    "<td class='center'>"+(r.muka||"-")+"</td>"+
+    "<td class='center'>"+(r.juzuk||"-")+"</td>"+
+    "<td class='center'>"+(r.sukatan||"-")+"</td>"+
+    "<td class='center'>"+(r.prestasi||"-")+"</td>"+
+    "</tr>";
+
+  document.querySelector(".pdf-btn").style.display="inline-block";
+}
+
+document.getElementById("printDate").textContent =
+  new Date().toLocaleDateString("ms-MY");
+</script>
+
+</body>
+</html>
