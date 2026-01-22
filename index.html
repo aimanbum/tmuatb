@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal Rasmi Prestasi Hafazan SMKATB</title>
+    <title>LAMAN TMUATB</title>
     
     <link rel="icon" type="image/png" href="logo.png">
 
@@ -17,7 +17,7 @@
         }
 
         .container { 
-            max-width: 1000px; /* Lebarkan container untuk susunan melintang */
+            max-width: 1000px; 
             margin: auto; 
             background: #ffffff; 
             padding: 40px; 
@@ -44,10 +44,9 @@
             margin: 0;
         }
 
-        /* SUSUNAN KIRI KE KANAN (GRID) */
+        /* SUSUNAN KIRI KE KANAN (GRID 3 KOLUM) */
         .link-section {
             display: grid;
-            /* Membahagi kepada 3 kolum di skrin besar */
             grid-template-columns: repeat(3, 1fr); 
             gap: 20px;
             margin-top: 20px;
@@ -68,7 +67,7 @@
             transition: all 0.3s ease;
             text-transform: uppercase;
             text-align: center;
-            min-height: 60px;
+            min-height: 80px; /* Tingkap butang diselaraskan */
         }
 
         .btn:hover { 
@@ -78,16 +77,16 @@
             box-shadow: 0 5px 15px rgba(0,51,102,0.2);
         }
 
-        /* Warna khas untuk butang utama */
+        /* Butang Utama / Highlight */
         .btn-primary {
             background: #f8f9fa;
             border: 2px solid #003366;
         }
 
-        /* RESPONSIVE: Tukar ke bawah jika skrin kecil (Phone) */
+        /* RESPONSIVE: Jadi 1 kolum untuk telefon bimbit */
         @media (max-width: 768px) {
             .link-section {
-                grid-template-columns: 1fr; /* Jadi 1 kolum sahaja */
+                grid-template-columns: 1fr;
             }
             .container {
                 padding: 20px;
@@ -108,25 +107,22 @@
         <img src="logo.png" alt="Logo SMKATB" class="logo-sekolah">
         
         <div class="header-text">
-            <h1>Portal Hub Prestasi Hafazan</h1>
-            <p>SMKA TUNAS BAKTI (SMKATB)</p>
-        </div>
+            <h1>LAMAN TMUA TOK BACHOK</h1>
+         </div>
         
         <div class="link-section">
             <a href="https://drive.google.com/drive/folders/1Z07QYsqg-YRuqNiR4YXg7hQLwHGhCt8p?usp=sharing" class="btn btn-primary" target="_blank">HALAQAH 2026</a>
-
             <a href="https://drive.google.com/drive/folders/1R4FdjBu_MviJWC51DVcEiyQpBSGGm-PG?usp=sharing" class="btn" target="_blank">REKOD PRESTASI HAFAZAN INDIVIDU</a>
-            
             <a href="https://aimanbum.github.io/dashboardhafazan/" class="btn" target="_blank">DASHBOARD PRESTASI HAFAZAN</a>
             
             <a href="https://docs.google.com/spreadsheets/d/1xx5BP8lhLu6eqke5RfqEZUs3BnPgLS9u/edit?gid=1105382656#gid=1105382656" class="btn" target="_blank">RPT HIFZ 2026</a>
-            
+            <a href="https://forms.gle/MZYJB4YxUYbUkG238" class="btn btn-primary" target="_blank">REKOD PELAJAR KHATAM</a>
             <a href="https://mylink.la/sekolah-3315" class="btn" target="_blank">SMKATB ONE STOP CENTRE</a>
         </div>
 
         <div class="footer">
-            Sistem Pengurusan Maklumat Hafazan &copy; 2026<br>
-            SMKA TUNAS BAKTI
+            Unit Digital TMUA &copy; 2026<br>
+            SMKA TOK BACHOK
         </div>
     </div>
 </body>
