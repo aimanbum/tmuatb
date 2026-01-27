@@ -26,7 +26,7 @@
         }
 
         .container { 
-            max-width: 1000px; 
+            max-width: 1100px; 
             width: 100%;
             background: #ffffff; 
             padding: 40px; 
@@ -35,10 +35,13 @@
             border: 1px solid #e2e8f0;
         }
         
-        .header { text-align: center; margin-bottom: 40px; }
-        .logo-sekolah { width: 90px; height: auto; margin-bottom: 15px; }
-        h1 { font-size: 26px; color: var(--primary-navy); margin: 0; font-weight: 800; letter-spacing: -0.5px; }
-        .sub-header { font-size: 15px; color: #64748b; margin-top: 5px; }
+        .header { 
+            text-align: center; 
+            margin-bottom: 50px; /* Menambah ruang antara tajuk dan kotak */
+        }
+        .logo-sekolah { width: 100px; height: auto; margin-bottom: 15px; }
+        h1 { font-size: 28px; color: var(--primary-navy); margin: 0; font-weight: 800; letter-spacing: -0.5px; text-transform: uppercase; }
+        .sub-header { font-size: 16px; color: #64748b; margin-top: 8px; font-weight: 500; }
 
         /* LAYOUT UTAMA */
         .main-layout { display: flex; gap: 40px; align-items: flex-start; }
@@ -50,8 +53,9 @@
             background: #ffffff; color: var(--primary-navy); text-decoration: none; 
             border: 2px solid #e2e8f0; border-radius: 12px; font-weight: 700; font-size: 13px; 
             transition: all 0.3s ease; text-align: center; line-height: 1.4;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
         }
-        .btn:hover { border-color: var(--primary-navy); background: var(--primary-navy); color: white; transform: translateY(-3px); }
+        .btn:hover { border-color: var(--primary-navy); background: var(--primary-navy); color: white; transform: translateY(-3px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
 
         /* BAHAGIAN KANAN (SIDE BOX ENROLMEN) */
         .side-box { 
@@ -61,7 +65,7 @@
         .side-box h3 { 
             font-size: 16px; margin-top: 0; color: var(--primary-navy); 
             display: flex; align-items: center; gap: 8px; border-bottom: 2px solid #f1f5f9;
-            padding-bottom: 12px; margin-bottom: 20px;
+            padding-bottom: 12px; margin-bottom: 20px; text-transform: uppercase;
         }
 
         .grand-total-card { 
@@ -86,8 +90,9 @@
         /* RESPONSIVE */
         @media (max-width: 900px) {
             .main-layout { flex-direction: column; }
-            .links-area { order: 1; grid-template-columns: 1fr; width: 100%; }
-            .side-box { order: 2; width: 100%; box-sizing: border-box; }
+            .links-area { grid-template-columns: 1fr; width: 100%; }
+            .side-box { width: 100%; box-sizing: border-box; }
+            .header { margin-bottom: 30px; }
         }
 
         .footer { text-align: center; margin-top: 50px; font-size: 12px; color: #94a3b8; font-weight: 500; }
@@ -99,8 +104,7 @@
         <div class="header">
             <img src="logo.png" alt="Logo SMKATB" class="logo-sekolah">
             <h1>LAMAN TMUA TOK BACHOK</h1>
-            <div class=</div>
-        </div>
+         </div>
 
         <div class="main-layout">
             <div class="links-area">
@@ -109,6 +113,7 @@
                 <a href="https://aimanbum.github.io/dashboardhafazan/" class="btn" target="_blank">DASHBOARD HAFAZAN</a>
                 <a href="https://docs.google.com/spreadsheets/d/1xx5BP8lhLu6eqke5RfqEZUs3BnPgLS9u/edit?gid=1105382656#gid=1105382656" class="btn" target="_blank">RPT HIFZ 2026</a>
                 <a href="https://forms.gle/MZYJB4YxUYbUkG238" class="btn" target="_blank">REKOD PELAJAR KHATAM</a>
+                <a href="https://drive.google.com/drive/folders/1UJBAwL0ctB9TV9YKfd61B_cG2MGX8SsN?usp=drive_link" class="btn" target="_blank">📁 ENROLMEN PELAJAR 2026</a>
                 <a href="https://mylink.la/sekolah-3315" class="btn" target="_blank">SMKATB ONE STOP CENTRE</a>
             </div>
 
@@ -132,7 +137,7 @@
         </div>
 
         <div class="footer">
-            SMKA Tok Bachok &copy; 2026 | Data dikemaskini secara langsung
+            SMKA Tok Bachok &copy; 2026 | Dikemaskini secara langsung
         </div>
     </div>
 
