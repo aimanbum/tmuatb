@@ -3,52 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal Rasmi Prestasi Hafazan SMKATB</title>
+    <title>LAMAN TMUATB</title>
     <link rel="icon" type="image/png" href="logo.png">
     <style>
-        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #f0f2f5; margin: 0; padding: 20px; color: #2c3e50; }
-        .container { max-width: 1000px; margin: auto; background: #ffffff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border-top: 6px solid #003366; }
-        
-        .header { text-align: center; margin-bottom: 30px; }
-        .logo-sekolah { width: 80px; height: auto; }
-        h1 { font-size: 22px; color: #003366; margin: 10px 0 5px 0; text-transform: uppercase; }
-        .sub-header { font-size: 14px; color: #7f8c8d; }
+        :root {
+            --primary-navy: #003366;
+            --accent-blue: #00509d;
+            --light-bg: #f8fafc;
+            --text-dark: #1e293b;
+        }
 
-        /* LAYOUT UTAMA (FLEX) */
-        .main-layout { display: flex; gap: 30px; align-items: flex-start; }
+        body { 
+            font-family: 'Inter', 'Segoe UI', Roboto, sans-serif; 
+            background-color: var(--light-bg); 
+            margin: 0; 
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: var(--text-dark);
+        }
+
+        .container { 
+            max-width: 1000px; 
+            width: 100%;
+            background: #ffffff; 
+            padding: 40px; 
+            border-radius: 20px; 
+            box-shadow: 0 10px 40px rgba(0,0,0,0.06); 
+            border: 1px solid #e2e8f0;
+        }
+        
+        .header { text-align: center; margin-bottom: 40px; }
+        .logo-sekolah { width: 90px; height: auto; margin-bottom: 15px; }
+        h1 { font-size: 26px; color: var(--primary-navy); margin: 0; font-weight: 800; letter-spacing: -0.5px; }
+        .sub-header { font-size: 15px; color: #64748b; margin-top: 5px; }
+
+        /* LAYOUT UTAMA */
+        .main-layout { display: flex; gap: 40px; align-items: flex-start; }
         
         /* BAHAGIAN KIRI (PAUTAN) */
-        .links-area { flex: 2; display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
+        .links-area { flex: 1.5; display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
         .btn { 
-            display: flex; align-items: center; justify-content: center; padding: 25px 15px; 
-            background: #ffffff; color: #003366; text-decoration: none; border: 1.5px solid #003366;
-            border-radius: 10px; font-weight: bold; font-size: 13px; transition: 0.3s; text-align: center;
+            display: flex; align-items: center; justify-content: center; padding: 25px 20px; 
+            background: #ffffff; color: var(--primary-navy); text-decoration: none; 
+            border: 2px solid #e2e8f0; border-radius: 12px; font-weight: 700; font-size: 13px; 
+            transition: all 0.3s ease; text-align: center; line-height: 1.4;
         }
-        .btn:hover { background: #003366; color: white; transform: translateY(-3px); box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .btn:hover { border-color: var(--primary-navy); background: var(--primary-navy); color: white; transform: translateY(-3px); }
 
         /* BAHAGIAN KANAN (SIDE BOX ENROLMEN) */
         .side-box { 
-            flex: 1; background: #f8f9fa; padding: 20px; border-radius: 10px; 
-            border: 1px solid #e1e8ed; position: sticky; top: 20px;
+            flex: 1; background: #ffffff; padding: 25px; border-radius: 16px; 
+            border: 1px solid #e2e8f0; box-shadow: 0 4px 12px rgba(0,0,0,0.03);
         }
-        .side-box h3 { font-size: 15px; margin-top: 0; color: #003366; border-bottom: 2px solid #003366; padding-bottom: 5px; }
-        
-        .grand-total-box { background: #003366; color: white; padding: 15px; border-radius: 8px; margin-bottom: 15px; text-align: center; }
-        .grand-total-box span { font-size: 28px; font-weight: 800; display: block; }
-        
-        .enrolmen-list { list-style: none; padding: 0; margin: 0; font-size: 13px; }
-        .enrolmen-item { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px dotted #ccc; }
+        .side-box h3 { 
+            font-size: 16px; margin-top: 0; color: var(--primary-navy); 
+            display: flex; align-items: center; gap: 8px; border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 12px; margin-bottom: 20px;
+        }
+
+        .grand-total-card { 
+            background: linear-gradient(135deg, var(--primary-navy) 0%, var(--accent-blue) 100%); 
+            color: white; padding: 25px 15px; border-radius: 12px; margin-bottom: 25px; text-align: center;
+            box-shadow: 0 8px 20px rgba(0,51,102,0.15);
+        }
+        .grand-total-card p { font-size: 12px; text-transform: uppercase; margin: 0; opacity: 0.9; letter-spacing: 1px; }
+        .grand-total-card span { font-size: 42px; font-weight: 800; display: block; margin: 5px 0; }
+        .grand-total-card .lp-info { font-size: 12px; font-weight: 500; opacity: 0.9; }
+
+        .enrolmen-list { list-style: none; padding: 0; margin: 0; }
+        .enrolmen-item { 
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 12px 0; border-bottom: 1px solid #f1f5f9; 
+        }
         .enrolmen-item:last-child { border-bottom: none; }
-        .tag-lp { font-size: 11px; color: #666; font-weight: normal; }
+        .enrolmen-item b { font-size: 15px; color: #334155; }
+        .enrolmen-item .total-num { font-weight: 800; color: var(--accent-blue); font-size: 16px; }
+        .enrolmen-item .lp-tag { font-size: 11px; color: #94a3b8; font-weight: 500; }
 
         /* RESPONSIVE */
-        @media (max-width: 850px) {
+        @media (max-width: 900px) {
             .main-layout { flex-direction: column; }
-            .links-area { grid-template-columns: 1fr; width: 100%; }
-            .side-box { width: 100%; box-sizing: border-box; position: static; }
+            .links-area { order: 1; grid-template-columns: 1fr; width: 100%; }
+            .side-box { order: 2; width: 100%; box-sizing: border-box; }
         }
 
-        .footer { text-align: center; margin-top: 40px; font-size: 11px; color: #bdc3c7; border-top: 1px solid #eee; padding-top: 15px; }
+        .footer { text-align: center; margin-top: 50px; font-size: 12px; color: #94a3b8; font-weight: 500; }
     </style>
 </head>
 <body>
@@ -56,40 +98,41 @@
     <div class="container">
         <div class="header">
             <img src="logo.png" alt="Logo SMKATB" class="logo-sekolah">
-            <h1>Portal Hub Prestasi</h1>
-            <div class="sub-header">SMKA TUNAS BAKTI (SMKATB)</div>
+            <h1>LAMAN TMUA TOK BACHOK</h1>
+            <div class=</div>
         </div>
 
         <div class="main-layout">
             <div class="links-area">
                 <a href="https://drive.google.com/drive/folders/1Z07QYsqg-YRuqNiR4YXg7hQLwHGhCt8p?usp=sharing" class="btn" target="_blank">HALAQAH 2026</a>
-                <a href="https://drive.google.com/drive/folders/1R4FdjBu_MviJWC51DVcEiyQpBSGGm-PG?usp=sharing" class="btn" target="_blank">REKOD HAFAZAN</a>
-                <a href="https://aimanbum.github.io/dashboardhafazan/" class="btn" target="_blank">DASHBOARD</a>
+                <a href="https://drive.google.com/drive/folders/1R4FdjBu_MviJWC51DVcEiyQpBSGGm-PG?usp=sharing" class="btn" target="_blank">REKOD PRESTASI INDIVIDU</a>
+                <a href="https://aimanbum.github.io/dashboardhafazan/" class="btn" target="_blank">DASHBOARD HAFAZAN</a>
                 <a href="https://docs.google.com/spreadsheets/d/1xx5BP8lhLu6eqke5RfqEZUs3BnPgLS9u/edit?gid=1105382656#gid=1105382656" class="btn" target="_blank">RPT HIFZ 2026</a>
-                <a href="https://forms.gle/MZYJB4YxUYbUkG238" class="btn" target="_blank">REKOD KHATAM</a>
-                <a href="https://mylink.la/sekolah-3315" class="btn" target="_blank">ONE STOP CENTRE</a>
+                <a href="https://forms.gle/MZYJB4YxUYbUkG238" class="btn" target="_blank">REKOD PELAJAR KHATAM</a>
+                <a href="https://mylink.la/sekolah-3315" class="btn" target="_blank">SMKATB ONE STOP CENTRE</a>
             </div>
 
             <div class="side-box">
-                <h3>ENROLMEN 2026</h3>
-                <div class="grand-total-box">
-                    <h3>JUMLAH PELAJAR</h3>
+                <h3>📊 ENROLMEN 2026</h3>
+                <div class="grand-total-card">
+                    <p>Jumlah Pelajar Keseluruhan</p>
                     <span id="grand-total">...</span>
-                    <div style="font-size: 11px;" id="grand-detail">L: - | P: -</div>
+                    <div class="lp-info" id="grand-detail">MEMUAT TURUN DATA...</div>
                 </div>
+                
                 <div class="enrolmen-list">
-                    <div class="enrolmen-item"><b>T1</b> <span id="t1-total">...</span> <span class="tag-lp" id="t1-detail">L:- P:-</span></div>
-                    <div class="enrolmen-item"><b>T2</b> <span id="t2-total">...</span> <span class="tag-lp" id="t2-detail">L:- P:-</span></div>
-                    <div class="enrolmen-item"><b>T3</b> <span id="t3-total">...</span> <span class="tag-lp" id="t3-detail">L:- P:-</span></div>
-                    <div class="enrolmen-item"><b>T4</b> <span id="t4-total">...</span> <span class="tag-lp" id="t4-detail">L:- P:-</span></div>
-                    <div class="enrolmen-item"><b>T5</b> <span id="t5-total">...</span> <span class="tag-lp" id="t5-detail">L:- P:-</span></div>
-                    <div class="enrolmen-item"><b>T6</b> <span id="t6-total">...</span> <span class="tag-lp" id="t6-detail">L:- P:-</span></div>
+                    <div class="enrolmen-item"><b>T1</b> <span class="total-num" id="t1-total">...</span> <span class="lp-tag" id="t1-detail">L:- P:-</span></div>
+                    <div class="enrolmen-item"><b>T2</b> <span class="total-num" id="t2-total">...</span> <span class="lp-tag" id="t2-detail">L:- P:-</span></div>
+                    <div class="enrolmen-item"><b>T3</b> <span class="total-num" id="t3-total">...</span> <span class="lp-tag" id="t3-detail">L:- P:-</span></div>
+                    <div class="enrolmen-item"><b>T4</b> <span class="total-num" id="t4-total">...</span> <span class="lp-tag" id="t4-detail">L:- P:-</span></div>
+                    <div class="enrolmen-item"><b>T5</b> <span class="total-num" id="t5-total">...</span> <span class="lp-tag" id="t5-detail">L:- P:-</span></div>
+                    <div class="enrolmen-item"><b>T6</b> <span class="total-num" id="t6-total">...</span> <span class="lp-tag" id="t6-detail">L:- P:-</span></div>
                 </div>
             </div>
         </div>
 
         <div class="footer">
-            SMKA TUNAS BAKTI &copy; 2026 | Dikemaskini secara langsung
+            SMKA Tok Bachok &copy; 2026 | Data dikemaskini secara langsung
         </div>
     </div>
 
@@ -123,7 +166,10 @@
 
                 document.getElementById('grand-total').innerText = grandL + grandP;
                 document.getElementById('grand-detail').innerText = `LELAKI: ${grandL} | PEREMPUAN: ${grandP}`;
-            } catch (e) { console.error('Error:', e); }
+            } catch (e) { 
+                console.error('Error:', e);
+                document.getElementById('grand-detail').innerText = "RALAT DATA";
+            }
         }
         fetchEnrolmen();
     </script>
