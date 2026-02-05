@@ -3,135 +3,270 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LAMAN TMUATB</title>
+    <title>Portal TMUA Tok Bachok</title>
     <link rel="icon" type="image/png" href="logo.png">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+
     <style>
         :root {
-            --primary-navy: #003366;
-            --accent-blue: #00509d;
-            --light-bg: #f8fafc;
-            --text-dark: #1e293b;
+            --primary: #0f172a;   /* Warna Gelap Elegan */
+            --accent: #2563eb;    /* Biru Terang (Link) */
+            --bg: #f1f5f9;        /* Kelabu Lembut */
+            --white: #ffffff;
         }
 
         body { 
-            font-family: 'Inter', 'Segoe UI', Roboto, sans-serif; 
-            background-color: var(--light-bg); 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background-color: var(--bg); 
             margin: 0; 
-            padding: 40px 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            padding: 0;
+            color: var(--primary);
             min-height: 100vh;
-            color: var(--text-dark);
         }
 
+        /* HEADER DENGAN BACKGROUND */
+        .header-bg {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            padding: 40px 20px 80px 20px; /* Padding bawah lebih untuk effect tindih */
+            text-align: center;
+            color: white;
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+        }
+
+        .logo-sekolah { 
+            width: 90px; 
+            height: auto; 
+            background: white; 
+            border-radius: 50%; 
+            padding: 5px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            margin-bottom: 15px;
+        }
+        
+        h1 { margin: 0; font-size: 24px; font-weight: 800; letter-spacing: -0.5px; }
+        .sub-header { opacity: 0.9; font-size: 14px; margin-top: 5px; font-weight: 400; }
+
+        /* CONTAINER UTAMA (TINDIH HEADER) */
         .container { 
-            max-width: 1100px; 
-            width: 100%;
-            background: #ffffff; 
-            padding: 40px; 
-            border-radius: 20px; 
-            box-shadow: 0 10px 40px rgba(0,0,0,0.06); 
-            border: 1px solid #e2e8f0;
+            max-width: 1000px; 
+            margin: -50px auto 40px auto; /* Naikkan ke atas header */
+            padding: 0 20px;
+            display: flex;
+            gap: 25px;
+            align-items: flex-start;
         }
-        
-        .header { text-align: center; margin-bottom: 50px; }
-        .logo-sekolah { width: 100px; height: auto; margin-bottom: 15px; }
-        h1 { font-size: 28px; color: var(--primary-navy); margin: 0; font-weight: 800; letter-spacing: -0.5px; text-transform: uppercase; }
-        .sub-header { font-size: 16px; color: #64748b; margin-top: 8px; font-weight: 500; }
 
-        .main-layout { display: flex; gap: 40px; align-items: flex-start; }
-        
-        .links-area { flex: 1.5; display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
-        .btn { 
-            display: flex; align-items: center; justify-content: center; padding: 25px 20px; 
-            background: #ffffff; color: var(--primary-navy); text-decoration: none; 
-            border: 2px solid #e2e8f0; border-radius: 12px; font-weight: 700; font-size: 13px; 
-            transition: all 0.3s ease; text-align: center; line-height: 1.4;
+        /* KIRI: GRID BUTANG (ICON STYLE) */
+        .links-area { 
+            flex: 2; 
+            display: grid; 
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 15px; 
         }
-        .btn:hover { border-color: var(--primary-navy); background: var(--primary-navy); color: white; transform: translateY(-3px); }
 
+        .btn-card { 
+            background: var(--white); 
+            padding: 20px; 
+            border-radius: 16px; 
+            text-decoration: none; 
+            color: var(--primary);
+            display: flex; 
+            align-items: center; 
+            gap: 15px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(255,255,255,0.5);
+        }
+
+        .btn-card:hover { 
+            transform: translateY(-3px); 
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); 
+            border-color: var(--accent);
+        }
+
+        .icon-box {
+            width: 45px; height: 45px;
+            background: #eff6ff;
+            color: var(--accent);
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 20px;
+        }
+
+        .text-box { display: flex; flex-direction: column; }
+        .btn-title { font-weight: 700; font-size: 14px; line-height: 1.2; }
+        .btn-desc { font-size: 11px; color: #64748b; margin-top: 3px; }
+
+        /* KANAN: ENROLMEN CARD */
         .side-box { 
-            flex: 1; background: #ffffff; padding: 25px; border-radius: 16px; 
-            border: 1px solid #e2e8f0; box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-        }
-        .side-box h3 { 
-            font-size: 16px; margin-top: 0; color: var(--primary-navy); 
-            display: flex; align-items: center; gap: 8px; border-bottom: 2px solid #f1f5f9;
-            padding-bottom: 12px; margin-bottom: 20px; text-transform: uppercase;
-        }
-
-        .grand-total-card { 
-            background: linear-gradient(135deg, var(--primary-navy) 0%, var(--accent-blue) 100%); 
-            color: white; padding: 25px 15px; border-radius: 12px; margin-bottom: 25px; text-align: center;
-        }
-        .grand-total-card p { font-size: 12px; text-transform: uppercase; margin: 0; opacity: 0.9; }
-        .grand-total-card span { font-size: 42px; font-weight: 800; display: block; margin: 5px 0; }
-
-        .enrolmen-list { list-style: none; padding: 0; margin: 0; }
-        .enrolmen-item { 
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 10px 0; border-bottom: 1px solid #f1f5f9; 
-        }
-        .enrolmen-item:last-child { border-bottom: none; }
-        .enrolmen-item b { font-size: 14px; color: #334155; }
-        .enrolmen-item .total-num { font-weight: 800; color: var(--accent-blue); font-size: 15px; }
-        .enrolmen-item .lp-tag { font-size: 10px; color: #94a3b8; }
-
-        @media (max-width: 900px) {
-            .main-layout { flex-direction: column; }
-            .links-area { grid-template-columns: 1fr; width: 100%; }
-            .side-box { width: 100%; }
+            flex: 1; 
+            background: var(--white); 
+            border-radius: 20px; 
+            padding: 25px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 20px;
         }
 
-        .footer { text-align: center; margin-top: 50px; font-size: 12px; color: #94a3b8; }
+        .side-title { 
+            font-size: 13px; font-weight: 800; color: #64748b; 
+            text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; 
+            display: flex; align-items: center; gap: 8px;
+        }
+
+        .stat-total-big { 
+            text-align: center; margin-bottom: 25px; 
+            padding-bottom: 20px; border-bottom: 2px dashed #e2e8f0;
+        }
+        .big-number { font-size: 48px; font-weight: 800; color: var(--primary); line-height: 1; }
+        .big-label { font-size: 12px; color: #64748b; margin-top: 5px; }
+
+        .stat-list { display: flex; flex-direction: column; gap: 12px; }
+        .stat-row { 
+            display: flex; justify-content: space-between; align-items: center; 
+            font-size: 14px;
+        }
+        .stat-label { font-weight: 600; color: #334155; width: 40px; }
+        .stat-bar-bg { flex: 1; height: 8px; background: #f1f5f9; border-radius: 4px; margin: 0 10px; overflow: hidden; }
+        .stat-bar-fill { height: 100%; background: var(--accent); border-radius: 4px; width: 0%; transition: width 1s; }
+        .stat-value { font-weight: 700; color: var(--accent); width: 30px; text-align: right; }
+        
+        .footer { text-align: center; margin-top: 50px; font-size: 12px; color: #94a3b8; padding-bottom: 20px; }
+
+        /* RESPONSIVE */
+        @media (max-width: 850px) {
+            .container { flex-direction: column; margin-top: -30px; }
+            .links-area { grid-template-columns: 1fr; width: 100%; } /* 1 Column di phone */
+            .side-box { width: 100%; box-sizing: border-box; }
+            .header-bg { padding-bottom: 60px; }
+        }
     </style>
 </head>
 <body>
 
+    <div class="header-bg">
+        <img src="logo.png" alt="Logo" class="logo-sekolah">
+        <h1>LAMAN TMUA TOK BACHOK</h1>
+        <div class="sub-header">SMKA TOK BACHOK (SMKATB)</div>
+    </div>
+
     <div class="container">
-        <div class="header">
-            <img src="logo.png" alt="Logo SMKATB" class="logo-sekolah">
-            <h1>LAMAN TMUA TOK BACHOK</h1>
-            <div class="sub-header"></div>
+        
+        <div class="links-area">
+            
+            <a href="https://drive.google.com/drive/folders/1Z07QYsqg-YRuqNiR4YXg7hQLwHGhCt8p?usp=sharing" class="btn-card" target="_blank">
+                <div class="icon-box"><i class="fa-solid fa-users-rectangle"></i></div>
+                <div class="text-box">
+                    <span class="btn-title">HALAQAH 2026</span>
+                    <span class="btn-desc">Senarai Halaqah & Guru</span>
+                </div>
+            </a>
+
+            <a href="https://drive.google.com/drive/folders/1R4FdjBu_MviJWC51DVcEiyQpBSGGm-PG?usp=sharing" class="btn-card" target="_blank">
+                <div class="icon-box"><i class="fa-solid fa-file-signature"></i></div>
+                <div class="text-box">
+                    <span class="btn-title">REKOD PRESTASI</span>
+                    <span class="btn-desc">Rekod Hafazan Individu</span>
+                </div>
+            </a>
+
+            <a href="https://aimanbum.github.io/dashboardhafazan/" class="btn-card" target="_blank">
+                <div class="icon-box"><i class="fa-solid fa-chart-pie"></i></div>
+                <div class="text-box">
+                    <span class="btn-title">DASHBOARD</span>
+                    <span class="btn-desc">Analisis Data Hafazan</span>
+                </div>
+            </a>
+
+            <a href="https://docs.google.com/spreadsheets/d/1xx5BP8lhLu6eqke5RfqEZUs3BnPgLS9u/edit?gid=1105382656#gid=1105382656" class="btn-card" target="_blank">
+                <div class="icon-box"><i class="fa-solid fa-calendar-check"></i></div>
+                <div class="text-box">
+                    <span class="btn-title">RPT HIFZ 2026</span>
+                    <span class="btn-desc">Rancangan Pelajaran Tahunan</span>
+                </div>
+            </a>
+
+            <a href="https://forms.gle/MZYJB4YxUYbUkG238" class="btn-card" target="_blank">
+                <div class="icon-box"><i class="fa-solid fa-medal"></i></div>
+                <div class="text-box">
+                    <span class="btn-title">REKOD KHATAM</span>
+                    <span class="btn-desc">Borang Murid Khatam</span>
+                </div>
+            </a>
+
+            <a href="https://drive.google.com/drive/folders/1UJBAwL0ctB9TV9YKfd61B_cG2MGX8SsN?usp=drive_link" class="btn-card" target="_blank">
+                <div class="icon-box"><i class="fa-solid fa-folder-open"></i></div>
+                <div class="text-box">
+                    <span class="btn-title">FOLDER ENROLMEN</span>
+                    <span class="btn-desc">Data Enrolmen 2026</span>
+                </div>
+            </a>
+
+            <a href="https://mylink.la/sekolah-3315" class="btn-card" target="_blank">
+                <div class="icon-box"><i class="fa-solid fa-link"></i></div>
+                <div class="text-box">
+                    <span class="btn-title">ONE STOP CENTRE</span>
+                    <span class="btn-desc">Pautan Lain SMKATB</span>
+                </div>
+            </a>
+
         </div>
 
-        <div class="main-layout">
-            <div class="links-area">
-                <a href="https://drive.google.com/drive/folders/1Z07QYsqg-YRuqNiR4YXg7hQLwHGhCt8p?usp=sharing" class="btn" target="_blank">HALAQAH 2026</a>
-                <a href="https://drive.google.com/drive/folders/1R4FdjBu_MviJWC51DVcEiyQpBSGGm-PG?usp=sharing" class="btn" target="_blank">REKOD PRESTASI INDIVIDU</a>
-                <a href="https://aimanbum.github.io/dashboardhafazan/" class="btn" target="_blank">DASHBOARD HAFAZAN BULANAN</a>
-                <a href="https://docs.google.com/spreadsheets/d/1xx5BP8lhLu6eqke5RfqEZUs3BnPgLS9u/edit?gid=1105382656#gid=1105382656" class="btn" target="_blank">RPT HIFZ 2026</a>
-                <a href="https://forms.gle/MZYJB4YxUYbUkG238" class="btn" target="_blank">REKOD PELAJAR KHATAM</a>
-                <a href="https://drive.google.com/drive/folders/1UJBAwL0ctB9TV9YKfd61B_cG2MGX8SsN?usp=drive_link" class="btn" target="_blank">ENROLMEN PELAJAR 2026</a>
-                <a href="https://mylink.la/sekolah-3315" class="btn" target="_blank">SMKATB ONE STOP CENTRE</a>
-                <a href="https://drive.google.com/drive/folders/10hzshOvUihDCpQ-v_4nYq1GUiXlx32Gw?usp=drive_link" class="btn" target="_blank">DSKP HIFZ & MAHARAT</a>
-                <a href="https://aimanbum.github.io/ehafazantokbachok/guru.html" class="btn" target="_blank">PENGISIAN DATA HAFAZAN BULANAN</a>
+        <div class="side-box">
+            <div class="side-title"><i class="fa-solid fa-chart-simple"></i> ENROLMEN 2026</div>
+            
+            <div class="stat-total-big">
+                <div class="big-number" id="grand-total">...</div>
+                <div class="big-label">JUMLAH PELAJAR</div>
+                <div style="font-size: 11px; color: #94a3b8; margin-top: 5px;" id="grand-detail">L: - | P: -</div>
             </div>
 
-            <div class="side-box">
-                <h3>📊 ENROLMEN 2026</h3>
-                <div class="grand-total-card">
-                    <p>Jumlah Pelajar Keseluruhan</p>
-                    <span id="grand-total">...</span>
-                    <div id="grand-detail" style="font-size: 12px; opacity: 0.9;">MEMUAT TURUN...</div>
+            <div class="stat-list">
+                <div class="stat-row">
+                    <span class="stat-label">PRA</span>
+                    <div class="stat-bar-bg"><div class="stat-bar-fill" id="bar-pra" style="width: 0%"></div></div>
+                    <span class="stat-value" id="pra-total">0</span>
                 </div>
-                
-                <div class="enrolmen-list">
-                    <div class="enrolmen-item"><b>PRA</b> <span class="total-num" id="pra-total">...</span> <span class="lp-tag" id="pra-detail">L:- P:-</span></div>
-                    <div class="enrolmen-item"><b>T1</b> <span class="total-num" id="t1-total">...</span> <span class="lp-tag" id="t1-detail">L:- P:-</span></div>
-                    <div class="enrolmen-item"><b>T2</b> <span class="total-num" id="t2-total">...</span> <span class="lp-tag" id="t2-detail">L:- P:-</span></div>
-                    <div class="enrolmen-item"><b>T3</b> <span class="total-num" id="t3-total">...</span> <span class="lp-tag" id="t3-detail">L:- P:-</span></div>
-                    <div class="enrolmen-item"><b>T4</b> <span class="total-num" id="t4-total">...</span> <span class="lp-tag" id="t4-detail">L:- P:-</span></div>
-                    <div class="enrolmen-item"><b>T5</b> <span class="total-num" id="t5-total">...</span> <span class="lp-tag" id="t5-detail">L:- P:-</span></div>
-                    <div class="enrolmen-item"><b>T6</b> <span class="total-num" id="t6-total">...</span> <span class="lp-tag" id="t6-detail">L:- P:-</span></div>
+                <div class="stat-row">
+                    <span class="stat-label">T1</span>
+                    <div class="stat-bar-bg"><div class="stat-bar-fill" id="bar-t1" style="width: 0%"></div></div>
+                    <span class="stat-value" id="t1-total">0</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">T2</span>
+                    <div class="stat-bar-bg"><div class="stat-bar-fill" id="bar-t2" style="width: 0%"></div></div>
+                    <span class="stat-value" id="t2-total">0</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">T3</span>
+                    <div class="stat-bar-bg"><div class="stat-bar-fill" id="bar-t3" style="width: 0%"></div></div>
+                    <span class="stat-value" id="t3-total">0</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">T4</span>
+                    <div class="stat-bar-bg"><div class="stat-bar-fill" id="bar-t4" style="width: 0%"></div></div>
+                    <span class="stat-value" id="t4-total">0</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">T5</span>
+                    <div class="stat-bar-bg"><div class="stat-bar-fill" id="bar-t5" style="width: 0%"></div></div>
+                    <span class="stat-value" id="t5-total">0</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">T6</span>
+                    <div class="stat-bar-bg"><div class="stat-bar-fill" id="bar-t6" style="width: 0%"></div></div>
+                    <span class="stat-value" id="t6-total">0</span>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="footer">
-            SMKA Tok Bachok &copy; 2026 | Data dikemaskini secara langsung
-        </div>
+    <div class="footer">
+        &copy; 2026 Unit TMUA SMKATB | Sistem Pintar
     </div>
 
     <script>
@@ -146,17 +281,28 @@
                 const getData = (r, c) => parseInt(rows[r][c]) || 0;
 
                 let grandL = 0; let grandP = 0;
+                let maxVal = 150; // Anggaran maksima untuk bar grafik
 
                 const processTingkatan = (id, row) => {
-                    const l = getData(row - 1, 2); // Kolum C
-                    const p = getData(row - 1, 3); // Kolum D
+                    const l = getData(row - 1, 2);
+                    const p = getData(row - 1, 3);
+                    const total = l + p;
                     grandL += l; grandP += p;
-                    document.getElementById(`${id}-total`).innerText = l + p;
-                    document.getElementById(`${id}-detail`).innerText = `L:${l} P:${p}`;
+
+                    // Update Text
+                    const elTotal = document.getElementById(`${id}-total`);
+                    if(elTotal) elTotal.innerText = total;
+
+                    // Update Bar Width (Visual Effect)
+                    const elBar = document.getElementById(`bar-${id}`);
+                    if(elBar) {
+                        let percent = (total / maxVal) * 100;
+                        if(percent > 100) percent = 100;
+                        elBar.style.width = `${percent}%`;
+                    }
                 };
 
-                // Susunan Tingkatan mengikut koordinat yang anda beri
-                processTingkatan('pra', 37); // Pra L (C37), P (D37)
+                processTingkatan('pra', 37);
                 processTingkatan('t1', 7);
                 processTingkatan('t2', 13);
                 processTingkatan('t3', 19);
@@ -166,9 +312,8 @@
 
                 document.getElementById('grand-total').innerText = grandL + grandP;
                 document.getElementById('grand-detail').innerText = `LELAKI: ${grandL} | PEREMPUAN: ${grandP}`;
-            } catch (e) { 
-                console.error('Ralat:', e);
-            }
+
+            } catch (e) { console.error('Error:', e); }
         }
         fetchEnrolmen();
     </script>
