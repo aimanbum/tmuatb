@@ -294,11 +294,11 @@
         updateClock();
 
         // ---------------------------------------------
-        // 2. SKRIP WAKTU SOLAT (API COORDINATE - BACHOK)
+        // 2. SKRIP WAKTU SOLAT (JAKIM OFFICIAL METHOD)
         // ---------------------------------------------
         async function fetchSolat() {
             try {
-                // Koordinat Bachok, Kelantan (Zon KNG01)
+                // Koordinat Bachok (KNG01)
                 const lat = 6.0734; 
                 const long = 102.3946;
                 
@@ -309,8 +309,9 @@
                 const yyyy = today.getFullYear();
                 const dateString = `${dd}-${mm}-${yyyy}`;
 
-                // Panggil API (Method 11 = Singapura/JAKIM Standard)
-                const response = await fetch(`https://api.aladhan.com/v1/timings/${dateString}?latitude=${lat}&longitude=${long}&method=11`);
+                // METHOD 17 = JAKIM (Jabatan Kemajuan Islam Malaysia)
+                // Ini memastikan kiraan darjah matahari SAMA dengan e-solat
+                const response = await fetch(`https://api.aladhan.com/v1/timings/${dateString}?latitude=${lat}&longitude=${long}&method=17`);
                 const data = await response.json();
                 
                 if (data.code === 200) {
