@@ -96,7 +96,7 @@
             position: sticky; top: 20px;
         }
 
-        /* WIDGET WAKTU SOLAT (BARU) */
+        /* WIDGET WAKTU SOLAT */
         .prayer-widget {
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             border-radius: 16px;
@@ -108,19 +108,16 @@
             border: 1px solid #334155;
         }
 
-        .clock-display { font-size: 36px; font-weight: 800; letter-spacing: 1px; line-height: 1; margin-bottom: 5px; font-variant-numeric: tabular-nums; }
+        .clock-display { font-size: 32px; font-weight: 800; letter-spacing: 1px; line-height: 1; margin-bottom: 5px; font-variant-numeric: tabular-nums; }
         .date-display { font-size: 12px; color: #94a3b8; font-weight: 500; margin-bottom: 15px; }
 
         .prayer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
         .prayer-item { 
-            background: rgba(255,255,255,0.05); padding: 10px 5px; border-radius: 10px; 
+            background: rgba(255,255,255,0.08); padding: 8px 5px; border-radius: 8px; 
             display: flex; flex-direction: column; gap: 2px;
         }
         .prayer-name { font-size: 10px; color: #cbd5e1; text-transform: uppercase; font-weight: 600; }
-        .prayer-time { font-size: 14px; font-weight: 700; color: #fff; }
-        
-        /* Highlight solat semasa */
-        .prayer-active { background: var(--accent); box-shadow: 0 0 15px rgba(37, 99, 235, 0.5); border: 1px solid #60a5fa; }
+        .prayer-time { font-size: 13px; font-weight: 700; color: #fff; }
 
         /* ENROLMEN STYLES */
         .side-title { 
@@ -274,7 +271,7 @@
 
     <script>
         // ---------------------------------------------
-        // SKRIP JAM & WAKTU SOLAT (KELANTAN ZON 1)
+        // 1. SKRIP JAM & TARIKH
         // ---------------------------------------------
         function updateClock() {
             const now = new Date();
@@ -290,43 +287,48 @@
             
             document.getElementById('jam').innerText = `${hours}:${minutes}:${seconds} ${ampm}`;
             
-            // Format Tarikh
             const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
             document.getElementById('tarikh').innerText = now.toLocaleDateString('ms-MY', options);
         }
         setInterval(updateClock, 1000);
         updateClock();
 
-        // Ambil Data Solat (API WaktuSolat.app - Mirror JAKIM KNG01)
+        // ---------------------------------------------
+        // 2. SKRIP WAKTU SOLAT (API COORDINATE - BACHOK)
+        // ---------------------------------------------
         async function fetchSolat() {
             try {
-                // KNG01: Jajahan Bachok, Kota Bharu, dsb.
-                const response = await fetch('https://api.waktusolat.app/v2/solat/KNG01');
+                // Koordinat Bachok, Kelantan (Zon KNG01)
+                const lat = 6.0734; 
+                const long = 102.3946;
+                
+                // Tarikh Hari Ini
+                const today = new Date();
+                const dd = String(today.getDate()).padStart(2, '0');
+                const mm = String(today.getMonth() + 1).padStart(2, '0');
+                const yyyy = today.getFullYear();
+                const dateString = `${dd}-${mm}-${yyyy}`;
+
+                // Panggil API (Method 11 = Singapura/JAKIM Standard)
+                const response = await fetch(`https://api.aladhan.com/v1/timings/${dateString}?latitude=${lat}&longitude=${long}&method=11`);
                 const data = await response.json();
                 
-                // Cari tarikh hari ini
-                const today = new Date().getDate();
-                const solatToday = data.prayers.find(p => p.day === today);
+                if (data.code === 200) {
+                    const timings = data.data.timings;
 
-                if (solatToday) {
                     const times = {
-                        "Subuh": convertTime(solatToday.fajr),
-                        "Syuruk": convertTime(solatToday.syuruk),
-                        "Zohor": convertTime(solatToday.dhuhr),
-                        "Asar": convertTime(solatToday.asr),
-                        "Maghrib": convertTime(solatToday.maghrib),
-                        "Isyak": convertTime(solatToday.isha)
+                        "Subuh": tConvert(timings.Fajr),
+                        "Syuruk": tConvert(timings.Sunrise),
+                        "Zohor": tConvert(timings.Dhuhr),
+                        "Asar": tConvert(timings.Asr),
+                        "Maghrib": tConvert(timings.Maghrib),
+                        "Isyak": tConvert(timings.Isha)
                     };
 
                     const container = document.getElementById('senarai-solat');
-                    container.innerHTML = ''; // Kosongkan placeholder
-
-                    // Dapatkan waktu sekarang untuk highlight
-                    const now = new Date();
-                    const currentMinutes = now.getHours() * 60 + now.getMinutes();
+                    container.innerHTML = ''; 
 
                     for (const [name, time] of Object.entries(times)) {
-                        // Logic untuk highlight waktu solat semasa/seterusnya
                         let div = document.createElement('div');
                         div.className = 'prayer-item';
                         div.innerHTML = `<span class="prayer-name">${name}</span><span class="prayer-time">${time}</span>`;
@@ -334,26 +336,26 @@
                     }
                 }
             } catch (e) {
-                console.error("Gagal ambil data solat", e);
-                document.getElementById('tarikh').innerText += " (Gagal muat data solat)";
+                console.error("Gagal ambil data solat:", e);
+                document.getElementById('senarai-solat').innerHTML = '<div style="font-size:10px; padding:10px;">Gagal muat.<br>Periksa Internet.</div>';
             }
         }
 
-        // Tukar format 13:50 ke 1:50 PM
-        function convertTime(timestamp) {
-            const date = new Date(timestamp * 1000);
-            let hours = date.getHours();
-            let minutes = "0" + date.getMinutes();
-            let ampm = hours >= 12 ? 'PM' : 'AM';
-            hours = hours % 12;
-            hours = hours ? hours : 12;
-            return hours + ':' + minutes.substr(-2) + ' ' + ampm;
+        // Tukar 24jam -> 12jam
+        function tConvert (time) {
+            time = time.toString().match (/^([01]\d|2[0-3])(:)([0-5]\d)/) || [time];
+            if (time.length > 1) { 
+                time = time.slice (1); 
+                time[5] = +time[0] < 12 ? ' AM' : ' PM'; 
+                time[0] = +time[0] % 12 || 12; 
+            }
+            return time.join (''); 
         }
 
         fetchSolat();
 
         // ---------------------------------------------
-        // SKRIP ENROLMEN (GOOGLE SHEETS)
+        // 3. SKRIP ENROLMEN (GOOGLE SHEETS)
         // ---------------------------------------------
         const ssID = '1M5HM5y6qgWshsLqB8CoReXiF54sFiUBiS_dVqUtK0gk';
         const url = `https://docs.google.com/spreadsheets/d/${ssID}/gviz/tq?tqx=out:csv`;
