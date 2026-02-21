@@ -84,12 +84,13 @@
         
         .btn-card:nth-child(even) .icon-box { background: #f0fdf4; color: #16a34a; }
         .btn-card:nth-child(3n) .icon-box { background: #fff1f2; color: #e11d48; }
+        .btn-card:first-child .icon-box { background: #fdf4ff; color: #c026d3; }
 
         .text-box { display: flex; flex-direction: column; }
         .btn-title { font-weight: 700; font-size: 14px; line-height: 1.3; }
         .btn-desc { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
 
-        /* KANAN: SIDEBOX (SOLAT & ENROLMEN) */
+        /* KANAN: SIDEBOX (SOLAT, AUDIO & ENROLMEN) */
         .side-box { 
             flex: 1; background: var(--white); border-radius: 20px; padding: 25px;
             box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
@@ -120,6 +121,32 @@
         .prayer-name { font-size: 10px; color: #cbd5e1; text-transform: uppercase; font-weight: 600; }
         .prayer-time { font-size: 13px; font-weight: 700; color: #fff; }
 
+        /* WIDGET AUDIO AL-QURAN */
+        .audio-widget {
+            background: #f1f5f9;
+            border-radius: 16px;
+            padding: 15px;
+            margin-bottom: 25px;
+            border: 1px solid #e2e8f0;
+            text-align: center;
+        }
+        
+        .audio-title {
+            font-size: 13px; font-weight: 800; color: var(--accent); 
+            text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px;
+        }
+        
+        audio {
+            width: 100%;
+            height: 35px;
+            outline: none;
+            border-radius: 8px;
+        }
+        
+        .audio-desc {
+            font-size: 10px; color: var(--text-muted); margin-top: 8px; font-weight: 500;
+        }
+
         /* ENROLMEN STYLES */
         .side-title { 
             font-size: 13px; font-weight: 800; color: var(--text-muted); 
@@ -142,285 +169,4 @@
         .stat-detail-mini { font-size: 9px; color: var(--text-muted); white-space: nowrap; }
         .stat-bar-bg { flex: 1; height: 6px; background: #f1f5f9; border-radius: 4px; overflow: hidden; }
         .stat-bar-fill { height: 100%; background: var(--accent); border-radius: 4px; width: 0%; transition: width 1s ease-out; }
-        .stat-value { font-weight: 800; color: var(--accent); width: 30px; text-align: right; }
-
-        .footer { text-align: center; margin-top: 60px; font-size: 12px; color: var(--text-muted); padding-bottom: 30px; }
-
-        @media (max-width: 850px) {
-            .container { flex-direction: column; margin-top: -40px; }
-            .links-area { grid-template-columns: 1fr; width: 100%; }
-            .side-box { width: 100%; box-sizing: border-box; }
-        }
-    </style>
-</head>
-<body>
-
-    <div class="header-bg">
-        <img src="logo.png" alt="Logo" class="logo-sekolah">
-        <h1>LAMAN TMUA TOK BACHOK</h1>
-        <div class="sub-header">SMKA TOK BACHOK (SMKATB)</div>
-    </div>
-
-    <div class="container">
-        
-        <div class="links-area">
-            <a href="https://aimanbum.github.io/ehafazantokbachok/guru.html" class="btn-card" target="_blank">
-                <div class="icon-box"><i class="fa-solid fa-pen-to-square"></i></div>
-                <div class="text-box"><span class="btn-title">PENGISIAN DATA</span><span class="btn-desc">Sistem Hafazan Bulanan</span></div>
-            </a>
-            <a href="https://drive.google.com/drive/folders/1Z07QYsqg-YRuqNiR4YXg7hQLwHGhCt8p?usp=sharing" class="btn-card" target="_blank">
-                <div class="icon-box"><i class="fa-solid fa-users-rectangle"></i></div>
-                <div class="text-box"><span class="btn-title">HALAQAH 2026</span><span class="btn-desc">Senarai Halaqah & Guru</span></div>
-            </a>
-            <a href="https://drive.google.com/drive/folders/1R4FdjBu_MviJWC51DVcEiyQpBSGGm-PG?usp=sharing" class="btn-card" target="_blank">
-                <div class="icon-box"><i class="fa-solid fa-file-signature"></i></div>
-                <div class="text-box"><span class="btn-title">REKOD PRESTASI</span><span class="btn-desc">Rekod Hafazan Individu</span></div>
-            </a>
-            <a href="https://aimanbum.github.io/dashboardhafazan/" class="btn-card" target="_blank">
-                <div class="icon-box"><i class="fa-solid fa-chart-pie"></i></div>
-                <div class="text-box"><span class="btn-title">DASHBOARD</span><span class="btn-desc">Analisis Data Hafazan</span></div>
-            </a>
-            <a href="https://docs.google.com/spreadsheets/d/1xx5BP8lhLu6eqke5RfqEZUs3BnPgLS9u/edit?gid=1105382656#gid=1105382656" class="btn-card" target="_blank">
-                <div class="icon-box"><i class="fa-solid fa-calendar-check"></i></div>
-                <div class="text-box"><span class="btn-title">RPT HIFZ 2026</span><span class="btn-desc">Rancangan Pelajaran Tahunan</span></div>
-            </a>
-            <a href="https://drive.google.com/drive/folders/10hzshOvUihDCpQ-v_4nYq1GUiXlx32Gw?usp=drive_link" class="btn-card" target="_blank">
-                <div class="icon-box"><i class="fa-solid fa-book-open"></i></div>
-                <div class="text-box"><span class="btn-title">DSKP HIFZ & MAHARAT</span><span class="btn-desc">Dokumen Standard Kurikulum</span></div>
-            </a>
-            <a href="https://forms.gle/MZYJB4YxUYbUkG238" class="btn-card" target="_blank">
-                <div class="icon-box"><i class="fa-solid fa-medal"></i></div>
-                <div class="text-box"><span class="btn-title">REKOD KHATAM</span><span class="btn-desc">Borang Murid Khatam</span></div>
-            </a>
-            <a href="https://drive.google.com/drive/folders/1UJBAwL0ctB9TV9YKfd61B_cG2MGX8SsN?usp=drive_link" class="btn-card" target="_blank">
-                <div class="icon-box"><i class="fa-solid fa-folder-open"></i></div>
-                <div class="text-box"><span class="btn-title">FOLDER ENROLMEN</span><span class="btn-desc">Data Enrolmen 2026</span></div>
-            </a>
-            <a href="https://mylink.la/sekolah-3315" class="btn-card" target="_blank">
-                <div class="icon-box"><i class="fa-solid fa-link"></i></div>
-                <div class="text-box"><span class="btn-title">ONE STOP CENTRE</span><span class="btn-desc">Pautan Lain SMKATB</span></div>
-            </a>
-        </div>
-
-        <div class="side-box">
-            
-            <div class="prayer-widget">
-                <div class="clock-display" id="jam">--:--:--</div>
-                <div class="date-display" id="tarikh">Memuatkan tarikh...</div>
-                <div class="hijri-display" id="tarikh-hijri">Memuatkan Hijri...</div>
-                
-                <div class="prayer-grid" id="senarai-solat">
-                    <div class="prayer-item"><span class="prayer-name">Subuh</span><span class="prayer-time">...</span></div>
-                    <div class="prayer-item"><span class="prayer-name">Syuruk</span><span class="prayer-time">...</span></div>
-                    <div class="prayer-item"><span class="prayer-name">Zohor</span><span class="prayer-time">...</span></div>
-                    <div class="prayer-item"><span class="prayer-name">Asar</span><span class="prayer-time">...</span></div>
-                    <div class="prayer-item"><span class="prayer-name">Maghrib</span><span class="prayer-time">...</span></div>
-                    <div class="prayer-item"><span class="prayer-name">Isyak</span><span class="prayer-time">...</span></div>
-                </div>
-            </div>
-
-            <div class="side-title"><i class="fa-solid fa-chart-simple"></i> ENROLMEN 2026</div>
-            
-            <div class="grand-total-box">
-                <div class="big-number" id="grand-total">...</div>
-                <div class="big-label">JUMLAH PELAJAR</div>
-                <div class="big-detail" id="grand-detail">L: - | P: -</div>
-            </div>
-
-            <div class="stat-list">
-                <div class="stat-row">
-                    <div class="stat-left"><span class="stat-label">PRA</span><span class="stat-detail-mini" id="pra-detail"></span></div>
-                    <div class="stat-bar-bg"><div class="stat-bar-fill" id="bar-pra" style="width: 0%"></div></div>
-                    <span class="stat-value" id="pra-total">0</span>
-                </div>
-                <div class="stat-row">
-                    <div class="stat-left"><span class="stat-label">T1</span><span class="stat-detail-mini" id="t1-detail"></span></div>
-                    <div class="stat-bar-bg"><div class="stat-bar-fill" id="bar-t1" style="width: 0%"></div></div>
-                    <span class="stat-value" id="t1-total">0</span>
-                </div>
-                <div class="stat-row">
-                    <div class="stat-left"><span class="stat-label">T2</span><span class="stat-detail-mini" id="t2-detail"></span></div>
-                    <div class="stat-bar-bg"><div class="stat-bar-fill" id="bar-t2" style="width: 0%"></div></div>
-                    <span class="stat-value" id="t2-total">0</span>
-                </div>
-                <div class="stat-row">
-                    <div class="stat-left"><span class="stat-label">T3</span><span class="stat-detail-mini" id="t3-detail"></span></div>
-                    <div class="stat-bar-bg"><div class="stat-bar-fill" id="bar-t3" style="width: 0%"></div></div>
-                    <span class="stat-value" id="t3-total">0</span>
-                </div>
-                <div class="stat-row">
-                    <div class="stat-left"><span class="stat-label">T4</span><span class="stat-detail-mini" id="t4-detail"></span></div>
-                    <div class="stat-bar-bg"><div class="stat-bar-fill" id="bar-t4" style="width: 0%"></div></div>
-                    <span class="stat-value" id="t4-total">0</span>
-                </div>
-                <div class="stat-row">
-                    <div class="stat-left"><span class="stat-label">T5</span><span class="stat-detail-mini" id="t5-detail"></span></div>
-                    <div class="stat-bar-bg"><div class="stat-bar-fill" id="bar-t5" style="width: 0%"></div></div>
-                    <span class="stat-value" id="t5-total">0</span>
-                </div>
-                <div class="stat-row">
-                    <div class="stat-left"><span class="stat-label">T6</span><span class="stat-detail-mini" id="t6-detail"></span></div>
-                    <div class="stat-bar-bg"><div class="stat-bar-fill" id="bar-t6" style="width: 0%"></div></div>
-                    <span class="stat-value" id="t6-total">0</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="footer">
-        &copy; 2026 Unit TMUA SMKATB | Sistem Pintar Enrolmen
-    </div>
-
-    <script>
-        // ---------------------------------------------
-        // 1. SKRIP JAM & TARIKH
-        // ---------------------------------------------
-        function updateClock() {
-            const now = new Date();
-            let hours = now.getHours();
-            let minutes = now.getMinutes();
-            let seconds = now.getSeconds();
-            let ampm = hours >= 12 ? 'PM' : 'AM';
-            
-            hours = hours % 12;
-            hours = hours ? hours : 12; 
-            minutes = minutes < 10 ? '0' + minutes : minutes;
-            seconds = seconds < 10 ? '0' + seconds : seconds;
-            
-            document.getElementById('jam').innerText = `${hours}:${minutes}:${seconds} ${ampm}`;
-            
-            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-            document.getElementById('tarikh').innerText = now.toLocaleDateString('ms-MY', options);
-        }
-        setInterval(updateClock, 1000);
-        updateClock();
-
-        // ---------------------------------------------
-        // 2. SKRIP WAKTU SOLAT (DARIPADA FAIL CSV JAKIM)
-        // ---------------------------------------------
-        async function fetchSolatFromCSV() {
-            try {
-                // Fetch fail CSV dari folder yang sama
-                const response = await fetch('./jadual_waktu_solat_JAKIM.csv');
-                
-                if (!response.ok) {
-                    throw new Error("Fail CSV tidak dijumpai. Sila upload 'jadual_waktu_solat_JAKIM.csv'.");
-                }
-
-                const csvText = await response.text();
-                const lines = csvText.split('\n');
-                
-                // Cari tarikh hari ini
-                // Format CSV JAKIM: 01-Jan-2026
-                const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-                const today = new Date();
-                const dd = String(today.getDate()).padStart(2, '0');
-                const mmStr = months[today.getMonth()];
-                const yyyy = today.getFullYear();
-                
-                // Kunci Carian: e.g., "18-Feb-2026"
-                const searchKey = `${dd}-${mmStr}-${yyyy}`;
-                
-                let foundData = null;
-
-                // Loop baris CSV (skip header baris 0)
-                for (let i = 1; i < lines.length; i++) {
-                    const row = lines[i].split(',');
-                    // Pastikan baris ada data (bukan kosong)
-                    if (row.length < 10) continue; 
-                    
-                    // Kolum 0 ialah Tarikh Miladi
-                    if (row[0].trim() === searchKey) {
-                        foundData = row;
-                        break;
-                    }
-                }
-
-                if (foundData) {
-                    // Mapping Data CSV JAKIM
-                    // 0:Miladi, 1:Hijri, 2:Hari, 3:Imsak, 4:Subuh, 5:Syuruk, 6:Zohor, 7:Asar, 8:Maghrib, 9:Isyak
-                    
-                    document.getElementById('tarikh-hijri').innerText = foundData[1]; // Tarikh Hijri
-                    
-                    const solatList = {
-                        "Subuh": foundData[4],
-                        "Syuruk": foundData[5],
-                        "Zohor": foundData[6],
-                        "Asar": foundData[7],
-                        "Maghrib": foundData[8],
-                        "Isyak": foundData[9]
-                    };
-
-                    const container = document.getElementById('senarai-solat');
-                    container.innerHTML = ''; 
-
-                    for (const [name, time] of Object.entries(solatList)) {
-                        let div = document.createElement('div');
-                        div.className = 'prayer-item';
-                        div.innerHTML = `<span class="prayer-name">${name}</span><span class="prayer-time">${time}</span>`;
-                        container.appendChild(div);
-                    }
-                } else {
-                    document.getElementById('senarai-solat').innerHTML = '<div style="font-size:10px; padding:10px;">Tiada data untuk tarikh hari ini.<br>Periksa fail CSV.</div>';
-                }
-
-            } catch (e) {
-                console.error("Ralat CSV:", e);
-                document.getElementById('senarai-solat').innerHTML = `<div style="font-size:10px; padding:10px;">Gagal baca CSV.<br>${e.message}</div>`;
-            }
-        }
-
-        fetchSolatFromCSV();
-
-        // ---------------------------------------------
-        // 3. SKRIP ENROLMEN (GOOGLE SHEETS)
-        // ---------------------------------------------
-        const ssID = '1M5HM5y6qgWshsLqB8CoReXiF54sFiUBiS_dVqUtK0gk';
-        const url = `https://docs.google.com/spreadsheets/d/${ssID}/gviz/tq?tqx=out:csv`;
-
-        async function fetchEnrolmen() {
-            try {
-                const response = await fetch(url);
-                const data = await response.text();
-                const rows = data.split('\n').map(row => row.split(',').map(cell => cell.replace(/"/g, '')));
-                const getData = (r, c) => parseInt(rows[r][c]) || 0;
-
-                let grandL = 0; let grandP = 0;
-                let maxVal = 160;
-
-                const processTingkatan = (id, row) => {
-                    const l = getData(row - 1, 2);
-                    const p = getData(row - 1, 3);
-                    const total = l + p;
-                    grandL += l; grandP += p;
-
-                    const elTotal = document.getElementById(`${id}-total`);
-                    if(elTotal) elTotal.innerText = total;
-
-                    const elBar = document.getElementById(`bar-${id}`);
-                    if(elBar) {
-                        let percent = (total / maxVal) * 100;
-                        if(percent > 100) percent = 100;
-                        elBar.style.width = `${percent}%`;
-                    }
-
-                    const elDetail = document.getElementById(`${id}-detail`);
-                    if(elDetail) elDetail.innerText = `L:${l} P:${p}`;
-                };
-
-                processTingkatan('pra', 37);
-                processTingkatan('t1', 7);
-                processTingkatan('t2', 13);
-                processTingkatan('t3', 19);
-                processTingkatan('t4', 25);
-                processTingkatan('t5', 31);
-                processTingkatan('t6', 36);
-
-                document.getElementById('grand-total').innerText = grandL + grandP;
-                document.getElementById('grand-detail').innerText = `LELAKI: ${grandL} | PEREMPUAN: ${grandP}`;
-            } catch (e) { console.error('Error:', e); }
-        }
-        fetchEnrolmen();
-    </script>
-</body>
-</html>
+        .stat-value { font-weight: 800;
