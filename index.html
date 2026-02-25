@@ -94,6 +94,11 @@
         .grand-total { font-size: 36px; font-weight: 800; color: var(--accent); text-align: center; display: block; }
         .grand-label { font-size: 10px; text-align: center; display: block; color: var(--text-muted); margin-bottom: 20px; font-weight: 700; }
 
+        /* AUDIO WIDGET STYLES */
+        .audio-title { font-size: 12px; font-weight: 800; color: var(--accent); text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+        audio { width: 100%; height: 35px; border-radius: 8px; }
+        .audio-desc { font-size: 10px; color: var(--text-muted); margin-top: 8px; font-weight: 600; text-align: center; }
+
         .stat-bar-item { margin-bottom: 15px; }
         .stat-info { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 5px; }
         .stat-label { font-weight: 800; font-size: 12px; }
@@ -123,7 +128,7 @@
             <a href="https://drive.google.com/drive/folders/1R4FdjBu_MviJWC51DVcEiyQpBSGGm-PG?usp=sharing" class="hero-card" target="_blank">
                 <div class="hero-text">
                     <h2>REKOD PRESTASI HAFAZAN INDIVIDU</h2>
-                    <p>pengisian rekod hafazan dan murajaah harian</p>
+                    <p>Pengisian rekod hafazan dan murajaah harian pelajar</p>
                 </div>
                 <div class="hero-icon"><i class="fa-solid fa-pen-to-square"></i></div>
             </a>
@@ -143,8 +148,8 @@
 
                 <a href="https://aimanbum.github.io/ehafazantokbachok/guru.html" class="bento-item" target="_blank">
                     <i class="fa-solid fa-file-signature"></i>
-                    <div class="bento-title">Rekod Prestasi Hafazan Bulanan</div>
-                    <div class="bento-desc">Laporan kemajuan hafazan bulanan</div>
+                    <div class="bento-title">Prestasi Bulanan</div>
+                    <div class="bento-desc">Laporan kemajuan hafazan bulanan guru</div>
                 </a>
 
                 <a href="https://drive.google.com/drive/folders/1Z07QYsqg-YRuqNiR4YXg7hQLwHGhCt8p?usp=sharing" class="bento-item" target="_blank">
@@ -174,12 +179,12 @@
                 <a href="https://drive.google.com/drive/folders/1UJBAwL0ctB9TV9YKfd61B_cG2MGX8SsN?usp=drive_link" class="bento-item" target="_blank">
                     <i class="fa-solid fa-folder-open"></i>
                     <div class="bento-title">Enrolmen Murid</div>
-                    <div class="bento-desc">Senarai nama pelajar</div>
+                    <div class="bento-desc">Senarai nama pelajar semasa</div>
                 </a>
 
                 <a href="https://mylink.la/sekolah-3315" class="bento-item" target="_blank">
                     <i class="fa-solid fa-link"></i>
-                    <div class="bento-title">SMKATB One Stop Centre</div>
+                    <div class="bento-title">SMKATB Centre</div>
                     <div class="bento-desc">Pautan alternatif & urusan sekolah</div>
                 </a>
             </div>
@@ -198,6 +203,15 @@
                 <span class="grand-total" id="grand-total">0</span>
                 <span class="grand-label">Jumlah Keseluruhan Pelajar</span>
                 <div id="stats-container"></div>
+            </div>
+
+            <div class="widget">
+                <div class="audio-title"><i class="fa-solid fa-headphones"></i> Audio Al-Quran</div>
+                <audio controls preload="none">
+                    <source src="https://Qurango.net/radio/mishary_alafasi" type="audio/mpeg">
+                    Pelayar anda tidak menyokong audio.
+                </audio>
+                <div class="audio-desc">Radio Langsung: Syeikh Mishary Alafasy</div>
             </div>
         </aside>
     </div>
@@ -240,7 +254,7 @@
         }
         fetchSolat();
 
-        // --- ENROLMEN L/P + TING 6 & PRA-S ---
+        // --- ENROLMEN L/P ---
         async function fetchEnrolmen() {
             const ssID = '1M5HM5y6qgWshsLqB8CoReXiF54sFiUBiS_dVqUtK0gk';
             const url = `https://docs.google.com/spreadsheets/d/${ssID}/gviz/tq?tqx=out:csv`;
