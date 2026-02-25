@@ -26,28 +26,30 @@
             color: var(--primary);
         }
 
+        /* HEADER */
         .header-bg {
             background: var(--primary);
             padding: 30px 20px 100px 20px;
             text-align: center;
             color: white;
         }
-
         .logo-sekolah { width: 70px; margin-bottom: 10px; }
         h1 { margin: 0; font-size: 22px; font-weight: 800; letter-spacing: 1px; }
         .sub-header { opacity: 0.7; font-size: 12px; text-transform: uppercase; letter-spacing: 2px; }
 
+        /* LAYOUT */
         .container { 
-            max-width: 1100px; 
+            max-width: 1200px; 
             margin: -60px auto 40px auto; 
             padding: 0 20px;
             display: grid;
-            grid-template-columns: 1fr 340px;
+            grid-template-columns: 1fr 350px;
             gap: 20px;
         }
 
         .main-content { display: flex; flex-direction: column; gap: 20px; }
 
+        /* HERO CARD */
         .hero-card {
             background: linear-gradient(135deg, var(--accent), #1d4ed8);
             border-radius: 24px; padding: 30px; color: white;
@@ -55,13 +57,14 @@
             justify-content: space-between; box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.4);
             transition: transform 0.3s ease;
         }
-        .hero-card:hover { transform: scale(1.01); }
-        .hero-text h2 { margin: 0; font-size: 20px; }
+        .hero-card:hover { transform: translateY(-3px); }
+        .hero-text h2 { margin: 0; font-size: 20px; font-weight: 800; }
         .hero-text p { margin: 5px 0 0 0; opacity: 0.8; font-size: 13px; }
 
+        /* BENTO GRID (3 COLUMNS) */
         .bento-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 15px;
         }
 
@@ -71,24 +74,25 @@
             box-shadow: var(--card-shadow); display: flex; flex-direction: column; gap: 8px;
             transition: all 0.2s ease; border: 1px solid transparent;
         }
-        .bento-item:hover { border-color: var(--accent); transform: translateY(-3px); }
+        .bento-item:hover { border-color: var(--accent); transform: translateY(-3px); background: #f8fafc; }
         .bento-item i { font-size: 22px; color: var(--accent); }
-        .bento-title { font-weight: 700; font-size: 13px; }
-        .bento-desc { font-size: 11px; color: var(--text-muted); }
+        .bento-title { font-weight: 700; font-size: 13px; text-transform: uppercase; }
+        .bento-desc { font-size: 11px; color: var(--text-muted); line-height: 1.3; }
 
+        /* SIDEBAR */
         .sidebar { display: flex; flex-direction: column; gap: 20px; }
         .widget { background: var(--white); border-radius: 24px; padding: 20px; box-shadow: var(--card-shadow); }
 
         .clock-widget { background: var(--primary); color: white; text-align: center; }
-        .clock-time { font-size: 28px; font-weight: 800; margin-bottom: 5px; }
-        .clock-date { font-size: 11px; color: #94a3b8; text-transform: uppercase; }
+        .clock-time { font-size: 32px; font-weight: 800; margin-bottom: 5px; font-variant-numeric: tabular-nums; }
+        .clock-date { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; }
 
-        .prayer-list { margin-top: 15px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-        .prayer-row { background: rgba(255,255,255,0.05); padding: 6px 10px; border-radius: 10px; display: flex; justify-content: space-between; font-size: 11px; }
+        .prayer-list { margin-top: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .prayer-row { background: rgba(255,255,255,0.05); padding: 8px 12px; border-radius: 12px; display: flex; justify-content: space-between; font-size: 11px; }
 
-        .stats-header { font-size: 13px; font-weight: 800; margin-bottom: 15px; display: flex; align-items: center; gap: 8px; }
-        .grand-total { font-size: 32px; font-weight: 800; color: var(--accent); text-align: center; display: block; }
-        .grand-label { font-size: 10px; text-align: center; display: block; color: var(--text-muted); margin-bottom: 20px; }
+        .stats-header { font-size: 13px; font-weight: 800; margin-bottom: 15px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid #f1f5f9; padding-bottom: 10px; }
+        .grand-total { font-size: 36px; font-weight: 800; color: var(--accent); text-align: center; display: block; }
+        .grand-label { font-size: 10px; text-align: center; display: block; color: var(--text-muted); margin-bottom: 20px; font-weight: 700; }
 
         .stat-bar-item { margin-bottom: 15px; }
         .stat-info { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 5px; }
@@ -100,58 +104,83 @@
 
         .footer { text-align: center; margin: 40px 0; font-size: 11px; color: var(--text-muted); }
 
-        @media (max-width: 900px) { .container { grid-template-columns: 1fr; } .sidebar { order: -1; } }
+        @media (max-width: 1000px) { .bento-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 850px) { .container { grid-template-columns: 1fr; } .sidebar { order: -1; } .bento-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
 
     <div class="header-bg">
         <img src="logo.png" alt="Logo" class="logo-sekolah">
-        <h1>PORTAL TMUA</h1>
-        <div class="sub-header">SMKA Tok Bachok (SMKATB)</div>
+        <h1>PORTAL TMUA SMKATB</h1>
+        <div class="sub-header">SMKA Tok Bachok, Kelantan</div>
     </div>
 
     <div class="container">
         
         <main class="main-content">
+            
             <a href="https://aimanbum.github.io/ehafazantokbachok/guru.html" class="hero-card" target="_blank">
                 <div class="hero-text">
                     <h2>PENGISIAN DATA HAFAZAN</h2>
-                    <p>Kemaskini rekod hafazan bulanan murid di sini</p>
+                    <p>Sistem pengisian rekod hafazan bulanan & tasmie'</p>
                 </div>
-                <div class="hero-icon"><i class="fa-solid fa-pen-nib"></i></div>
+                <div class="hero-icon"><i class="fa-solid fa-pen-to-square"></i></div>
             </a>
 
             <div class="bento-grid">
                 <a href="https://aimanbum.github.io/dashboardhafazan/" class="bento-item" target="_blank">
-                    <i class="fa-solid fa-chart-line"></i>
-                    <div class="bento-title">Dashboard Analisis</div>
-                    <div class="bento-desc">Analisis data hafazan terkini</div>
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <div class="bento-title">Dashboard</div>
+                    <div class="bento-desc">Analisis & statistik hafazan keseluruhan</div>
                 </a>
+
                 <a href="https://quran.com/ms" class="bento-item" target="_blank">
-                    <i class="fa-solid fa-book-open-reader"></i>
+                    <i class="fa-solid fa-book-quran"></i>
                     <div class="bento-title">Al-Quran Digital</div>
-                    <div class="bento-desc">Bacaan & Terjemahan</div>
+                    <div class="bento-desc">Bacaan, terjemahan & audio interaktif</div>
                 </a>
+
                 <a href="https://drive.google.com/drive/folders/1R4FdjBu_MviJWC51DVcEiyQpBSGGm-PG?usp=sharing" class="bento-item" target="_blank">
-                    <i class="fa-solid fa-address-book"></i>
+                    <i class="fa-solid fa-file-signature"></i>
                     <div class="bento-title">Rekod Prestasi</div>
-                    <div class="bento-desc">Prestasi individu murid</div>
+                    <div class="bento-desc">Laporan kemajuan hafazan individu</div>
                 </a>
-                <a href="https://docs.google.com/spreadsheets/d/1xx5BP8lhLu6eqke5RfqEZUs3BnPgLS9u/edit?gid=1105382656#gid=1105382656" class="bento-item" target="_blank">
-                    <i class="fa-solid fa-calendar-check"></i>
-                    <div class="bento-title">RPT HIFZ 2026</div>
-                    <div class="bento-desc">Rancangan Pelajaran Tahunan</div>
-                </a>
+
                 <a href="https://drive.google.com/drive/folders/1Z07QYsqg-YRuqNiR4YXg7hQLwHGhCt8p?usp=sharing" class="bento-item" target="_blank">
-                    <i class="fa-solid fa-users-viewfinder"></i>
+                    <i class="fa-solid fa-users-rectangle"></i>
                     <div class="bento-title">Halaqah 2026</div>
-                    <div class="bento-desc">Senarai Halaqah & Guru</div>
+                    <div class="bento-desc">Senarai pembahagian kumpulan & guru</div>
                 </a>
+
+                <a href="https://docs.google.com/spreadsheets/d/1xx5BP8lhLu6eqke5RfqEZUs3BnPgLS9u/edit?gid=1105382656#gid=1105382656" class="bento-item" target="_blank">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    <div class="bento-title">RPT HIFZ 2026</div>
+                    <div class="bento-desc">Rancangan Pelajaran Tahunan Hifz</div>
+                </a>
+
                 <a href="https://forms.gle/MZYJB4YxUYbUkG238" class="bento-item" target="_blank">
-                    <i class="fa-solid fa-award"></i>
+                    <i class="fa-solid fa-medal"></i>
                     <div class="bento-title">Rekod Khatam</div>
-                    <div class="bento-desc">Borang Murid Khatam</div>
+                    <div class="bento-desc">Borang pengesahan khatam al-quran</div>
+                </a>
+
+                <a href="https://drive.google.com/drive/folders/10hzshOvUihDCpQ-v_4nYq1GUiXlx32Gw?usp=drive_link" class="bento-item" target="_blank">
+                    <i class="fa-solid fa-book-open"></i>
+                    <div class="bento-title">DSKP Hifz</div>
+                    <div class="bento-desc">Dokumen kurikulum & pentaksiran</div>
+                </a>
+
+                <a href="https://drive.google.com/drive/folders/1UJBAwL0ctB9TV9YKfd61B_cG2MGX8SsN?usp=drive_link" class="bento-item" target="_blank">
+                    <i class="fa-solid fa-folder-open"></i>
+                    <div class="bento-title">Enrolmen Murid</div>
+                    <div class="bento-desc">Arkib & data enrolmen semasa</div>
+                </a>
+
+                <a href="https://mylink.la/sekolah-3315" class="bento-item" target="_blank">
+                    <i class="fa-solid fa-link"></i>
+                    <div class="bento-title">One Stop Centre</div>
+                    <div class="bento-desc">Pautan alternatif & urusan sekolah</div>
                 </a>
             </div>
         </main>
@@ -168,18 +197,15 @@
                 <div class="stats-header"><i class="fa-solid fa-chart-simple"></i> ENROLMEN 2026</div>
                 <span class="grand-total" id="grand-total">0</span>
                 <span class="grand-label">Jumlah Keseluruhan Pelajar</span>
-                
-                <div id="stat-bars">
-                    <div id="stats-container"></div>
-                </div>
+                <div id="stats-container"></div>
             </div>
         </aside>
     </div>
 
-    <div class="footer">&copy; 2026 Unit TMUA SMKATB</div>
+    <div class="footer">&copy; 2026 Unit TMUA SMKA Tok Bachok</div>
 
     <script>
-        // SYNC JAM
+        // --- JAM SIRIM SYNC ---
         let offset = 0;
         async function syncTime() {
             try {
@@ -190,12 +216,12 @@
         }
         setInterval(() => {
             const now = new Date(Date.now() + offset);
-            document.getElementById('jam').innerText = now.toLocaleTimeString('ms-MY');
+            document.getElementById('jam').innerText = now.toLocaleTimeString('ms-MY', {hour12:true});
             document.getElementById('tarikh').innerText = now.toLocaleDateString('ms-MY', {weekday:'long', day:'numeric', month:'long'});
         }, 1000);
         syncTime();
 
-        // PRAYER TIMES
+        // --- WAKTU SOLAT ---
         async function fetchSolat() {
             try {
                 const res = await fetch('./jadual_waktu_solat_JAKIM.csv');
@@ -214,7 +240,7 @@
         }
         fetchSolat();
 
-        // ENROLMEN (L & P)
+        // --- ENROLMEN L/P + TING 6 & PRA-S ---
         async function fetchEnrolmen() {
             const ssID = '1M5HM5y6qgWshsLqB8CoReXiF54sFiUBiS_dVqUtK0gk';
             const url = `https://docs.google.com/spreadsheets/d/${ssID}/gviz/tq?tqx=out:csv`;
@@ -223,15 +249,14 @@
                 const csv = await res.text();
                 const rows = csv.split('\n').map(r => r.split(',').map(c => c.replace(/"/g, '')));
                 
-                // MAPPING: ID: [Nama, Row]
                 const config = {
-                    'pra': ['PRA-S', 37],
-                    't1': ['TING. 1', 7],
-                    't2': ['TING. 2', 13],
-                    't3': ['TING. 3', 19],
-                    't4': ['TING. 4', 25],
-                    't5': ['TING. 5', 31],
-                    't6': ['TING. 6', 36]
+                    'pra': ['PRA-SEKOLAH', 37],
+                    't1': ['TINGKATAN 1', 7],
+                    't2': ['TINGKATAN 2', 13],
+                    't3': ['TINGKATAN 3', 19],
+                    't4': ['TINGKATAN 4', 25],
+                    't5': ['TINGKATAN 5', 31],
+                    't6': ['TINGKATAN 6', 36]
                 };
 
                 let grand = 0;
@@ -258,7 +283,7 @@
 
                 document.getElementById('stats-container').innerHTML = html;
                 document.getElementById('grand-total').innerText = grand;
-            } catch(e){ console.log(e); }
+            } catch(e){}
         }
         fetchEnrolmen();
     </script>
