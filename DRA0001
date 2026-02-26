@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One Stop Centre SMKA Tok Bachok</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #1e3a8a; /* Biru Gelap Rasmi */
+            --secondary: #3b82f6; /* Biru Terang */
+            --accent: #f59e0b; /* Kuning Emas */
+            --bg: #f8fafc;
+            --surface: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* HEADER & HERO SECTION */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 70px 20px;
+            text-align: center;
+            border-bottom: 5px solid var(--accent);
+        }
+
+        .logo-container img {
+            width: 110px;
+            height: auto;
+            background: white;
+            padding: 10px;
+            border-radius: 50%;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            font-weight: 500;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* KANDUNGAN UTAMA */
+        .container {
+            max-width: 1100px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .category-section {
+            margin-bottom: 60px;
+            background: var(--surface);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            border: 1px solid var(--border);
+        }
+
+        .category-title {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f1f5f9;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+        }
+
+        /* REKA BENTUK KAD PAUTAN */
+        .link-card {
+            background: var(--surface);
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            text-decoration: none;
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            transition: all 0.2s ease;
+        }
+
+        .link-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--secondary);
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.1);
+        }
+
+        /* Warna Ikon Berbeza Mengikut Kategori */
+        .icon-wrapper {
+            width: 45px;
+            height: 45px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        /* Tema Kategori */
+        .unit .icon-wrapper { background: #eff6ff; color: #2563eb; }
+        .guru .icon-wrapper { background: #fef3c7; color: #d97706; }
+        .data .icon-wrapper { background: #ecfdf5; color: #059669; }
+
+        .card-content {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 3px;
+            line-height: 1.3;
+        }
+
+        .card-desc {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #0f172a;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 40px;
+        }
+
+        footer h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #f8fafc;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            margin-bottom: 5px;
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 1.8rem; }
+            .links-grid { grid-template-columns: 1fr; }
+            .category-section { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <img src="logo.png" alt="Logo SMKA Tok Bachok">
+        </div>
+        <h1>ONE STOP CENTRE SMKATB</h1>
+        <p>Pusat Pautan Bersepadu Pengurusan Sekolah</p>
+    </header>
+
+    <div class="container">
+        
+        <div class="category-section">
+            <div class="category-title">
+                <i class="fa-solid fa-sitemap"></i> Portal & Laman Unit Sekolah
+            </div>
+            <div class="links-grid">
+                <a href="https://aimanbum.github.io/unitkurikulumtb/" class="link-card unit" target="_blank">
+                    <div class="icon-wrapper"><i class="fa-solid fa-book-open-reader"></i></div>
+                    <div class="card-content">
+                        <span class="card-title">UNIT KURIKULUM</span>
+                        <span class="card-desc">Laman rasmi pengurusan akademik</span>
+                    </div>
+                </a>
+                <a href="https://smkatbkokurikulum.my.canva.site/kokurikulumsmkatb2026" class="link-card unit" target="_blank">
+                    <div class="icon-wrapper"><i class="fa-solid fa-person-running"></i></div>
+                    <div class="card-content">
+                        <span class="card-title">UNIT KOKURIKULUM</span>
+                        <span class="card-desc">Informasi aktiviti sukan & persatuan</span>
+                    </div>
+                </a>
+                <a href="https://linktr.ee/hemsmkatb" class="link-card unit" target="_blank">
+                    <div class="icon-wrapper"><i class="fa-solid fa-hand-holding-heart"></i></div>
+                    <div class="card-content">
+                        <span class="card-title">UNIT HEM</span>
+                        <span class="card-desc">Pengurusan Hal Ehwal Murid</span>
+                    </div>
+                </a>
+                <a href="https://aimanbum.github.io/tmuatb/" class="link-card unit" target="_blank">
+                    <div class="icon-wrapper"><i class="fa-solid fa-book-quran"></i></div>
+                    <div class="card-content">
+                        <span class="card-title">LAMAN TMUA</span>
+                        <span class="card-desc">Tahfiz Model Ulul Albab SMKATB</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="category-section">
+            <div class="category-title" style="color: #d97706;">
+                <i class="fa-solid fa-chalkboard-user"></i> Pengurusan Guru & PdPc
+            </div>
+            <div class="links-grid">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLScJwwvkF-LgC0vZECatDhhKLqadrEA8DPpPaCvR81yknnkomQ/viewform" class="link-card guru" target="_blank">
+                    <div class="icon-wrapper"><i class="fa-solid fa-file-arrow-up"></i></div>
+                    <div class="card-content">
+                        <span class="card-title">PENGHANTARAN e-RPH</span>
+                        <span class="card-desc">Borang penghantaran RPH mingguan</span>
+                    </div>
+                </a>
+                <a href="https://lookerstudio.google.com/u/0/reporting/3c281568-8888-46fb-806b-004b31de40c4/page/p_q9yxi3yfyd" class="link-card guru" target="_blank">
+                    <div class="icon-wrapper"><i class="fa-solid fa-list-check"></i></div>
+                    <div class="card-content">
+                        <span class="card-title">REKOD PENGHANTARAN e-RPH</span>
+                        <span class="card-desc">Semakan status hantaran e-RPH</span>
+                    </div>
+                </a>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSf4u6w9rb8TYUquBOysf4fFo7L8U5O0rVwRlqAKDyuyvf0gNA/viewform" class="link-card guru" target="_blank">
+                    <div class="icon-wrapper"><i class="fa-solid fa-user-check"></i></div>
+                    <div class="card-content">
+                        <span class="card-title">REKOD KEBERADAAN GURU</span>
+                        <span class="card-desc">Borang pengesahan kehadiran / keberadaan</span>
+                    </div>
+                </a>
+                <a href="https://drive.google.com/drive/folders/1gzI5uYMOobV6KWQVf4JSi6SkIpZIEEAS" class="link-card guru" target="_blank">
+                    <div class="icon-wrapper"><i class="fa-solid fa-calendar-days"></i></div>
+                    <div class="card-content">
+                        <span class="card-title">JADUAL WAKTU 2026</span>
+                        <span class="card-desc">Jadual waktu terkini guru dan kelas</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="category-section">
+            <div class="category-title" style="color: #059669;">
+                <i class="fa-solid fa-server"></i> Data & Perekodan Pusat
+            </div>
+            <div class="links-grid">
+                <a href="https://lookerstudio.google.com/u/0/reporting/7231566a-0bb7-46c6-a499-580111eff1e2/page/S0JeC" class="link-card data" target="_blank">
+                    <div class="icon-wrapper"><i class="fa-solid fa-chart-pie"></i></div>
+                    <div class="card-content">
+                        <span class="card-title">DASHBOARD MMI 2026</span>
+                        <span class="card-desc">Melindungi Masa Instruksional</span>
+                    </div>
+                </a>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdxxIGJOlqA3TubZeUoRm-bSXnQMkyP2IVc7ZoaY3XQSgBBEA/viewform" class="link-card data" target="_blank">
+                    <div class="icon-wrapper"><i class="fa-solid fa-users-rectangle"></i></div>
+                    <div class="card-content">
+                        <span class="card-title">KEHADIRAN PERHIMPUNAN</span>
+                        <span class="card-desc">Borang rekod kehadiran perhimpunan rasmi</span>
+                    </div>
+                </a>
+                <a href="https://drive.google.com/drive/folders/1UJBAwL0ctB9TV9YKfd61B_cG2MGX8SsN" class="link-card data" target="_blank">
+                    <div class="icon-wrapper"><i class="fa-solid fa-users"></i></div>
+                    <div class="card-content">
+                        <span class="card-title">ENROLMEN PELAJAR</span>
+                        <span class="card-desc">Data dan statistik enrolmen SMKATB</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <h3>SMKA TOK BACHOK</h3>
+        <p>Tangok, 16300 Bachok, Kelantan</p>
+        
+        <p style="margin-top: 20px; font-size: 0.8rem; opacity: 0.5;">&copy; 2026 Hak Cipta Terpelihara Unit Pengurusan SMKATB.</p>
+    </footer>
+
+</body>
+</html>
