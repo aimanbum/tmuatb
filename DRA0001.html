@@ -28,87 +28,105 @@
             background-color: var(--bg);
             color: var(--text-main);
             line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         /* HEADER & HERO SECTION */
         header {
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: white;
-            padding: 70px 20px;
+            padding: 50px 20px 70px 20px;
             text-align: center;
-            border-bottom: 5px solid var(--accent);
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+            box-shadow: 0 10px 30px -10px rgba(37, 99, 235, 0.3);
         }
 
         .logo-container img {
-            width: 110px;
+            width: 90px;
             height: auto;
             background: white;
-            padding: 10px;
+            padding: 8px;
             border-radius: 50%;
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         header h1 {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             font-weight: 800;
             letter-spacing: -1px;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
             text-transform: uppercase;
         }
 
         header p {
-            font-size: 1.1rem;
+            font-size: 1rem;
             opacity: 0.9;
             font-weight: 500;
-            max-width: 600px;
-            margin: 0 auto;
         }
 
-        /* KANDUNGAN UTAMA */
+        /* CONTAINER UTAMA (DUA LAJUR) */
         .container {
-            max-width: 1100px;
-            margin: 50px auto;
+            max-width: 1200px;
+            margin: -40px auto 50px auto;
             padding: 0 20px;
+            display: flex;
+            gap: 25px;
+            align-items: flex-start;
+            flex: 1;
         }
 
+        .main-content {
+            flex: 2; /* Lajur Kiri (Pautan) */
+        }
+
+        .side-panel {
+            flex: 1; /* Lajur Kanan (Widget) */
+            position: sticky;
+            top: 20px;
+        }
+
+        /* SEKSYEN KATEGORI PAUTAN */
         .category-section {
-            margin-bottom: 60px;
+            margin-bottom: 30px;
             background: var(--surface);
-            padding: 30px;
-            border-radius: 20px;
+            padding: 25px;
+            border-radius: 16px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.03);
             border: 1px solid var(--border);
         }
 
         .category-title {
-            font-size: 1.25rem;
+            font-size: 1.1rem;
             font-weight: 800;
             color: var(--primary);
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             padding-bottom: 15px;
             border-bottom: 2px solid #f1f5f9;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
         .links-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
             gap: 15px;
         }
 
         /* REKA BENTUK KAD PAUTAN */
         .link-card {
-            background: var(--surface);
+            background: var(--bg);
             border-radius: 12px;
-            padding: 20px;
+            padding: 15px;
             display: flex;
             align-items: flex-start;
-            gap: 15px;
+            gap: 12px;
             text-decoration: none;
             color: var(--text-main);
             border: 1px solid var(--border);
@@ -116,71 +134,93 @@
         }
 
         .link-card:hover {
-            transform: translateY(-4px);
+            transform: translateY(-3px);
             border-color: var(--secondary);
-            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.1);
+            box-shadow: 0 10px 15px rgba(59, 130, 246, 0.1);
+            background: var(--surface);
         }
 
-        /* Warna Ikon Berbeza Mengikut Kategori */
         .icon-wrapper {
-            width: 45px;
-            height: 45px;
+            width: 40px;
+            height: 40px;
             border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 18px;
+            font-size: 16px;
             flex-shrink: 0;
         }
 
-        /* Tema Kategori */
         .unit .icon-wrapper { background: #eff6ff; color: #2563eb; }
         .guru .icon-wrapper { background: #fef3c7; color: #d97706; }
         .data .icon-wrapper { background: #ecfdf5; color: #059669; }
 
-        .card-content {
-            display: flex;
-            flex-direction: column;
+        .card-content { display: flex; flex-direction: column; }
+        .card-title { font-size: 0.9rem; font-weight: 700; margin-bottom: 2px; line-height: 1.3; }
+        .card-desc { font-size: 0.75rem; color: var(--text-muted); line-height: 1.4; }
+
+        /* WIDGET SIDEBAR: JAM & TARIKH */
+        .clock-widget {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            border-radius: 16px;
+            padding: 25px 20px;
+            color: white;
+            text-align: center;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 20px rgba(15, 23, 42, 0.15);
+            border: 1px solid #334155;
         }
 
-        .card-title {
-            font-size: 0.95rem;
-            font-weight: 700;
-            margin-bottom: 3px;
-            line-height: 1.3;
+        .clock-display { font-size: 2.2rem; font-weight: 800; letter-spacing: 1px; line-height: 1; margin-bottom: 8px; font-variant-numeric: tabular-nums; }
+        .date-display { font-size: 0.9rem; color: #94a3b8; font-weight: 500; }
+
+        /* WIDGET SIDEBAR: ENROLMEN */
+        .enrolmen-widget {
+            background: var(--surface);
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            border: 1px solid var(--border);
         }
 
-        .card-desc {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            line-height: 1.4;
+        .side-title { 
+            font-size: 1.1rem; font-weight: 800; color: var(--primary); 
+            text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 20px; 
+            display: flex; align-items: center; gap: 8px; border-bottom: 2px solid #f1f5f9; padding-bottom: 15px;
         }
+
+        .grand-total-box {
+            text-align: center; margin-bottom: 20px;
+            background: #eff6ff; color: var(--primary); padding: 15px; border-radius: 12px; border: 1px solid #bfdbfe;
+        }
+        .big-number { font-size: 2rem; font-weight: 800; line-height: 1; color: var(--secondary); }
+        .big-label { font-size: 0.75rem; opacity: 0.8; margin-top: 5px; text-transform: uppercase; font-weight: 600; letter-spacing: 1px;}
+        .big-detail { font-size: 0.75rem; margin-top: 5px; font-weight: 700; color: var(--primary); }
+
+        .stat-list { display: flex; flex-direction: column; gap: 12px; }
+        .stat-row { display: flex; align-items: center; font-size: 0.8rem; gap: 10px; }
+        .stat-left { width: 45px; display: flex; flex-direction: column; }
+        .stat-label { font-weight: 700; color: var(--text-main); }
+        .stat-detail-mini { font-size: 0.65rem; color: var(--text-muted); white-space: nowrap; }
+        .stat-bar-bg { flex: 1; height: 8px; background: #f1f5f9; border-radius: 4px; overflow: hidden; }
+        .stat-bar-fill { height: 100%; background: var(--secondary); border-radius: 4px; width: 0%; transition: width 1s ease-out; }
+        .stat-value { font-weight: 800; color: var(--secondary); width: 35px; text-align: right; }
 
         /* FOOTER */
         footer {
             background: #0f172a;
             color: white;
             text-align: center;
-            padding: 40px 20px;
-            margin-top: 40px;
+            padding: 30px 20px;
+            margin-top: auto;
         }
+        footer h3 { font-size: 1.1rem; margin-bottom: 5px; color: #f8fafc; }
+        footer p { font-size: 0.8rem; color: #94a3b8; margin-bottom: 5px; }
 
-        footer h3 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            color: #f8fafc;
-        }
-
-        footer p {
-            font-size: 0.9rem;
-            color: #94a3b8;
-            margin-bottom: 5px;
-        }
-
-        @media (max-width: 768px) {
-            header h1 { font-size: 1.8rem; }
-            .links-grid { grid-template-columns: 1fr; }
-            .category-section { padding: 20px; }
+        @media (max-width: 950px) {
+            .container { flex-direction: column; margin-top: -20px; }
+            .main-content, .side-panel { width: 100%; }
+            .side-panel { position: relative; top: 0; }
         }
     </style>
 </head>
@@ -196,115 +236,208 @@
 
     <div class="container">
         
-        <div class="category-section">
-            <div class="category-title">
-                <i class="fa-solid fa-sitemap"></i> Portal & Laman Unit Sekolah
+        <div class="main-content">
+            
+            <div class="category-section">
+                <div class="category-title"><i class="fa-solid fa-sitemap"></i> Portal & Laman Unit</div>
+                <div class="links-grid">
+                    <a href="https://aimanbum.github.io/unitkurikulumtb/" class="link-card unit" target="_blank">
+                        <div class="icon-wrapper"><i class="fa-solid fa-book-open-reader"></i></div>
+                        <div class="card-content"><span class="card-title">UNIT KURIKULUM</span><span class="card-desc">Laman pengurusan akademik</span></div>
+                    </a>
+                    <a href="https://smkatbkokurikulum.my.canva.site/kokurikulumsmkatb2026" class="link-card unit" target="_blank">
+                        <div class="icon-wrapper"><i class="fa-solid fa-person-running"></i></div>
+                        <div class="card-content"><span class="card-title">UNIT KOKURIKULUM</span><span class="card-desc">Informasi aktiviti sukan & persatuan</span></div>
+                    </a>
+                    <a href="https://linktr.ee/hemsmkatb" class="link-card unit" target="_blank">
+                        <div class="icon-wrapper"><i class="fa-solid fa-hand-holding-heart"></i></div>
+                        <div class="card-content"><span class="card-title">UNIT HEM</span><span class="card-desc">Pengurusan Hal Ehwal Murid</span></div>
+                    </a>
+                    <a href="https://aimanbum.github.io/tmuatb/" class="link-card unit" target="_blank">
+                        <div class="icon-wrapper"><i class="fa-solid fa-book-quran"></i></div>
+                        <div class="card-content"><span class="card-title">LAMAN TMUA</span><span class="card-desc">Tahfiz Model Ulul Albab</span></div>
+                    </a>
+                </div>
             </div>
-            <div class="links-grid">
-                <a href="https://aimanbum.github.io/unitkurikulumtb/" class="link-card unit" target="_blank">
-                    <div class="icon-wrapper"><i class="fa-solid fa-book-open-reader"></i></div>
-                    <div class="card-content">
-                        <span class="card-title">UNIT KURIKULUM</span>
-                        <span class="card-desc">Laman rasmi pengurusan akademik</span>
-                    </div>
-                </a>
-                <a href="https://smkatbkokurikulum.my.canva.site/kokurikulumsmkatb2026" class="link-card unit" target="_blank">
-                    <div class="icon-wrapper"><i class="fa-solid fa-person-running"></i></div>
-                    <div class="card-content">
-                        <span class="card-title">UNIT KOKURIKULUM</span>
-                        <span class="card-desc">Informasi aktiviti sukan & persatuan</span>
-                    </div>
-                </a>
-                <a href="https://linktr.ee/hemsmkatb" class="link-card unit" target="_blank">
-                    <div class="icon-wrapper"><i class="fa-solid fa-hand-holding-heart"></i></div>
-                    <div class="card-content">
-                        <span class="card-title">UNIT HEM</span>
-                        <span class="card-desc">Pengurusan Hal Ehwal Murid</span>
-                    </div>
-                </a>
-                <a href="https://aimanbum.github.io/tmuatb/" class="link-card unit" target="_blank">
-                    <div class="icon-wrapper"><i class="fa-solid fa-book-quran"></i></div>
-                    <div class="card-content">
-                        <span class="card-title">LAMAN TMUA</span>
-                        <span class="card-desc">Tahfiz Model Ulul Albab SMKATB</span>
-                    </div>
-                </a>
+
+            <div class="category-section">
+                <div class="category-title" style="color: #d97706;"><i class="fa-solid fa-chalkboard-user"></i> Pengurusan Guru & PdPc</div>
+                <div class="links-grid">
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLScJwwvkF-LgC0vZECatDhhKLqadrEA8DPpPaCvR81yknnkomQ/viewform" class="link-card guru" target="_blank">
+                        <div class="icon-wrapper"><i class="fa-solid fa-file-arrow-up"></i></div>
+                        <div class="card-content"><span class="card-title">PENGHANTARAN e-RPH</span><span class="card-desc">Borang RPH mingguan</span></div>
+                    </a>
+                    <a href="https://lookerstudio.google.com/u/0/reporting/3c281568-8888-46fb-806b-004b31de40c4/page/p_q9yxi3yfyd" class="link-card guru" target="_blank">
+                        <div class="icon-wrapper"><i class="fa-solid fa-list-check"></i></div>
+                        <div class="card-content"><span class="card-title">REKOD e-RPH</span><span class="card-desc">Semakan status e-RPH</span></div>
+                    </a>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSf4u6w9rb8TYUquBOysf4fFo7L8U5O0rVwRlqAKDyuyvf0gNA/viewform" class="link-card guru" target="_blank">
+                        <div class="icon-wrapper"><i class="fa-solid fa-user-check"></i></div>
+                        <div class="card-content"><span class="card-title">REKOD KEBERADAAN</span><span class="card-desc">Borang pengesahan kehadiran</span></div>
+                    </a>
+                    <a href="https://drive.google.com/drive/folders/1gzI5uYMOobV6KWQVf4JSi6SkIpZIEEAS" class="link-card guru" target="_blank">
+                        <div class="icon-wrapper"><i class="fa-solid fa-calendar-days"></i></div>
+                        <div class="card-content"><span class="card-title">JADUAL WAKTU</span><span class="card-desc">Jadual guru dan kelas</span></div>
+                    </a>
+                </div>
             </div>
+
+            <div class="category-section">
+                <div class="category-title" style="color: #059669;"><i class="fa-solid fa-server"></i> Data & Perekodan</div>
+                <div class="links-grid">
+                    <a href="https://lookerstudio.google.com/u/0/reporting/7231566a-0bb7-46c6-a499-580111eff1e2/page/S0JeC" class="link-card data" target="_blank">
+                        <div class="icon-wrapper"><i class="fa-solid fa-chart-pie"></i></div>
+                        <div class="card-content"><span class="card-title">DASHBOARD MMI</span><span class="card-desc">Melindungi Masa Instruksional</span></div>
+                    </a>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdxxIGJOlqA3TubZeUoRm-bSXnQMkyP2IVc7ZoaY3XQSgBBEA/viewform" class="link-card data" target="_blank">
+                        <div class="icon-wrapper"><i class="fa-solid fa-users-rectangle"></i></div>
+                        <div class="card-content"><span class="card-title">KEHADIRAN PERHIMPUNAN</span><span class="card-desc">Rekod rasmi perhimpunan</span></div>
+                    </a>
+                    <a href="https://drive.google.com/drive/folders/1UJBAwL0ctB9TV9YKfd61B_cG2MGX8SsN" class="link-card data" target="_blank">
+                        <div class="icon-wrapper"><i class="fa-solid fa-users"></i></div>
+                        <div class="card-content"><span class="card-title">DATA ENROLMEN</span><span class="card-desc">Folder enrolmen pelajar</span></div>
+                    </a>
+                </div>
+            </div>
+
         </div>
 
-        <div class="category-section">
-            <div class="category-title" style="color: #d97706;">
-                <i class="fa-solid fa-chalkboard-user"></i> Pengurusan Guru & PdPc
+        <div class="side-panel">
+            
+            <div class="clock-widget">
+                <div class="clock-display" id="jam">--:--:--</div>
+                <div class="date-display" id="tarikh">Memuatkan tarikh...</div>
             </div>
-            <div class="links-grid">
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLScJwwvkF-LgC0vZECatDhhKLqadrEA8DPpPaCvR81yknnkomQ/viewform" class="link-card guru" target="_blank">
-                    <div class="icon-wrapper"><i class="fa-solid fa-file-arrow-up"></i></div>
-                    <div class="card-content">
-                        <span class="card-title">PENGHANTARAN e-RPH</span>
-                        <span class="card-desc">Borang penghantaran RPH mingguan</span>
-                    </div>
-                </a>
-                <a href="https://lookerstudio.google.com/u/0/reporting/3c281568-8888-46fb-806b-004b31de40c4/page/p_q9yxi3yfyd" class="link-card guru" target="_blank">
-                    <div class="icon-wrapper"><i class="fa-solid fa-list-check"></i></div>
-                    <div class="card-content">
-                        <span class="card-title">REKOD PENGHANTARAN e-RPH</span>
-                        <span class="card-desc">Semakan status hantaran e-RPH</span>
-                    </div>
-                </a>
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSf4u6w9rb8TYUquBOysf4fFo7L8U5O0rVwRlqAKDyuyvf0gNA/viewform" class="link-card guru" target="_blank">
-                    <div class="icon-wrapper"><i class="fa-solid fa-user-check"></i></div>
-                    <div class="card-content">
-                        <span class="card-title">REKOD KEBERADAAN GURU</span>
-                        <span class="card-desc">Borang pengesahan kehadiran / keberadaan</span>
-                    </div>
-                </a>
-                <a href="https://drive.google.com/drive/folders/1gzI5uYMOobV6KWQVf4JSi6SkIpZIEEAS" class="link-card guru" target="_blank">
-                    <div class="icon-wrapper"><i class="fa-solid fa-calendar-days"></i></div>
-                    <div class="card-content">
-                        <span class="card-title">JADUAL WAKTU 2026</span>
-                        <span class="card-desc">Jadual waktu terkini guru dan kelas</span>
-                    </div>
-                </a>
-            </div>
-        </div>
 
-        <div class="category-section">
-            <div class="category-title" style="color: #059669;">
-                <i class="fa-solid fa-server"></i> Data & Perekodan Pusat
-            </div>
-            <div class="links-grid">
-                <a href="https://lookerstudio.google.com/u/0/reporting/7231566a-0bb7-46c6-a499-580111eff1e2/page/S0JeC" class="link-card data" target="_blank">
-                    <div class="icon-wrapper"><i class="fa-solid fa-chart-pie"></i></div>
-                    <div class="card-content">
-                        <span class="card-title">DASHBOARD MMI 2026</span>
-                        <span class="card-desc">Melindungi Masa Instruksional</span>
-                    </div>
-                </a>
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdxxIGJOlqA3TubZeUoRm-bSXnQMkyP2IVc7ZoaY3XQSgBBEA/viewform" class="link-card data" target="_blank">
-                    <div class="icon-wrapper"><i class="fa-solid fa-users-rectangle"></i></div>
-                    <div class="card-content">
-                        <span class="card-title">KEHADIRAN PERHIMPUNAN</span>
-                        <span class="card-desc">Borang rekod kehadiran perhimpunan rasmi</span>
-                    </div>
-                </a>
-                <a href="https://drive.google.com/drive/folders/1UJBAwL0ctB9TV9YKfd61B_cG2MGX8SsN" class="link-card data" target="_blank">
-                    <div class="icon-wrapper"><i class="fa-solid fa-users"></i></div>
-                    <div class="card-content">
-                        <span class="card-title">ENROLMEN PELAJAR</span>
-                        <span class="card-desc">Data dan statistik enrolmen SMKATB</span>
-                    </div>
-                </a>
-            </div>
-        </div>
+            <div class="enrolmen-widget">
+                <div class="side-title"><i class="fa-solid fa-chart-simple"></i> Enrolmen 2026</div>
+                
+                <div class="grand-total-box">
+                    <div class="big-number" id="grand-total">...</div>
+                    <div class="big-label">Jumlah Keseluruhan</div>
+                    <div class="big-detail" id="grand-detail">L: - | P: -</div>
+                </div>
 
+                <div class="stat-list">
+                    <div class="stat-row">
+                        <div class="stat-left"><span class="stat-label">PRA</span><span class="stat-detail-mini" id="pra-detail"></span></div>
+                        <div class="stat-bar-bg"><div class="stat-bar-fill" id="bar-pra" style="width: 0%"></div></div>
+                        <span class="stat-value" id="pra-total">0</span>
+                    </div>
+                    <div class="stat-row">
+                        <div class="stat-left"><span class="stat-label">T1</span><span class="stat-detail-mini" id="t1-detail"></span></div>
+                        <div class="stat-bar-bg"><div class="stat-bar-fill" id="bar-t1" style="width: 0%"></div></div>
+                        <span class="stat-value" id="t1-total">0</span>
+                    </div>
+                    <div class="stat-row">
+                        <div class="stat-left"><span class="stat-label">T2</span><span class="stat-detail-mini" id="t2-detail"></span></div>
+                        <div class="stat-bar-bg"><div class="stat-bar-fill" id="bar-t2" style="width: 0%"></div></div>
+                        <span class="stat-value" id="t2-total">0</span>
+                    </div>
+                    <div class="stat-row">
+                        <div class="stat-left"><span class="stat-label">T3</span><span class="stat-detail-mini" id="t3-detail"></span></div>
+                        <div class="stat-bar-bg"><div class="stat-bar-fill" id="bar-t3" style="width: 0%"></div></div>
+                        <span class="stat-value" id="t3-total">0</span>
+                    </div>
+                    <div class="stat-row">
+                        <div class="stat-left"><span class="stat-label">T4</span><span class="stat-detail-mini" id="t4-detail"></span></div>
+                        <div class="stat-bar-bg"><div class="stat-bar-fill" id="bar-t4" style="width: 0%"></div></div>
+                        <span class="stat-value" id="t4-total">0</span>
+                    </div>
+                    <div class="stat-row">
+                        <div class="stat-left"><span class="stat-label">T5</span><span class="stat-detail-mini" id="t5-detail"></span></div>
+                        <div class="stat-bar-bg"><div class="stat-bar-fill" id="bar-t5" style="width: 0%"></div></div>
+                        <span class="stat-value" id="t5-total">0</span>
+                    </div>
+                    <div class="stat-row">
+                        <div class="stat-left"><span class="stat-label">T6</span><span class="stat-detail-mini" id="t6-detail"></span></div>
+                        <div class="stat-bar-bg"><div class="stat-bar-fill" id="bar-t6" style="width: 0%"></div></div>
+                        <span class="stat-value" id="t6-total">0</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
 
     <footer>
         <h3>SMKA TOK BACHOK</h3>
         <p>Tangok, 16300 Bachok, Kelantan</p>
-        
-        <p style="margin-top: 20px; font-size: 0.8rem; opacity: 0.5;">&copy; 2026 Hak Cipta Terpelihara Unit Pengurusan SMKATB.</p>
+        <p style="margin-top: 15px; font-size: 0.75rem; opacity: 0.5;">&copy; 2026 Hak Cipta Terpelihara Unit Pengurusan SMKATB.</p>
     </footer>
 
+    <script>
+        // 1. SKRIP JAM & TARIKH
+        function updateClock() {
+            const now = new Date();
+            let hours = now.getHours();
+            let minutes = now.getMinutes();
+            let seconds = now.getSeconds();
+            let ampm = hours >= 12 ? 'PM' : 'AM';
+            
+            hours = hours % 12;
+            hours = hours ? hours : 12; 
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            seconds = seconds < 10 ? '0' + seconds : seconds;
+            
+            document.getElementById('jam').innerText = `${hours}:${minutes}:${seconds} ${ampm}`;
+            
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('tarikh').innerText = now.toLocaleDateString('ms-MY', options);
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        // 2. SKRIP ENROLMEN DARI GOOGLE SHEETS
+        const ssID = '1M5HM5y6qgWshsLqB8CoReXiF54sFiUBiS_dVqUtK0gk';
+        const url = `https://docs.google.com/spreadsheets/d/${ssID}/gviz/tq?tqx=out:csv`;
+
+        async function fetchEnrolmen() {
+            try {
+                const response = await fetch(url);
+                const data = await response.text();
+                const rows = data.split('\n').map(row => row.split(',').map(cell => cell.replace(/"/g, '')));
+                const getData = (r, c) => parseInt(rows[r][c]) || 0;
+
+                let grandL = 0; let grandP = 0;
+                let maxVal = 160;
+
+                const processTingkatan = (id, row) => {
+                    const l = getData(row - 1, 2);
+                    const p = getData(row - 1, 3);
+                    const total = l + p;
+                    grandL += l; grandP += p;
+
+                    const elTotal = document.getElementById(`${id}-total`);
+                    if(elTotal) elTotal.innerText = total;
+
+                    const elBar = document.getElementById(`bar-${id}`);
+                    if(elBar) {
+                        let percent = (total / maxVal) * 100;
+                        if(percent > 100) percent = 100;
+                        elBar.style.width = `${percent}%`;
+                    }
+
+                    const elDetail = document.getElementById(`${id}-detail`);
+                    if(elDetail) elDetail.innerText = `L:${l} P:${p}`;
+                };
+
+                // Baris data mengikut setting Google Sheets TMUA sebelum ini
+                processTingkatan('pra', 37);
+                processTingkatan('t1', 7);
+                processTingkatan('t2', 13);
+                processTingkatan('t3', 19);
+                processTingkatan('t4', 25);
+                processTingkatan('t5', 31);
+                processTingkatan('t6', 36);
+
+                document.getElementById('grand-total').innerText = grandL + grandP;
+                document.getElementById('grand-detail').innerText = `L: ${grandL} | P: ${grandP}`;
+            } catch (e) { 
+                console.error('Ralat menarik data enrolmen:', e); 
+            }
+        }
+        fetchEnrolmen();
+    </script>
 </body>
 </html>
