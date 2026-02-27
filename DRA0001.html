@@ -3,108 +3,191 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>One Stop Centre SMKA Tok Bachok</title>
+    <title>ONE STOP CENTRE SMKATB</title>
+    <link rel="icon" type="image/png" href="logo.png">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
+
     <style>
         :root {
-            --primary: #1e3a8a; /* Biru Gelap Rasmi */
-            --secondary: #3b82f6; /* Biru Terang */
-            --accent: #f59e0b; /* Kuning Emas */
-            --bg: #f8fafc;
-            --surface: #ffffff;
-            --text-main: #0f172a;
-            --text-muted: #64748b;
-            --border: #e2e8f0;
+            --primary-color: #003366; /* Biru Gelap */
+            --secondary-color: #004080; /* Biru Sederhana */
+            --accent-color: #f1c40f; /* Kuning Emas */
+            --bg-color: #f0f2f5;
+            --card-bg: #ffffff;
+            --text-color: #333;
+            --sidebar-width: 260px;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg);
-            color: var(--text-main);
-            line-height: 1.6;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            scroll-behavior: smooth;
         }
 
-        /* HEADER & HERO SECTION */
-        header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
-            padding: 70px 20px;
+        /* --- STYLE JAM DIGITAL DI SIDEBAR --- */
+        .clock-widget {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
             text-align: center;
-            border-bottom: 5px solid var(--accent);
+            border: 1px solid rgba(255,255,255,0.15);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .clock-time {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--accent-color);
+            letter-spacing: 2px;
+            font-family: 'Courier New', monospace;
+            margin-bottom: 5px;
         }
 
-        .logo-container img {
-            width: 110px;
+        .clock-date {
+            font-size: 11px;
+            color: rgba(255,255,255,0.9);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* --- MOBILE NAV BAR --- */
+        .mobile-header {
+            display: none;
+            background: var(--primary-color);
+            color: white;
+            padding: 15px 20px;
+            align-items: center;
+            justify-content: space-between;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 999;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            box-sizing: border-box;
+        }
+
+        .menu-btn {
+            font-size: 24px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: white;
+        }
+
+        .mobile-title {
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        /* --- LAYOUT UTAMA --- */
+        .app-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* --- SIDEBAR --- */
+        .sidebar {
+            width: var(--sidebar-width);
+            background: linear-gradient(180deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 20px;
+            position: fixed;
+            height: 100%;
+            overflow-y: auto;
+            z-index: 1000;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .sidebar-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .logo-sekolah {
+            width: 70px;
             height: auto;
             background: white;
-            padding: 10px;
             border-radius: 50%;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            margin-bottom: 20px;
+            padding: 5px;
+            margin-bottom: 10px;
         }
 
-        header h1 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            letter-spacing: -1px;
+        .menu-title {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: rgba(255,255,255,0.6);
+            margin-top: 20px;
             margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            border-radius: 8px;
+            margin-bottom: 5px;
+            transition: 0.3s;
+            font-size: 14px;
+        }
+
+        .nav-link:hover {
+            background: rgba(255,255,255,0.15);
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .nav-link i { margin-right: 10px; width: 20px; text-align: center;}
+
+        /* --- OVERLAY --- */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 999;
+        }
+
+        .overlay.active { display: block; }
+
+        /* --- MAIN CONTENT --- */
+        .main-content {
+            margin-left: var(--sidebar-width);
+            flex: 1;
+            padding: 40px;
+            transition: margin 0.3s;
+        }
+
+        h2.page-title {
+            color: var(--primary-color);
+            border-left: 5px solid var(--accent-color);
+            padding-left: 15px;
+            margin-bottom: 30px;
             text-transform: uppercase;
         }
 
-        header p {
-            font-size: 1.1rem;
-            opacity: 0.9;
-            font-weight: 500;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* KANDUNGAN UTAMA */
-        .container {
-            max-width: 1100px;
-            margin: 50px auto;
-            padding: 0 20px;
-        }
-
-        /* WIDGET DASHBOARD ATAS (JAM & ENROLMEN) */
-        .top-dashboard {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 20px;
-            margin-bottom: 40px;
-        }
-
-        .clock-widget {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            border-radius: 20px;
-            padding: 30px 20px;
-            color: white;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-        }
-
-        .clock-display { font-size: 2.5rem; font-weight: 800; letter-spacing: 1px; margin-bottom: 5px; font-variant-numeric: tabular-nums; line-height: 1;}
-        .date-display { font-size: 0.95rem; color: #94a3b8; font-weight: 500; }
-
+        /* ENROLMEN WIDGET STYLE */
         .enrolmen-widget {
-            background: var(--surface);
-            border-radius: 20px;
+            background: var(--card-bg);
+            border-radius: 12px;
             padding: 25px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
-            border: 1px solid var(--border);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+            border-top: 4px solid var(--accent-color);
         }
 
         .widget-header {
@@ -113,146 +196,172 @@
             align-items: center;
             margin-bottom: 20px;
             padding-bottom: 15px;
-            border-bottom: 2px solid #f1f5f9;
+            border-bottom: 1px solid #eee;
         }
 
         .widget-title {
-            font-size: 1.1rem; font-weight: 800; color: var(--primary);
-            text-transform: uppercase; letter-spacing: 0.5px; display: flex; align-items: center; gap: 8px;
+            font-size: 1.2rem; font-weight: 800; color: var(--primary-color);
+            display: flex; align-items: center; gap: 10px;
         }
 
         .grand-total {
-            font-size: 0.85rem; font-weight: 700; color: var(--secondary);
-            background: #eff6ff; padding: 6px 15px; border-radius: 8px; border: 1px solid #bfdbfe;
+            font-size: 0.85rem; font-weight: bold; color: var(--secondary-color);
+            background: #e6f0fa; padding: 6px 15px; border-radius: 8px; 
         }
 
         .stat-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 15px 30px;
         }
 
-        .stat-row { display: flex; align-items: center; font-size: 0.8rem; gap: 10px; }
+        .stat-row { display: flex; align-items: center; font-size: 0.85rem; gap: 10px; }
         .stat-left { width: 45px; display: flex; flex-direction: column; }
-        .stat-label { font-weight: 700; color: var(--text-main); }
-        .stat-detail-mini { font-size: 0.65rem; color: var(--text-muted); white-space: nowrap; }
-        .stat-bar-bg { flex: 1; height: 8px; background: #f1f5f9; border-radius: 4px; overflow: hidden; }
-        .stat-bar-fill { height: 100%; background: var(--secondary); border-radius: 4px; width: 0%; transition: width 1s ease-out; }
-        .stat-value { font-weight: 800; color: var(--secondary); width: 35px; text-align: right; }
+        .stat-label { font-weight: bold; color: var(--text-color); }
+        .stat-detail-mini { font-size: 0.65rem; color: #777; white-space: nowrap; }
+        .stat-bar-bg { flex: 1; height: 8px; background: #eee; border-radius: 4px; overflow: hidden; }
+        .stat-bar-fill { height: 100%; background: var(--secondary-color); border-radius: 4px; width: 0%; transition: width 1s ease-out; }
+        .stat-value { font-weight: bold; color: var(--secondary-color); width: 35px; text-align: right; }
 
-        /* SEKSYEN KATEGORI PAUTAN */
-        .category-section {
-            margin-bottom: 40px;
-            background: var(--surface);
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
-            border: 1px solid var(--border);
-        }
-
-        .category-title {
-            font-size: 1.25rem;
-            font-weight: 800;
-            color: var(--primary);
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid #f1f5f9;
+        /* SECTION HEADERS */
+        .category-header {
+            background: #e6f0fa;
+            color: var(--primary-color);
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-top: 30px; 
+            margin-bottom: 15px;
+            font-weight: bold;
             display: flex;
             align-items: center;
-            gap: 12px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            scroll-margin-top: 80px; 
+            border-left: 4px solid var(--secondary-color);
         }
+        .category-header i { margin-right: 10px; font-size: 18px; }
 
-        .links-grid {
+        /* GRID SYSTEM */
+        .grid-panitia {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 15px;
         }
 
-        /* REKA BENTUK KAD PAUTAN */
-        .link-card {
-            background: var(--surface);
-            border-radius: 12px;
-            padding: 20px;
-            display: flex;
-            align-items: flex-start;
-            gap: 15px;
-            text-decoration: none;
-            color: var(--text-main);
-            border: 1px solid var(--border);
-            transition: all 0.2s ease;
-        }
-
-        .link-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--secondary);
-            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.1);
-        }
-
-        .icon-wrapper {
-            width: 45px;
-            height: 45px;
+        /* CARD STYLE */
+        .card {
+            background: var(--card-bg);
             border-radius: 10px;
+            padding: 20px 15px;
+            text-align: center;
+            text-decoration: none;
+            color: var(--primary-color);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            font-size: 18px;
-            flex-shrink: 0;
+            height: 120px;
         }
 
-        .unit .icon-wrapper { background: #eff6ff; color: #2563eb; }
-        .guru .icon-wrapper { background: #fef3c7; color: #d97706; }
-        .data .icon-wrapper { background: #ecfdf5; color: #059669; }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,51,102,0.1);
+            border-color: var(--primary-color);
+        }
 
-        .card-content { display: flex; flex-direction: column; }
-        .card-title { font-size: 0.95rem; font-weight: 700; margin-bottom: 3px; line-height: 1.3; }
-        .card-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.4; }
+        .card i {
+            font-size: 28px;
+            margin-bottom: 12px;
+            color: var(--secondary-color);
+        }
+
+        .card span.title {
+            font-size: 13px;
+            font-weight: bold;
+            line-height: 1.2;
+            margin-bottom: 4px;
+        }
+
+        .card span.desc {
+            font-size: 10px;
+            color: #666;
+            line-height: 1.2;
+        }
 
         /* FOOTER */
-        footer {
-            background: #0f172a;
-            color: white;
+        .footer {
+            margin-top: 50px;
             text-align: center;
-            padding: 40px 20px;
-            margin-top: 40px;
+            font-size: 12px;
+            color: #888;
+            border-top: 1px solid #ddd;
+            padding-top: 20px;
         }
 
-        footer h3 { font-size: 1.2rem; margin-bottom: 10px; color: #f8fafc; }
-        footer p { font-size: 0.9rem; color: #94a3b8; margin-bottom: 5px; }
-
-        @media (max-width: 850px) {
-            .top-dashboard { grid-template-columns: 1fr; }
-            .stat-grid { grid-template-columns: 1fr; }
-        }
+        /* --- RESPONSIVE MOBILE --- */
         @media (max-width: 768px) {
-            header h1 { font-size: 1.8rem; }
-            .links-grid { grid-template-columns: 1fr; }
-            .category-section { padding: 20px; }
+            .mobile-header { display: flex; } 
+            
+            .sidebar { 
+                transform: translateX(-100%); 
+                width: 260px;
+                box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+            }
+            
+            .sidebar.active {
+                transform: translateX(0); 
+            }
+
+            .main-content { 
+                margin-left: 0; 
+                padding: 20px; 
+                padding-top: 80px; 
+            }
+            
+            .grid-panitia { grid-template-columns: repeat(2, 1fr); }
+            .stat-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="logo-container">
-            <img src="logo.png" alt="Logo SMKA Tok Bachok">
-        </div>
-        <h1>ONE STOP CENTRE SMKATB</h1>
-        <p>Pusat Pautan Bersepadu Pengurusan Sekolah</p>
-    </header>
+    <div class="mobile-header">
+        <div class="mobile-title">ONE STOP CENTRE</div>
+        <button class="menu-btn" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
 
-    <div class="container">
+    <div class="overlay" onclick="toggleMenu()"></div>
+
+    <div class="app-container">
         
-        <div class="top-dashboard">
-            <div class="clock-widget">
-                <div class="clock-display" id="jam">--:--:--</div>
-                <div class="date-display" id="tarikh">Memuatkan tarikh...</div>
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <img src="logo.png" alt="Logo" class="logo-sekolah">
+                <div style="font-weight:bold; font-size:14px;">ONE STOP CENTRE</div>
+                <div style="font-size:11px; opacity:0.8;">SMKA TOK BACHOK</div>
+                
+                <div class="clock-widget">
+                    <div class="clock-time" id="clock">00:00:00</div>
+                    <div class="clock-date" id="date">MEMUATKAN...</div>
+                </div>
             </div>
 
-            <div class="enrolmen-widget">
+            <div class="menu-title">MENU UTAMA</div>
+            <a href="#enrolmen" class="nav-link" onclick="toggleMenu()"><i class="fas fa-chart-simple"></i> Enrolmen 2026</a>
+            <a href="#portal" class="nav-link" onclick="toggleMenu()"><i class="fas fa-sitemap"></i> Portal & Unit</a>
+            <a href="#guru" class="nav-link" onclick="toggleMenu()"><i class="fas fa-chalkboard-user"></i> Pengurusan Guru</a>
+            <a href="#data" class="nav-link" onclick="toggleMenu()"><i class="fas fa-server"></i> Data & Perekodan</a>
+        </div>
+
+        <div class="main-content">
+            <h2 class="page-title">PUSAT PAUTAN BERSEPADU PENGURUSAN</h2>
+
+            <div id="enrolmen" class="enrolmen-widget">
                 <div class="widget-header">
-                    <div class="widget-title"><i class="fa-solid fa-chart-simple"></i> ENROLMEN 2026</div>
+                    <div class="widget-title"><i class="fa-solid fa-chart-simple"></i> ENROLMEN PELAJAR 2026</div>
                     <div class="grand-total" id="grand-total-text">Memuatkan data...</div>
                 </div>
                 <div class="stat-grid">
@@ -293,155 +402,127 @@
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="category-section">
-            <div class="category-title">
-                <i class="fa-solid fa-sitemap"></i> Portal & Laman Unit Sekolah
-            </div>
-            <div class="links-grid">
-                <a href="https://aimanbum.github.io/unitkurikulumtb/" class="link-card unit" target="_blank">
-                    <div class="icon-wrapper"><i class="fa-solid fa-book-open-reader"></i></div>
-                    <div class="card-content">
-                        <span class="card-title">UNIT KURIKULUM</span>
-                        <span class="card-desc">Laman rasmi pengurusan akademik</span>
-                    </div>
+            <div id="portal" class="category-header"><i class="fas fa-sitemap"></i> PORTAL & LAMAN UNIT SEKOLAH</div>
+            <div class="grid-panitia">
+                <a href="https://aimanbum.github.io/unitkurikulumtb/" target="_blank" class="card">
+                    <i class="fas fa-book-open-reader"></i>
+                    <span class="title">UNIT KURIKULUM</span>
+                    <span class="desc">Pengurusan Akademik</span>
                 </a>
-                <a href="https://smkatbkokurikulum.my.canva.site/kokurikulumsmkatb2026" class="link-card unit" target="_blank">
-                    <div class="icon-wrapper"><i class="fa-solid fa-person-running"></i></div>
-                    <div class="card-content">
-                        <span class="card-title">UNIT KOKURIKULUM</span>
-                        <span class="card-desc">Informasi aktiviti sukan & persatuan</span>
-                    </div>
+                <a href="https://smkatbkokurikulum.my.canva.site/kokurikulumsmkatb2026" target="_blank" class="card">
+                    <i class="fas fa-person-running"></i>
+                    <span class="title">UNIT KOKURIKULUM</span>
+                    <span class="desc">Sukan & Persatuan</span>
                 </a>
-                <a href="https://aimanbum.github.io/tmuatb/HEM.html" class="link-card unit" target="_blank">
-                    <div class="icon-wrapper"><i class="fa-solid fa-hand-holding-heart"></i></div>
-                    <div class="card-content">
-                        <span class="card-title">UNIT HEM</span>
-                        <span class="card-desc">Pengurusan Hal Ehwal Murid</span>
-                    </div>
+                <a href="https://aimanbum.github.io/tmuatb/HEM.html" target="_blank" class="card">
+                    <i class="fas fa-hand-holding-heart"></i>
+                    <span class="title">UNIT HEM</span>
+                    <span class="desc">Hal Ehwal Murid</span>
                 </a>
-                <a href="https://aimanbum.github.io/tmuatb/" class="link-card unit" target="_blank">
-                    <div class="icon-wrapper"><i class="fa-solid fa-book-quran"></i></div>
-                    <div class="card-content">
-                        <span class="card-title">LAMAN TMUA</span>
-                        <span class="card-desc">Tahfiz Model Ulul Albab SMKATB</span>
-                         </div>
+                <a href="https://aimanbum.github.io/tmuatb/" target="_blank" class="card">
+                    <i class="fas fa-book-quran"></i>
+                    <span class="title">LAMAN TMUA</span>
+                    <span class="desc">Tahfiz Model Ulul Albab</span>
                 </a>
-                <a href="https://mylink.la/gkpismkatb" class="link-card unit" target="_blank">
-                    <div class="icon-wrapper"><i class="fa-solid fa-book-quran"></i></div>
-                    <div class="card-content">
-                        <span class="card-title">BIDANG PENDIDIKAN ISLAM</span>
-                        <span class="card-desc">Pengurusan panitia dan unit</span>
-                    </div>
+                <a href="https://mylink.la/gkpismkatb" target="_blank" class="card">
+                    <i class="fas fa-mosque"></i>
+                    <span class="title">PENDIDIKAN ISLAM</span>
+                    <span class="desc">Panitia & Unit</span>
                 </a>
             </div>
-        </div>
 
-        <div class="category-section">
-            <div class="category-title" style="color: #d97706;">
-                <i class="fa-solid fa-chalkboard-user"></i> Pengurusan Guru & PdPc
+            <div id="guru" class="category-header"><i class="fas fa-chalkboard-user"></i> PENGURUSAN GURU & PDPC</div>
+            <div class="grid-panitia">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLScJwwvkF-LgC0vZECatDhhKLqadrEA8DPpPaCvR81yknnkomQ/viewform" target="_blank" class="card">
+                    <i class="fas fa-file-arrow-up"></i>
+                    <span class="title">HANTAR e-RPH</span>
+                    <span class="desc">Borang RPH Mingguan</span>
+                </a>
+                <a href="https://lookerstudio.google.com/u/0/reporting/3c281568-8888-46fb-806b-004b31de40c4/page/p_q9yxi3yfyd" target="_blank" class="card">
+                    <i class="fas fa-list-check"></i>
+                    <span class="title">REKOD e-RPH</span>
+                    <span class="desc">Semakan Status</span>
+                </a>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSf4u6w9rb8TYUquBOysf4fFo7L8U5O0rVwRlqAKDyuyvf0gNA/viewform" target="_blank" class="card">
+                    <i class="fas fa-user-check"></i>
+                    <span class="title">KEBERADAAN GURU</span>
+                    <span class="desc">Pengesahan Kehadiran</span>
+                </a>
+                <a href="https://drive.google.com/drive/folders/1gzI5uYMOobV6KWQVf4JSi6SkIpZIEEAS" target="_blank" class="card">
+                    <i class="fas fa-calendar-days"></i>
+                    <span class="title">JADUAL WAKTU</span>
+                    <span class="desc">Jadual Terkini</span>
+                </a>
+                <a href="https://azamcs.blogspot.com/?m=1" target="_blank" class="card">
+                    <i class="fas fa-calendar"></i>
+                    <span class="title">TAKWIM 2026</span>
+                    <span class="desc">Kalendar Akademik</span>
+                </a>
             </div>
-            <div class="links-grid">
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLScJwwvkF-LgC0vZECatDhhKLqadrEA8DPpPaCvR81yknnkomQ/viewform" class="link-card guru" target="_blank">
-                    <div class="icon-wrapper"><i class="fa-solid fa-file-arrow-up"></i></div>
-                    <div class="card-content">
-                        <span class="card-title">PENGHANTARAN e-RPH</span>
-                        <span class="card-desc">Borang penghantaran RPH mingguan</span>
-                    </div>
+
+            <div id="data" class="category-header"><i class="fas fa-server"></i> DATA & PEREKODAN PUSAT</div>
+            <div class="grid-panitia">
+                <a href="https://lookerstudio.google.com/u/0/reporting/7231566a-0bb7-46c6-a499-580111eff1e2/page/S0JeC" target="_blank" class="card">
+                    <i class="fas fa-chart-pie"></i>
+                    <span class="title">DASHBOARD MMI</span>
+                    <span class="desc">Masa Instruksional</span>
                 </a>
-                <a href="https://lookerstudio.google.com/u/0/reporting/3c281568-8888-46fb-806b-004b31de40c4/page/p_q9yxi3yfyd" class="link-card guru" target="_blank">
-                    <div class="icon-wrapper"><i class="fa-solid fa-list-check"></i></div>
-                    <div class="card-content">
-                        <span class="card-title">REKOD PENGHANTARAN e-RPH</span>
-                        <span class="card-desc">Semakan status hantaran e-RPH</span>
-                    </div>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdxxIGJOlqA3TubZeUoRm-bSXnQMkyP2IVc7ZoaY3XQSgBBEA/viewform" target="_blank" class="card">
+                    <i class="fas fa-users-rectangle"></i>
+                    <span class="title">PERHIMPUNAN</span>
+                    <span class="desc">Rekod Kehadiran</span>
                 </a>
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSf4u6w9rb8TYUquBOysf4fFo7L8U5O0rVwRlqAKDyuyvf0gNA/viewform" class="link-card guru" target="_blank">
-                    <div class="icon-wrapper"><i class="fa-solid fa-user-check"></i></div>
-                    <div class="card-content">
-                        <span class="card-title">REKOD KEBERADAAN GURU</span>
-                        <span class="card-desc">Borang pengesahan kehadiran / keberadaan</span>
-                    </div>
+                <a href="https://drive.google.com/drive/folders/1UJBAwL0ctB9TV9YKfd61B_cG2MGX8SsN" target="_blank" class="card">
+                    <i class="fas fa-users"></i>
+                    <span class="title">ENROLMEN PELAJAR</span>
+                    <span class="desc">Statistik Penuh</span>
                 </a>
-                <a href="https://drive.google.com/drive/folders/1gzI5uYMOobV6KWQVf4JSi6SkIpZIEEAS" class="link-card guru" target="_blank">
-                    <div class="icon-wrapper"><i class="fa-solid fa-calendar-days"></i></div>
-                    <div class="card-content">
-                        <span class="card-title">JADUAL WAKTU 2026</span>
-                        <span class="card-desc">Jadual waktu terkini guru dan kelas</span>
-                    </div>
-                </a>
-                <a href="https://azamcs.blogspot.com/?m=1" class="link-card guru" target="_blank">
-                    <div class="icon-wrapper"><i class="fa-solid fa-calendar"></i></div>
-                    <div class="card-content">
-                        <span class="card-title">TAKWIM SMKATB 2026</span>
-                        <span class="card-desc">Kalendar akademik dan takwim sekolah</span>
-                    </div>
-                </a>
+            </div>
+
+            <div class="footer">
+                One Stop Centre &copy; 2026 | SMKA TOK BACHOK
             </div>
         </div>
-
-        <div class="category-section">
-            <div class="category-title" style="color: #059669;">
-                <i class="fa-solid fa-server"></i> Data & Perekodan Pusat
-            </div>
-            <div class="links-grid">
-                <a href="https://lookerstudio.google.com/u/0/reporting/7231566a-0bb7-46c6-a499-580111eff1e2/page/S0JeC" class="link-card data" target="_blank">
-                    <div class="icon-wrapper"><i class="fa-solid fa-chart-pie"></i></div>
-                    <div class="card-content">
-                        <span class="card-title">DASHBOARD MMI 2026</span>
-                        <span class="card-desc">Melindungi Masa Instruksional</span>
-                    </div>
-                </a>
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdxxIGJOlqA3TubZeUoRm-bSXnQMkyP2IVc7ZoaY3XQSgBBEA/viewform" class="link-card data" target="_blank">
-                    <div class="icon-wrapper"><i class="fa-solid fa-users-rectangle"></i></div>
-                    <div class="card-content">
-                        <span class="card-title">KEHADIRAN PERHIMPUNAN</span>
-                        <span class="card-desc">Borang rekod kehadiran perhimpunan rasmi</span>
-                    </div>
-                </a>
-                <a href="https://drive.google.com/drive/folders/1UJBAwL0ctB9TV9YKfd61B_cG2MGX8SsN" class="link-card data" target="_blank">
-                    <div class="icon-wrapper"><i class="fa-solid fa-users"></i></div>
-                    <div class="card-content">
-                        <span class="card-title">ENROLMEN PELAJAR</span>
-                        <span class="card-desc">Data dan statistik enrolmen SMKATB</span>
-                    </div>
-                </a>
-            </div>
-        </div>
-
     </div>
 
-    <footer>
-        <h3>SMKA TOK BACHOK</h3>
-        <p>Tangok, 16300 Bachok, Kelantan</p>
-        
-        <p style="margin-top: 20px; font-size: 0.8rem; opacity: 0.5;">&copy; 2026 Hak Cipta Terpelihara Unit Pengurusan SMKATB.</p>
-    </footer>
-
     <script>
-        // 1. SKRIP JAM & TARIKH
+        // --- FUNGSI TOGGLE MENU ---
+        function toggleMenu() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.querySelector('.overlay');
+            
+            if (window.innerWidth <= 768) {
+                sidebar.classList.toggle('active');
+                overlay.classList.toggle('active');
+            }
+        }
+
+        // --- FUNGSI JAM DIGITAL ---
         function updateClock() {
             const now = new Date();
-            let hours = now.getHours();
-            let minutes = now.getMinutes();
-            let seconds = now.getSeconds();
-            let ampm = hours >= 12 ? 'PM' : 'AM';
-            
-            hours = hours % 12;
-            hours = hours ? hours : 12; 
-            minutes = minutes < 10 ? '0' + minutes : minutes;
-            seconds = seconds < 10 ? '0' + seconds : seconds;
-            
-            document.getElementById('jam').innerText = `${hours}:${minutes}:${seconds} ${ampm}`;
-            
-            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-            document.getElementById('tarikh').innerText = now.toLocaleDateString('ms-MY', options);
+
+            const timeString = now.toLocaleTimeString('en-GB', { 
+                hour: '2-digit', 
+                minute: '2-digit', 
+                second: '2-digit' 
+            });
+
+            const dateString = now.toLocaleDateString('ms-MY', { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            });
+
+            document.getElementById('clock').innerText = timeString;
+            document.getElementById('date').innerText = dateString;
         }
+
         setInterval(updateClock, 1000);
         updateClock();
 
-        // 2. SKRIP ENROLMEN DARI GOOGLE SHEETS
+        // --- FUNGSI ENROLMEN DARI GOOGLE SHEETS ---
         const ssID = '1M5HM5y6qgWshsLqB8CoReXiF54sFiUBiS_dVqUtK0gk';
         const url = `https://docs.google.com/spreadsheets/d/${ssID}/gviz/tq?tqx=out:csv`;
 
