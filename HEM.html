@@ -1,112 +1,303 @@
 <!DOCTYPE html>
 <html lang="ms">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Unit Hal Ehwal Murid (HEM) SMKATB</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal HEM SMKA Tok Bachok</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #065f46; /* Hijau Zamrud Gelap */
+            --secondary: #10b981; /* Hijau Terang */
+            --accent: #f59e0b; /* Kuning Emas */
+            --bg: #f8fafc;
+            --surface: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+        }
 
-<style>
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f6f9;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-}
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
 
-header {
-    background-color: #0b3d91;
-    color: white;
-    padding: 30px 15px;
-}
+        /* HEADER & HERO SECTION */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 70px 20px;
+            text-align: center;
+            border-bottom: 5px solid var(--accent);
+        }
 
-.logo {
-    width: 120px;
-    height: auto;
-    margin-bottom: 15px;
-}
+        .logo-container img {
+            width: 110px;
+            height: auto;
+            background: white;
+            padding: 10px;
+            border-radius: 50%;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+        }
 
-h1 {
-    margin: 5px 0;
-    font-size: 24px;
-}
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
 
-.subtitle {
-    font-size: 14px;
-    opacity: 0.9;
-}
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            font-weight: 500;
+            max-width: 600px;
+            margin: 0 auto;
+        }
 
-.container {
-    padding: 30px 15px;
-}
+        /* KANDUNGAN UTAMA */
+        .container {
+            max-width: 1100px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
 
-.link-btn {
-    display: block;
-    max-width: 420px;
-    margin: 10px auto;
-    padding: 14px;
-    background-color: white;
-    color: #0b3d91;
-    text-decoration: none;
-    border-radius: 6px;
-    border: 1px solid #dcdcdc;
-    font-weight: bold;
-    transition: 0.2s;
-}
+        /* SEKSYEN KATEGORI PAUTAN */
+        .category-section {
+            margin-bottom: 40px;
+            background: var(--surface);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            border: 1px solid var(--border);
+        }
 
-.link-btn:hover {
-    background-color: #0b3d91;
-    color: white;
-}
+        .category-title {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f1f5f9;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
 
-footer {
-    margin-top: 30px;
-    padding: 15px;
-    font-size: 13px;
-    color: #666;
-}
-</style>
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+        }
+
+        /* REKA BENTUK KAD PAUTAN */
+        .link-card {
+            background: var(--surface);
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            text-decoration: none;
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            transition: all 0.2s ease;
+        }
+
+        .link-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--secondary);
+            box-shadow: 0 10px 20px rgba(16, 185, 129, 0.1);
+        }
+
+        .icon-wrapper {
+            width: 45px;
+            height: 45px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        /* Tema Warna Ikon Kategori HEM */
+        .disiplin .icon-wrapper { background: #fee2e2; color: #dc2626; } /* Merah untuk Disiplin */
+        .ubk .icon-wrapper { background: #e0e7ff; color: #4f46e5; } /* Biru/Nila untuk UBK */
+        .asrama .icon-wrapper { background: #fef3c7; color: #d97706; } /* Oren untuk Asrama */
+        .kebajikan .icon-wrapper { background: #dcfce7; color: #16a34a; } /* Hijau untuk Kebajikan */
+
+        .card-content { display: flex; flex-direction: column; }
+        .card-title { font-size: 0.95rem; font-weight: 700; margin-bottom: 3px; line-height: 1.3; }
+        .card-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.4; }
+
+        /* FOOTER */
+        footer {
+            background: #0f172a;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 40px;
+        }
+
+        footer h3 { font-size: 1.2rem; margin-bottom: 10px; color: #f8fafc; }
+        footer p { font-size: 0.9rem; color: #94a3b8; margin-bottom: 5px; }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 1.8rem; }
+            .links-grid { grid-template-columns: 1fr; }
+            .category-section { padding: 20px; }
+        }
+    </style>
 </head>
-
 <body>
 
-<header>
-    <!-- Logo Sekolah -->
-    <img src="logo.png" alt="Logo SMKATB" class="logo">
-    <h1>UNIT HAL EHWAL MURID (HEM)</h1>
-    <div class="subtitle">SMKATB</div>
-</header>
+    <header>
+        <div class="logo-container">
+            <img src="logo.png" alt="Logo SMKA Tok Bachok">
+        </div>
+        <h1>PORTAL UNIT HEM</h1>
+        <p>Pengurusan Hal Ehwal Murid & Sahsiah Pelajar</p>
+    </header>
 
-<div class="container">
+    <div class="container">
+        
+        <div class="category-section">
+            <div class="category-title" style="color: #dc2626;">
+                <i class="fa-solid fa-scale-balanced"></i> Pengurusan Disiplin & Sahsiah
+            </div>
+            <div class="links-grid">
+                <a href="#" class="link-card disiplin" target="_blank">
+                    <div class="icon-wrapper"><i class="fa-solid fa-gavel"></i></div>
+                    <div class="card-content">
+                        <span class="card-title">Sistem SSDM V2.0</span>
+                        <span class="card-desc">Sistem Sahsiah Diri Murid KPM</span>
+                    </div>
+                </a>
+                <a href="#" class="link-card disiplin" target="_blank">
+                    <div class="icon-wrapper"><i class="fa-solid fa-user-shield"></i></div>
+                    <div class="card-content">
+                        <span class="card-title">Lembaga Pengawas</span>
+                        <span class="card-desc">Senarai AJK dan Jadual Bertugas Pengawas</span>
+                    </div>
+                </a>
+                <a href="#" class="link-card disiplin" target="_blank">
+                    <div class="icon-wrapper"><i class="fa-solid fa-file-signature"></i></div>
+                    <div class="card-content">
+                        <span class="card-title">Borang Aduan Salahlaku</span>
+                        <span class="card-desc">Borang pelaporan disiplin untuk guru</span>
+                    </div>
+                </a>
+            </div>
+        </div>
 
-    <!-- MASUKKAN LINK SEBENAR DI DALAM href -->
+        <div class="category-section">
+            <div class="category-title" style="color: #4f46e5;">
+                <i class="fa-solid fa-hands-holding-child"></i> Bimbingan & Kaunseling (UBK)
+            </div>
+            <div class="links-grid">
+                <a href="#" class="link-card ubk" target="_blank">
+                    <div class="icon-wrapper"><i class="fa-solid fa-comments"></i></div>
+                    <div class="card-content">
+                        <span class="card-title">Tempahan Sesi Kaunseling</span>
+                        <span class="card-desc">Temujanji sesi bimbingan bersama guru UBK</span>
+                    </div>
+                </a>
+                <a href="#" class="link-card ubk" target="_blank">
+                    <div class="icon-wrapper"><i class="fa-solid fa-clipboard-question"></i></div>
+                    <div class="card-content">
+                        <span class="card-title">Ujian Psikometrik</span>
+                        <span class="card-desc">Pautan instrumen pentaksiran psikometrik</span>
+                    </div>
+                </a>
+                <a href="#" class="link-card ubk" target="_blank">
+                    <div class="icon-wrapper"><i class="fa-solid fa-bullseye"></i></div>
+                    <div class="card-content">
+                        <span class="card-title">Program Mentor Mentee</span>
+                        <span class="card-desc">Senarai kumpulan dan modul pelaksanaan</span>
+                    </div>
+                </a>
+            </div>
+        </div>
 
-    <a class="link-btn" href="#" target="_blank">PENGURUSAN HEM SMKATB 2026</a>
-    <a class="link-btn" href="#" target="_blank">UNIT BIMBINGAN & KAUNSELING</a>
-    <a class="link-btn" href="#" target="_blank">UNIT SPBT</a>
-    <a class="link-btn" href="#" target="_blank">UNIT BIASISWA</a>
-    <a class="link-btn" href="#" target="_blank">UNIT KEBAJIKAN</a>
-    <a class="link-btn" href="#" target="_blank">UNIT DISIPLIN</a>
-    <a class="link-btn" href="#" target="_blank">UNIT SURAU</a>
-    <a class="link-btn" href="#" target="_blank">UNIT SUMUR</a>
-    <a class="link-btn" href="#" target="_blank">UNIT PRS</a>
-    <a class="link-btn" href="#" target="_blank">UNIT PROGRAM 3K</a>
-    <a class="link-btn" href="#" target="_blank">UNIT PPDA</a>
-    <a class="link-btn" href="#" target="_blank">UNIT PONTENG</a>
-    <a class="link-btn" href="#" target="_blank">UNIT PENGURUSAN MURID</a>
-    <a class="link-btn" href="#" target="_blank">UNIT PENGURUSAN KELAS</a>
-    <a class="link-btn" href="#" target="_blank">UNIT PENGURUSAN ASRAMA</a>
-    <a class="link-btn" href="#" target="_blank">UNIT PENGAWAS</a>
-    <a class="link-btn" href="#" target="_blank">UNIT KPJ</a>
-    <a class="link-btn" href="#" target="_blank">UNIT KESIHATAN MURID</a>
-    <a class="link-btn" href="#" target="_blank">UNIT KANTIN</a>
-    <a class="link-btn" href="#" target="_blank">LAPORAN KEHADIRAN BULANAN</a>
+        <div class="category-section">
+            <div class="category-title" style="color: #d97706;">
+                <i class="fa-solid fa-building-user"></i> Pengurusan Asrama
+            </div>
+            <div class="links-grid">
+                <a href="#" class="link-card asrama" target="_blank">
+                    <div class="icon-wrapper"><i class="fa-solid fa-bed"></i></div>
+                    <div class="card-content">
+                        <span class="card-title">Sistem E-Asrama</span>
+                        <span class="card-desc">Pendaftaran dan penempatan dorm pelajar</span>
+                    </div>
+                </a>
+                <a href="#" class="link-card asrama" target="_blank">
+                    <div class="icon-wrapper"><i class="fa-solid fa-clock"></i></div>
+                    <div class="card-content">
+                        <span class="card-title">Jadual Keluar / Masuk (Outing)</span>
+                        <span class="card-desc">Rekod pergerakan pelajar asrama</span>
+                    </div>
+                </a>
+                <a href="#" class="link-card asrama" target="_blank">
+                    <div class="icon-wrapper"><i class="fa-solid fa-utensils"></i></div>
+                    <div class="card-content">
+                        <span class="card-title">Menu Dewan Makan</span>
+                        <span class="card-desc">Jadual dan menu makanan asrama terkini</span>
+                    </div>
+                </a>
+            </div>
+        </div>
 
-</div>
+        <div class="category-section">
+            <div class="category-title" style="color: #16a34a;">
+                <i class="fa-solid fa-hand-holding-dollar"></i> Kebajikan & Bantuan
+            </div>
+            <div class="links-grid">
+                <a href="#" class="link-card kebajikan" target="_blank">
+                    <div class="icon-wrapper"><i class="fa-solid fa-sack-dollar"></i></div>
+                    <div class="card-content">
+                        <span class="card-title">Bantuan Awal Persekolahan (BAP)</span>
+                        <span class="card-desc">Senarai penerima dan rekod agihan</span>
+                    </div>
+                </a>
+                <a href="#" class="link-card kebajikan" target="_blank">
+                    <div class="icon-wrapper"><i class="fa-solid fa-graduation-cap"></i></div>
+                    <div class="card-content">
+                        <span class="card-title">Biasiswa (BKP & Lain-lain)</span>
+                        <span class="card-desc">Pengurusan biasiswa pelajar kelayakan</span>
+                    </div>
+                </a>
+                <a href="#" class="link-card kebajikan" target="_blank">
+                    <div class="icon-wrapper"><i class="fa-solid fa-kit-medical"></i></div>
+                    <div class="card-content">
+                        <span class="card-title">Rekod Kesihatan KKM</span>
+                        <span class="card-desc">Buku rekod kesihatan dan suntikan pelajar</span>
+                    </div>
+                </a>
+            </div>
+        </div>
 
-<footer>
-    © 2026 Unit Hal Ehwal Murid SMKATB
-</footer>
+    </div>
+
+    <footer>
+        <h3>UNIT HAL EHWAL MURID (HEM)</h3>
+        <p>SMKA Tok Bachok, Tangok, 16300 Bachok, Kelantan</p>
+        
+        <p style="margin-top: 20px; font-size: 0.8rem; opacity: 0.5;">&copy; 2026 Hak Cipta Terpelihara Unit HEM SMKATB.</p>
+    </footer>
 
 </body>
 </html>
