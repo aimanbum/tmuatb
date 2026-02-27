@@ -3,371 +3,458 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal HEM SMKA Tok Bachok</title>
+    <title>UNIT HEM SMKA TOK BACHOK</title>
+    <link rel="icon" type="image/png" href="logo.png">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
+
     <style>
         :root {
-            --primary: #065f46; /* Hijau Zamrud Gelap */
-            --secondary: #10b981; /* Hijau Terang */
-            --accent: #f59e0b; /* Kuning Emas */
-            --bg: #f8fafc;
-            --surface: #ffffff;
-            --text-main: #0f172a;
-            --text-muted: #64748b;
-            --border: #e2e8f0;
+            /* Warna ditukar kepada tema Hijau HEM */
+            --primary-color: #064e3b; 
+            --secondary-color: #047857;
+            --accent-color: #f59e0b; /* Kuning Emas dikekalkan */
+            --bg-color: #f0f2f5;
+            --card-bg: #ffffff;
+            --text-color: #333;
+            --sidebar-width: 260px;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg);
-            color: var(--text-main);
-            line-height: 1.6;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            scroll-behavior: smooth;
         }
 
-        /* HEADER & HERO SECTION */
-        header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
-            padding: 60px 20px;
+        /* --- STYLE JAM DIGITAL --- */
+        .clock-widget {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
             text-align: center;
-            border-bottom: 5px solid var(--accent);
+            border: 1px solid rgba(255,255,255,0.15);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .clock-time {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--accent-color);
+            letter-spacing: 2px;
+            font-family: 'Courier New', monospace;
+            margin-bottom: 5px;
         }
 
-        .logo-container img {
-            width: 100px;
+        .clock-date {
+            font-size: 12px;
+            color: rgba(255,255,255,0.9);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* --- MOBILE NAV BAR --- */
+        .mobile-header {
+            display: none;
+            background: var(--primary-color);
+            color: white;
+            padding: 15px 20px;
+            align-items: center;
+            justify-content: space-between;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 999;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            box-sizing: border-box;
+        }
+
+        .menu-btn {
+            font-size: 24px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: white;
+        }
+
+        .mobile-title {
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        /* --- LAYOUT UTAMA --- */
+        .app-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* --- SIDEBAR --- */
+        .sidebar {
+            width: var(--sidebar-width);
+            background: linear-gradient(180deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 20px;
+            position: fixed;
+            height: 100%;
+            overflow-y: auto;
+            z-index: 1000;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .sidebar-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .logo-sekolah {
+            width: 70px;
             height: auto;
             background: white;
-            padding: 10px;
             border-radius: 50%;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            margin-bottom: 20px;
-        }
-
-        header h1 {
-            font-size: 2.2rem;
-            font-weight: 800;
-            letter-spacing: -1px;
+            padding: 5px;
             margin-bottom: 10px;
+        }
+
+        .menu-title {
+            font-size: 12px;
             text-transform: uppercase;
+            letter-spacing: 1px;
+            color: rgba(255,255,255,0.6);
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-weight: bold;
         }
 
-        header p {
-            font-size: 1rem;
-            opacity: 0.9;
-            font-weight: 500;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* KANDUNGAN UTAMA */
-        .container {
-            max-width: 1100px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-
-        /* SEKSYEN KATEGORI PAUTAN */
-        .category-section {
-            margin-bottom: 35px;
-            background: var(--surface);
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
-            border: 1px solid var(--border);
-        }
-
-        .category-title {
-            font-size: 1.2rem;
-            font-weight: 800;
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid #f1f5f9;
+        .nav-link {
             display: flex;
             align-items: center;
-            gap: 12px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        /* Warna Tajuk Kategori */
-        .title-induk { color: #0d9488; } /* Teal */
-        .title-disiplin { color: #dc2626; } /* Merah */
-        .title-bimbingan { color: #4f46e5; } /* Indigo */
-        .title-kebajikan { color: #059669; } /* Emerald */
-        .title-fasiliti { color: #d97706; } /* Oren */
-
-        .links-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 15px;
-        }
-
-        /* REKA BENTUK KAD PAUTAN */
-        .link-card {
-            background: var(--surface);
-            border-radius: 12px;
-            padding: 15px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
+            padding: 12px 15px;
+            color: rgba(255,255,255,0.9);
             text-decoration: none;
-            color: var(--text-main);
-            border: 1px solid var(--border);
-            transition: all 0.2s ease;
+            border-radius: 8px;
+            margin-bottom: 5px;
+            transition: 0.3s;
+            font-size: 14px;
         }
 
-        .link-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05);
+        .nav-link:hover {
+            background: rgba(255,255,255,0.15);
+            color: white;
+            transform: translateX(5px);
         }
 
-        .icon-wrapper {
-            width: 45px;
-            height: 45px;
-            border-radius: 10px;
+        .nav-link i { margin-right: 10px; width: 20px; text-align: center;}
+
+        /* --- OVERLAY --- */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 999;
+        }
+
+        .overlay.active { display: block; }
+
+        /* --- MAIN CONTENT --- */
+        .main-content {
+            margin-left: var(--sidebar-width);
+            flex: 1;
+            padding: 40px;
+            transition: margin 0.3s;
+        }
+
+        h2.page-title {
+            color: var(--primary-color);
+            border-left: 5px solid var(--accent-color);
+            padding-left: 15px;
+            margin-bottom: 30px;
+        }
+
+        /* SECTION HEADERS */
+        .category-header {
+            background: #e3e8ee;
+            color: var(--primary-color);
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-top: 40px; 
+            margin-bottom: 15px;
+            font-weight: bold;
             display: flex;
+            align-items: center;
+            scroll-margin-top: 80px; 
+        }
+        .category-header i { margin-right: 10px; }
+
+        /* GRID SYSTEM */
+        .grid-panitia {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 15px;
+        }
+
+        /* CARD STYLE */
+        .card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 20px 15px;
+            text-align: center;
+            text-decoration: none;
+            color: var(--primary-color);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            font-size: 18px;
-            flex-shrink: 0;
+            height: 100px;
         }
 
-        /* Tema Warna Ikon Berdasarkan Kategori */
-        .induk .icon-wrapper { background: #ccfbf1; color: #0f766e; }
-        .disiplin .icon-wrapper { background: #fee2e2; color: #b91c1c; }
-        .bimbingan .icon-wrapper { background: #e0e7ff; color: #4338ca; }
-        .kebajikan .icon-wrapper { background: #d1fae5; color: #047857; }
-        .fasiliti .icon-wrapper { background: #fef3c7; color: #b45309; }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(6, 78, 59, 0.15); /* Hijau shadow */
+            border-color: var(--primary-color);
+        }
 
-        .card-content { display: flex; flex-direction: column; }
-        .card-title { font-size: 0.9rem; font-weight: 700; margin-bottom: 2px; line-height: 1.2; text-transform: uppercase; }
-        .card-desc { font-size: 0.75rem; color: var(--text-muted); line-height: 1.3; }
+        .card i {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: var(--secondary-color);
+        }
+
+        .card span {
+            font-size: 13px;
+            font-weight: 600;
+            line-height: 1.3;
+        }
 
         /* FOOTER */
-        footer {
-            background: #0f172a;
-            color: white;
+        .footer {
+            margin-top: 50px;
             text-align: center;
-            padding: 30px 20px;
-            margin-top: 40px;
+            font-size: 12px;
+            color: #888;
+            border-top: 1px solid #ddd;
+            padding-top: 20px;
         }
 
-        footer h3 { font-size: 1.1rem; margin-bottom: 5px; color: #f8fafc; }
-        footer p { font-size: 0.8rem; color: #94a3b8; margin-bottom: 5px; }
-
+        /* --- RESPONSIVE MOBILE --- */
         @media (max-width: 768px) {
-            header h1 { font-size: 1.8rem; }
-            .links-grid { grid-template-columns: 1fr; }
-            .category-section { padding: 20px; }
+            .mobile-header { display: flex; } 
+            
+            .sidebar { 
+                transform: translateX(-100%); 
+                width: 260px;
+                box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+            }
+            
+            .sidebar.active {
+                transform: translateX(0); 
+            }
+
+            .main-content { 
+                margin-left: 0; 
+                padding: 20px; 
+                padding-top: 80px; 
+            }
+            
+            .grid-panitia { grid-template-columns: repeat(2, 1fr); }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="logo-container">
-            <img src="logo.png" alt="Logo SMKA Tok Bachok">
-        </div>
-        <h1>PORTAL UNIT HEM</h1>
-        <p>Sistem Pengurusan Hal Ehwal Murid & Pembangunan Sahsiah SMKATB</p>
-    </header>
-
-    <div class="container">
-        
-        <div class="category-section">
-            <div class="category-title title-induk">
-                <i class="fa-solid fa-folder-tree"></i> Pengurusan Induk & Kehadiran
-            </div>
-            <div class="links-grid">
-                <a href="https://drive.google.com/drive/folders/1qDpz8Skx-PKU-e74pEm3drA70UlyHxyo?usp=sharing" class="link-card induk" target="_blank">
-                    <div class="icon-wrapper"><i class="fa-solid fa-folder-open"></i></div>
-                    <div class="card-content">
-                        <span class="card-title">PENGURUSAN HEM</span>
-                        <span class="card-desc">Folder utama fail jawatankuasa HEM</span>
-                    </div>
-                </a>
-                <a href="https://drive.google.com/drive/folders/16m8lmdZbgEKU6sZWjJV9a1px4W4VfTA9?usp=sharing" class="link-card induk" target="_blank">
-                    <div class="icon-wrapper"><i class="fa-solid fa-users-rectangle"></i></div>
-                    <div class="card-content">
-                        <span class="card-title">UNIT PENGURUSAN MURID</span>
-                        <span class="card-desc">Data profil & rekod pelajar</span>
-                    </div>
-                </a>
-                <a href="https://drive.google.com/drive/folders/11zZKuJmIAXm00foJiJWyDR4SUkBw89nN?usp=sharing" class="link-card induk" target="_blank">
-                    <div class="icon-wrapper"><i class="fa-solid fa-chalkboard-user"></i></div>
-                    <div class="card-content">
-                        <span class="card-title">UNIT PENGURUSAN KELAS</span>
-                        <span class="card-desc">Rekod, jadual tugasan & keceriaan kelas</span>
-                    </div>
-                </a>
-                <a href="https://drive.google.com/drive/folders/18Wcm1afpQlvMcdoWId8BK3vbSkSGEqed?usp=sharing" class="link-card induk" target="_blank">
-                    <div class="icon-wrapper"><i class="fa-solid fa-calendar-check"></i></div>
-                    <div class="card-content">
-                        <span class="card-title">LAPORAN KEHADIRAN</span>
-                        <span class="card-desc">Analisis kehadiran bulanan pelajar</span>
-                    </div>
-                </a>
-            </div>
-        </div>
-
-        <div class="category-section">
-            <div class="category-title title-disiplin">
-                <i class="fa-solid fa-scale-balanced"></i> Disiplin & Kepimpinan
-            </div>
-            <div class="links-grid">
-                <a href="https://drive.google.com/drive/folders/1iR0f1GAYog21vlWyNkoMWNlnPC4fZrAC?usp=drive_link" class="link-card disiplin" target="_blank">
-                    <div class="icon-wrapper"><i class="fa-solid fa-gavel"></i></div>
-                    <div class="card-content">
-                        <span class="card-title">UNIT DISIPLIN</span>
-                        <span class="card-desc">Pengurusan sahsiah & SSDM</span>
-                    </div>
-                </a>
-                <a href="https://drive.google.com/drive/folders/1M1A8-WVWN-foPuV2xNkA8zi0Jos6YXc2?usp=sharing" class="link-card disiplin" target="_blank">
-                    <div class="icon-wrapper"><i class="fa-solid fa-user-shield"></i></div>
-                    <div class="card-content">
-                        <span class="card-title">UNIT PENGAWAS</span>
-                        <span class="card-desc">Badan pengawas & kepimpinan pelajar</span>
-                    </div>
-                </a>
-                <a href="https://drive.google.com/drive/folders/1O5hXHrpqduUTx-a2T_ZjqWKVM3fH9Qxb?usp=sharing" class="link-card disiplin" target="_blank">
-                    <div class="icon-wrapper"><i class="fa-solid fa-user-xmark"></i></div>
-                    <div class="card-content">
-                        <span class="card-title">UNIT PONTENG</span>
-                        <span class="card-desc">Rekod amaran & tindakan ponteng sekolah</span>
-                    </div>
-                </a>
-                <a href="https://drive.google.com/drive/folders/1tJNwfbQiMWj4gi2O9SqX4BS3yhtFUGXW?usp=sharing" class="link-card disiplin" target="_blank">
-                    <div class="icon-wrapper"><i class="fa-solid fa-handcuffs"></i></div>
-                    <div class="card-content">
-                        <span class="card-title">UNIT KPJ</span>
-                        <span class="card-desc">Kelab Pencegahan Jenayah</span>
-                    </div>
-                </a>
-            </div>
-        </div>
-
-        <div class="category-section">
-            <div class="category-title title-bimbingan">
-                <i class="fa-solid fa-hands-holding-child"></i> Bimbingan & Sahsiah
-            </div>
-            <div class="links-grid">
-                <a href="https://drive.google.com/drive/folders/1Fl11BsOTgViTaP7dNgMW1LP9m_Kwghh-?usp=drive_link" class="link-card bimbingan" target="_blank">
-                    <div class="icon-wrapper"><i class="fa-solid fa-comments"></i></div>
-                    <div class="card-content">
-                        <span class="card-title">UNIT UBK</span>
-                        <span class="card-desc">Unit Bimbingan dan Kaunseling</span>
-                    </div>
-                </a>
-                <a href="https://drive.google.com/drive/folders/16KKFbD3aUhEKyGS73Gm5I-lbUqA0PDap?usp=sharing" class="link-card bimbingan" target="_blank">
-                    <div class="icon-wrapper"><i class="fa-solid fa-people-arrows"></i></div>
-                    <div class="card-content">
-                        <span class="card-title">UNIT PRS</span>
-                        <span class="card-desc">Pembimbing Rakan Sebaya</span>
-                    </div>
-                </a>
-                <a href="https://drive.google.com/drive/folders/1bKy8x88q_Id2DYpzn3N3KARLsHCZgJdt?usp=sharing" class="link-card bimbingan" target="_blank">
-                    <div class="icon-wrapper"><i class="fa-solid fa-star-and-crescent"></i></div>
-                    <div class="card-content">
-                        <span class="card-title">UNIT SUMUR</span>
-                        <span class="card-desc">Sahsiah Unggul Murid</span>
-                    </div>
-                </a>
-                <a href="https://drive.google.com/drive/folders/1B0vXXKfwi5OQXZS8ndt3naMnfgaLkiIT?usp=sharing" class="link-card bimbingan" target="_blank">
-                    <div class="icon-wrapper"><i class="fa-solid fa-mosque"></i></div>
-                    <div class="card-content">
-                        <span class="card-title">UNIT SURAU</span>
-                        <span class="card-desc">Pengurusan surau & aktiviti kerohanian</span>
-                    </div>
-                </a>
-            </div>
-        </div>
-
-        <div class="category-section">
-            <div class="category-title title-kebajikan">
-                <i class="fa-solid fa-hand-holding-dollar"></i> Kebajikan & Bantuan
-            </div>
-            <div class="links-grid">
-                <a href="https://drive.google.com/drive/folders/1nvpLHfCStm7-XKIAyhnUpJDyfXZqhBMb" class="link-card kebajikan" target="_blank">
-                    <div class="icon-wrapper"><i class="fa-solid fa-hand-holding-heart"></i></div>
-                    <div class="card-content">
-                        <span class="card-title">UNIT KEBAJIKAN</span>
-                        <span class="card-desc">Pengurusan bantuan & sumbangan pelajar</span>
-                    </div>
-                </a>
-                <a href="https://drive.google.com/drive/folders/1opuxefG2kAfaj4ZmR9VC4QXaSoyZ3TpM" class="link-card kebajikan" target="_blank">
-                    <div class="icon-wrapper"><i class="fa-solid fa-graduation-cap"></i></div>
-                    <div class="card-content">
-                        <span class="card-title">UNIT BIASISWA</span>
-                        <span class="card-desc">Pengurusan biasiswa KPM & swasta</span>
-                    </div>
-                </a>
-                <a href="https://drive.google.com/drive/folders/1gyq6wXS2FA7ju45Pa65a3sFtpyegtzB6?usp=sharing" class="link-card kebajikan" target="_blank">
-                    <div class="icon-wrapper"><i class="fa-solid fa-book"></i></div>
-                    <div class="card-content">
-                        <span class="card-title">UNIT SPBT</span>
-                        <span class="card-desc">Skim Pinjaman Buku Teks</span>
-                    </div>
-                </a>
-            </div>
-        </div>
-
-        <div class="category-section">
-            <div class="category-title title-fasiliti">
-                <i class="fa-solid fa-building-user"></i> Fasiliti, Kesihatan & Keselamatan
-            </div>
-            <div class="links-grid">
-                <a href="https://drive.google.com/drive/folders/1xmG_sccFB9kWKGEWjgwSTpyK_4aLnBgW?usp=sharing" class="link-card fasiliti" target="_blank">
-                    <div class="icon-wrapper"><i class="fa-solid fa-bed"></i></div>
-                    <div class="card-content">
-                        <span class="card-title">UNIT ASRAMA</span>
-                        <span class="card-desc">Pengurusan fasiliti & penghuni asrama</span>
-                    </div>
-                </a>
-                <a href="https://drive.google.com/drive/folders/1LsaJGLaoLcTvGXle7Yv9-aATWA16rKJ-?usp=sharing" class="link-card fasiliti" target="_blank">
-                    <div class="icon-wrapper"><i class="fa-solid fa-kit-medical"></i></div>
-                    <div class="card-content">
-                        <span class="card-title">UNIT KESIHATAN MURID</span>
-                        <span class="card-desc">Rekod kesihatan & rawatan pelajar</span>
-                    </div>
-                </a>
-                <a href="https://drive.google.com/drive/folders/1v9Q6Bxr1JWrJrie7tvSrFhFq-omLPow3?usp=sharing" class="link-card fasiliti" target="_blank">
-                    <div class="icon-wrapper"><i class="fa-solid fa-broom"></i></div>
-                    <div class="card-content">
-                        <span class="card-title">UNIT PROGRAM 3K</span>
-                        <span class="card-desc">Kebersihan, Kesihatan & Keselamatan</span>
-                    </div>
-                </a>
-                <a href="https://drive.google.com/drive/folders/1KmCZvw-rAPImbSYeusQPKn3__gYWxk_q?usp=sharing" class="link-card fasiliti" target="_blank">
-                    <div class="icon-wrapper"><i class="fa-solid fa-utensils"></i></div>
-                    <div class="card-content">
-                        <span class="card-title">UNIT KANTIN</span>
-                        <span class="card-desc">Pemantauan tender & menu kantin sekolah</span>
-                    </div>
-                </a>
-                <a href="https://drive.google.com/drive/folders/1dqeZJhYRe9_0DrTANxsQW-n-3lLOQakR?usp=sharing" class="link-card fasiliti" target="_blank">
-                    <div class="icon-wrapper"><i class="fa-solid fa-ban"></i></div>
-                    <div class="card-content">
-                        <span class="card-title">UNIT PPDA</span>
-                        <span class="card-desc">Pendidikan Pencegahan Dadah</span>
-                    </div>
-                </a>
-            </div>
-        </div>
-
+    <div class="mobile-header">
+        <div class="mobile-title">UNIT HEM SMKATB</div>
+        <button class="menu-btn" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </button>
     </div>
 
-    <footer>
-        <h3>UNIT HAL EHWAL MURID (HEM)</h3>
-        <p>SMKA Tok Bachok, Tangok, 16300 Bachok, Kelantan</p>
+    <div class="overlay" onclick="toggleMenu()"></div>
+
+    <div class="app-container">
         
-        <p style="margin-top: 15px; font-size: 0.8rem; opacity: 0.5;">&copy; 2026 Hak Cipta Terpelihara Unit HEM SMKATB.</p>
-    </footer>
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <img src="logo.png" alt="Logo" class="logo-sekolah">
+                <div style="font-weight:bold; font-size:14px;">UNIT HEM</div>
+                <div style="font-size:11px; opacity:0.8;">SMKA TOK BACHOK</div>
+                
+                <div class="clock-widget">
+                    <div class="clock-time" id="clock">00:00:00</div>
+                    <div class="clock-date" id="date">MEMUATKAN...</div>
+                </div>
+            </div>
+
+            <div class="menu-title">NAVIGASI KATEGORI</div>
+            <a href="#induk" class="nav-link" onclick="toggleMenu()"><i class="fas fa-folder-tree"></i> Pengurusan Induk</a>
+            <a href="#disiplin" class="nav-link" onclick="toggleMenu()"><i class="fas fa-scale-balanced"></i> Disiplin & Pengawas</a>
+            <a href="#bimbingan" class="nav-link" onclick="toggleMenu()"><i class="fas fa-hands-holding-child"></i> Bimbingan & Sahsiah</a>
+            <a href="#kebajikan" class="nav-link" onclick="toggleMenu()"><i class="fas fa-hand-holding-dollar"></i> Kebajikan & Bantuan</a>
+            <a href="#fasiliti" class="nav-link" onclick="toggleMenu()"><i class="fas fa-building-user"></i> Fasiliti & Kesihatan</a>
+            
+            <div class="menu-title">Aplikasi KPM</div>
+            <a href="https://ssdm.moe.gov.my/" target="_blank" class="nav-link"><i class="fas fa-gavel"></i> SSDM V2.0</a>
+            <a href="https://apdm.moe.gov.my/" target="_blank" class="nav-link"><i class="fas fa-users"></i> APDM</a>
+            <a href="https://idme.moe.gov.my/" target="_blank" class="nav-link"><i class="fas fa-id-card"></i> IDME</a>
+        </div>
+
+        <div class="main-content">
+            <h2 class="page-title">e-FOLDER UNIT HAL EHWAL MURID</h2>
+
+            <div id="induk" class="category-header"><i class="fas fa-folder-tree"></i> PENGURUSAN INDUK & KEHADIRAN</div>
+            <div class="grid-panitia">
+                <a href="https://drive.google.com/drive/folders/1qDpz8Skx-PKU-e74pEm3drA70UlyHxyo?usp=sharing" target="_blank" class="card">
+                    <i class="fas fa-folder-open"></i>
+                    <span>Pengurusan HEM</span>
+                </a>
+                <a href="https://drive.google.com/drive/folders/16m8lmdZbgEKU6sZWjJV9a1px4W4VfTA9?usp=sharing" target="_blank" class="card">
+                    <i class="fas fa-users-rectangle"></i>
+                    <span>Pengurusan Murid</span>
+                </a>
+                <a href="https://drive.google.com/drive/folders/11zZKuJmIAXm00foJiJWyDR4SUkBw89nN?usp=sharing" target="_blank" class="card">
+                    <i class="fas fa-chalkboard-user"></i>
+                    <span>Pengurusan Kelas</span>
+                </a>
+                <a href="https://drive.google.com/drive/folders/18Wcm1afpQlvMcdoWId8BK3vbSkSGEqed?usp=sharing" target="_blank" class="card">
+                    <i class="fas fa-calendar-check"></i>
+                    <span>Laporan Kehadiran</span>
+                </a>
+            </div>
+
+            <div id="disiplin" class="category-header"><i class="fas fa-scale-balanced"></i> DISIPLIN & KEPIMPINAN</div>
+            <div class="grid-panitia">
+                <a href="https://drive.google.com/drive/folders/1iR0f1GAYog21vlWyNkoMWNlnPC4fZrAC?usp=drive_link" target="_blank" class="card">
+                    <i class="fas fa-gavel"></i>
+                    <span>Unit Disiplin</span>
+                </a>
+                <a href="https://drive.google.com/drive/folders/1M1A8-WVWN-foPuV2xNkA8zi0Jos6YXc2?usp=sharing" target="_blank" class="card">
+                    <i class="fas fa-user-shield"></i>
+                    <span>Unit Pengawas</span>
+                </a>
+                <a href="https://drive.google.com/drive/folders/1O5hXHrpqduUTx-a2T_ZjqWKVM3fH9Qxb?usp=sharing" target="_blank" class="card">
+                    <i class="fas fa-user-xmark"></i>
+                    <span>Unit Ponteng</span>
+                </a>
+                <a href="https://drive.google.com/drive/folders/1tJNwfbQiMWj4gi2O9SqX4BS3yhtFUGXW?usp=sharing" target="_blank" class="card">
+                    <i class="fas fa-handcuffs"></i>
+                    <span>Unit KPJ</span>
+                </a>
+            </div>
+
+            <div id="bimbingan" class="category-header"><i class="fas fa-hands-holding-child"></i> BIMBINGAN & SAHSIAH</div>
+            <div class="grid-panitia">
+                <a href="https://drive.google.com/drive/folders/1Fl11BsOTgViTaP7dNgMW1LP9m_Kwghh-?usp=drive_link" target="_blank" class="card">
+                    <i class="fas fa-comments"></i>
+                    <span>Unit UBK</span>
+                </a>
+                <a href="https://drive.google.com/drive/folders/16KKFbD3aUhEKyGS73Gm5I-lbUqA0PDap?usp=sharing" target="_blank" class="card">
+                    <i class="fas fa-people-arrows"></i>
+                    <span>Unit PRS</span>
+                </a>
+                <a href="https://drive.google.com/drive/folders/1bKy8x88q_Id2DYpzn3N3KARLsHCZgJdt?usp=sharing" target="_blank" class="card">
+                    <i class="fas fa-star-and-crescent"></i>
+                    <span>Unit SUMUR</span>
+                </a>
+                <a href="https://drive.google.com/drive/folders/1B0vXXKfwi5OQXZS8ndt3naMnfgaLkiIT?usp=sharing" target="_blank" class="card">
+                    <i class="fas fa-mosque"></i>
+                    <span>Unit Surau</span>
+                </a>
+            </div>
+
+            <div id="kebajikan" class="category-header"><i class="fas fa-hand-holding-dollar"></i> KEBAJIKAN & BANTUAN</div>
+            <div class="grid-panitia">
+                <a href="https://drive.google.com/drive/folders/1nvpLHfCStm7-XKIAyhnUpJDyfXZqhBMb" target="_blank" class="card">
+                    <i class="fas fa-hand-holding-heart"></i>
+                    <span>Unit Kebajikan</span>
+                </a>
+                <a href="https://drive.google.com/drive/folders/1opuxefG2kAfaj4ZmR9VC4QXaSoyZ3TpM" target="_blank" class="card">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Unit Biasiswa</span>
+                </a>
+                <a href="https://drive.google.com/drive/folders/1gyq6wXS2FA7ju45Pa65a3sFtpyegtzB6?usp=sharing" target="_blank" class="card">
+                    <i class="fas fa-book"></i>
+                    <span>Unit SPBT</span>
+                </a>
+            </div>
+
+            <div id="fasiliti" class="category-header"><i class="fas fa-building-user"></i> FASILITI, KESIHATAN & KESELAMATAN</div>
+            <div class="grid-panitia">
+                <a href="https://drive.google.com/drive/folders/1xmG_sccFB9kWKGEWjgwSTpyK_4aLnBgW?usp=sharing" target="_blank" class="card">
+                    <i class="fas fa-bed"></i>
+                    <span>Unit Asrama</span>
+                </a>
+                <a href="https://drive.google.com/drive/folders/1LsaJGLaoLcTvGXle7Yv9-aATWA16rKJ-?usp=sharing" target="_blank" class="card">
+                    <i class="fas fa-kit-medical"></i>
+                    <span>Kesihatan Murid</span>
+                </a>
+                <a href="https://drive.google.com/drive/folders/1v9Q6Bxr1JWrJrie7tvSrFhFq-omLPow3?usp=sharing" target="_blank" class="card">
+                    <i class="fas fa-broom"></i>
+                    <span>Program 3K</span>
+                </a>
+                <a href="https://drive.google.com/drive/folders/1KmCZvw-rAPImbSYeusQPKn3__gYWxk_q?usp=sharing" target="_blank" class="card">
+                    <i class="fas fa-utensils"></i>
+                    <span>Unit Kantin</span>
+                </a>
+                <a href="https://drive.google.com/drive/folders/1dqeZJhYRe9_0DrTANxsQW-n-3lLOQakR?usp=sharing" target="_blank" class="card">
+                    <i class="fas fa-ban"></i>
+                    <span>Unit PPDA</span>
+                </a>
+            </div>
+
+            <div class="footer">
+                Unit Hal Ehwal Murid &copy; 2026 | SMKA TOK BACHOK
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Fungsi Toggle Menu untuk Mobile
+        function toggleMenu() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.querySelector('.overlay');
+            
+            if (window.innerWidth <= 768) {
+                sidebar.classList.toggle('active');
+                overlay.classList.toggle('active');
+            }
+        }
+
+        // --- FUNGSI JAM DIGITAL ---
+        function updateClock() {
+            const now = new Date();
+
+            const timeString = now.toLocaleTimeString('en-GB', { 
+                hour: '2-digit', 
+                minute: '2-digit', 
+                second: '2-digit' 
+            });
+
+            const dateString = now.toLocaleDateString('ms-MY', { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            });
+
+            document.getElementById('clock').innerText = timeString;
+            document.getElementById('date').innerText = dateString;
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock();
+    </script>
 
 </body>
 </html>
