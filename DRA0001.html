@@ -16,6 +16,7 @@
             --hem-color: #064e3b; /* Tema Hijau HEM */
             --tmua-color: #4c1d95; /* Tema Ungu TMUA */
             --koku-color: #c2410c; /* Tema Jingga Kokurikulum */
+            --profil-color: #0284c7; /* Tema Biru Muda Profil */
             --bg-color: #f0f2f5;
             --card-bg: #ffffff;
             --text-color: #333;
@@ -66,7 +67,6 @@
             transition: transform 0.3s ease-in-out;
         }
 
-        /* Hilangkan scrollbar untuk sidebar supaya nampak kemas */
         .sidebar::-webkit-scrollbar { width: 5px; }
         .sidebar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 10px; }
 
@@ -156,9 +156,10 @@
             background: #e6f0fa; color: var(--primary-color); padding: 12px 15px; border-radius: 8px;
             margin-top: 30px; margin-bottom: 15px; font-weight: bold; display: flex; align-items: center; border-left: 4px solid var(--secondary-color);
         }
+        .header-profil { background: #e0f2fe; color: var(--profil-color); border-left-color: #0ea5e9; }
         .header-hem { background: #dcfce7; color: var(--hem-color); border-left-color: #10b981; }
         .header-tmua { background: #f3e8ff; color: var(--tmua-color); border-left-color: #a855f7; }
-        .header-koku { background: #ffedd5; color: var(--koku-color); border-left-color: #f97316; } /* Warna Kokurikulum */
+        .header-koku { background: #ffedd5; color: var(--koku-color); border-left-color: #f97316; }
         .category-header i { margin-right: 10px; font-size: 18px; }
 
         /* GRID SYSTEM */
@@ -182,13 +183,32 @@
         .card-koku { color: var(--koku-color); }
         .card-koku:hover { box-shadow: 0 8px 15px rgba(234, 88, 12, 0.1); border-color: var(--koku-color); }
 
+        .card-profil { cursor: default; } /* Kad yang tak boleh di-klik */
+        .card-profil:hover { transform: none; box-shadow: 0 2px 5px rgba(0,0,0,0.05); border-color: transparent; }
+
         .card i { font-size: 28px; margin-bottom: 12px; color: var(--secondary-color); }
         .card-hem i { color: #059669; }
         .card-tmua i { color: #9333ea; }
         .card-koku i { color: #f97316; }
+        .card-profil i { color: #0ea5e9; }
 
         .card span.title { font-size: 13px; font-weight: bold; line-height: 1.2; margin-bottom: 4px; }
         .card span.desc { font-size: 10px; color: #666; line-height: 1.2; }
+
+        /* GAMBAR PENTADBIR */
+        .img-pentadbir-container {
+            background: var(--card-bg);
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .img-pentadbir-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
 
         /* FOOTER */
         .footer { margin-top: 50px; text-align: center; font-size: 12px; color: #888; border-top: 1px solid #ddd; padding-top: 20px; }
@@ -239,6 +259,7 @@
 
             <div class="menu-title">MENU MODUL UTAMA</div>
             <a onclick="bukaModul('onestop', this, 'ONE STOP CENTRE')" class="nav-link active-nav"><i class="fas fa-home"></i> One Stop Centre</a>
+            <a onclick="bukaModul('profil', this, 'PROFIL SEKOLAH')" class="nav-link"><i class="fas fa-school"></i> Profil Sekolah</a>
             <a onclick="bukaModul('kurikulum', this, 'UNIT KURIKULUM')" class="nav-link"><i class="fas fa-book-open"></i> Unit Kurikulum</a>
             <a onclick="bukaModul('kokurikulum', this, 'UNIT KOKURIKULUM')" class="nav-link"><i class="fas fa-person-running"></i> Unit Kokurikulum</a>
             <a onclick="bukaModul('hem', this, 'UNIT HEM')" class="nav-link"><i class="fas fa-hand-holding-heart"></i> Unit HEM</a>
@@ -331,6 +352,32 @@
                     <a href="https://drive.google.com/drive/folders/1UJBAwL0ctB9TV9YKfd61B_cG2MGX8SsN" target="_blank" class="card">
                         <i class="fas fa-users"></i><span class="title">DATA ENROLMEN</span><span class="desc">Statistik Fail Penuh</span>
                     </a>
+                </div>
+            </div>
+
+            <div id="profil" class="modul-section">
+                <h2 class="page-title" style="color: var(--primary-color); border-left-color: #0ea5e9;">PROFIL SMKA TOK BACHOK</h2>
+
+                <div class="category-header header-profil"><i class="fas fa-users-tie"></i> BARISAN PENTADBIR 2026</div>
+                
+                <div class="img-pentadbir-container">
+                    <img src="10.jpg" alt="Barisan Pentadbir SMKA Tok Bachok 2026">
+                </div>
+
+                <div class="category-header header-profil"><i class="fas fa-info-circle"></i> MAKLUMAT KORPORAT</div>
+                <div class="grid-panitia">
+                    <div class="card card-profil">
+                        <i class="fas fa-eye"></i><span class="title">VISI SEKOLAH</span>
+                        <span class="desc" style="font-size: 11px;">"Pendidikan Berkualiti Insan Terdidik Negara Sejahtera"</span>
+                    </div>
+                    <div class="card card-profil">
+                        <i class="fas fa-bullseye"></i><span class="title">MISI SEKOLAH</span>
+                        <span class="desc" style="font-size: 11px;">"Melestarikan Sistem Pendidikan Yang Berkualiti Untuk Membangunkan Potensi Individu Bagi Memenuhi Aspirasi Negara"</span>
+                    </div>
+                    <div class="card card-profil">
+                        <i class="fas fa-music"></i><span class="title">LAGU SEKOLAH</span>
+                        <span class="desc" style="font-size: 11px;">Melahirkan Generasi Terbilang SMKATB</span>
+                    </div>
                 </div>
             </div>
 
