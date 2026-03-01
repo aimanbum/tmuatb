@@ -15,6 +15,7 @@
             --accent-color: #f1c40f; /* Kuning Emas */
             --hem-color: #064e3b; /* Tema Hijau HEM */
             --tmua-color: #4c1d95; /* Tema Ungu TMUA */
+            --koku-color: #c2410c; /* Tema Jingga Kokurikulum */
             --bg-color: #f0f2f5;
             --card-bg: #ffffff;
             --text-color: #333;
@@ -157,6 +158,7 @@
         }
         .header-hem { background: #dcfce7; color: var(--hem-color); border-left-color: #10b981; }
         .header-tmua { background: #f3e8ff; color: var(--tmua-color); border-left-color: #a855f7; }
+        .header-koku { background: #ffedd5; color: var(--koku-color); border-left-color: #f97316; } /* Warna Kokurikulum */
         .category-header i { margin-right: 10px; font-size: 18px; }
 
         /* GRID SYSTEM */
@@ -177,9 +179,13 @@
         .card-tmua { color: var(--tmua-color); }
         .card-tmua:hover { box-shadow: 0 8px 15px rgba(107, 33, 168, 0.1); border-color: var(--tmua-color); }
 
+        .card-koku { color: var(--koku-color); }
+        .card-koku:hover { box-shadow: 0 8px 15px rgba(234, 88, 12, 0.1); border-color: var(--koku-color); }
+
         .card i { font-size: 28px; margin-bottom: 12px; color: var(--secondary-color); }
         .card-hem i { color: #059669; }
         .card-tmua i { color: #9333ea; }
+        .card-koku i { color: #f97316; }
 
         .card span.title { font-size: 13px; font-weight: bold; line-height: 1.2; margin-bottom: 4px; }
         .card span.desc { font-size: 10px; color: #666; line-height: 1.2; }
@@ -234,6 +240,7 @@
             <div class="menu-title">MENU MODUL UTAMA</div>
             <a onclick="bukaModul('onestop', this, 'ONE STOP CENTRE')" class="nav-link active-nav"><i class="fas fa-home"></i> One Stop Centre</a>
             <a onclick="bukaModul('kurikulum', this, 'UNIT KURIKULUM')" class="nav-link"><i class="fas fa-book-open"></i> Unit Kurikulum</a>
+            <a onclick="bukaModul('kokurikulum', this, 'UNIT KOKURIKULUM')" class="nav-link"><i class="fas fa-person-running"></i> Unit Kokurikulum</a>
             <a onclick="bukaModul('hem', this, 'UNIT HEM')" class="nav-link"><i class="fas fa-hand-holding-heart"></i> Unit HEM</a>
             <a onclick="bukaModul('tmua', this, 'LAMAN TMUA')" class="nav-link"><i class="fas fa-book-quran"></i> Laman TMUA</a>
             
@@ -366,6 +373,29 @@
                     <a href="https://drive.google.com/drive/folders/1uBownqxlQ6XHj4OJ8qsT4CKOS0Fg-85O?usp=drive_link" target="_blank" class="card"><i class="fas fa-tools"></i><span class="title">RBT</span></a>
                     <a href="https://drive.google.com/drive/folders/1rcSuI-wMdhEdDh9J0yvToozUAEYwar-o?usp=drive_link" target="_blank" class="card"><i class="fas fa-drafting-compass"></i><span class="title">GKT</span></a>
                     <a href="https://drive.google.com/drive/folders/1YA7xUhHkX93E-PS65qr4HP98xYr3l1kA?usp=drive_link" target="_blank" class="card"><i class="fas fa-file-invoice-dollar"></i><span class="title">P. Akaun</span></a>
+                </div>
+            </div>
+
+            <div id="kokurikulum" class="modul-section">
+                <h2 class="page-title" style="color: var(--koku-color); border-left-color: #f97316;">e-FOLDER UNIT KOKURIKULUM</h2>
+
+                <div class="category-header header-koku"><i class="fas fa-clipboard-list"></i> KEHADIRAN & PELAPORAN</div>
+                <div class="grid-panitia">
+                    <a href="https://forms.gle/e2y6PzBhFG3Q5QrL7" target="_blank" class="card card-koku">
+                        <i class="fas fa-user-check"></i><span class="title">Kehadiran Guru</span><span class="desc">Perjumpaan Kokurikulum</span>
+                    </a>
+                    <a href="https://forms.gle/DMMyimWzwdioYnG46" target="_blank" class="card card-koku">
+                        <i class="fas fa-shield-halved"></i><span class="title">Badan Beruniform</span><span class="desc">Laporan Aktiviti</span>
+                    </a>
+                    <a href="https://forms.gle/mPLCxGVDRpxfjdcy6" target="_blank" class="card card-koku">
+                        <i class="fas fa-users-gear"></i><span class="title">Kelab & Persatuan</span><span class="desc">Laporan Aktiviti</span>
+                    </a>
+                    <a href="https://forms.gle/Qn2FguWA2EkYx9Rr7" target="_blank" class="card card-koku">
+                        <i class="fas fa-futbol"></i><span class="title">Sukan & Permainan</span><span class="desc">Laporan Aktiviti 1M1S</span>
+                    </a>
+                    <a href="https://forms.gle/HWzSQokfEUbVkAnVA" target="_blank" class="card card-koku">
+                        <i class="fas fa-house-flag"></i><span class="title">Rumah Sukan</span><span class="desc">Laporan Latihan/Aktiviti</span>
+                    </a>
                 </div>
             </div>
 
@@ -512,7 +542,6 @@
         // --- 3. FUNGSI WAKTU SOLAT JAKIM ---
         async function fetchSolat() {
             try {
-                // Pastikan file jadual_waktu_solat_JAKIM.csv ada di GitHub pages cikgu
                 const res = await fetch('./jadual_waktu_solat_JAKIM.csv');
                 const txt = await res.text();
                 const lines = txt.split('\n');
