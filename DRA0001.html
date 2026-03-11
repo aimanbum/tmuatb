@@ -257,14 +257,40 @@
         /* FOOTER */
         .footer { margin-top: 50px; text-align: center; font-size: 12px; color: #888; border-top: 1px solid #ddd; padding-top: 20px; }
 
-        /* --- RESPONSIVE MOBILE --- */
+        /* --- RESPONSIVE MOBILE KEMASKINI --- */
         @media (max-width: 768px) {
             .mobile-header { display: flex; } 
             .sidebar { transform: translateX(-100%); width: 270px; box-shadow: 2px 0 10px rgba(0,0,0,0.2); }
             .sidebar.active { transform: translateX(0); }
-            .main-content { margin-left: 0; padding: 20px; padding-top: 80px; }
-            .grid-panitia { grid-template-columns: repeat(2, 1fr); }
-            .stat-grid { grid-template-columns: 1fr; }
+            /* Kurangkan padding tepi pada paparan mudah alih */
+            .main-content { margin-left: 0; padding: 15px; padding-top: 80px; }
+            
+            /* Susunan Kad - Tetap 2 kolum tapi lebih mesra ruang */
+            .grid-panitia { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .card { height: auto; min-height: 100px; padding: 15px 10px; }
+            .card i { font-size: 24px; margin-bottom: 8px; }
+            .card span.title { font-size: 11px; }
+            .card span.desc { font-size: 9px; }
+
+            /* Tajuk & Kategori */
+            h2.page-title { font-size: 1.2rem; margin-bottom: 20px; }
+            .category-header { font-size: 0.85rem; padding: 10px 12px; }
+            .category-header i { font-size: 16px; margin-right: 8px; }
+
+            /* Enrolmen Widget */
+            .stat-grid { grid-template-columns: 1fr; gap: 10px; }
+            .widget-header { flex-direction: column; align-items: flex-start; gap: 10px; }
+            .widget-title { font-size: 1rem; }
+            .grand-total { font-size: 0.75rem; align-self: flex-start; }
+
+            /* TMUA Hero Card */
+            .hero-card { flex-direction: column; text-align: center; padding: 20px; gap: 10px; }
+            .hero-text h3 { font-size: 1.1rem; }
+            .hero-icon { font-size: 2.2rem; margin-top: 5px; }
+            
+            /* Ticker Pengumuman */
+            .ticker-wrap { font-size: 12px; margin-bottom: 20px; }
+            .ticker-icon { padding: 0 10px; font-size: 12px; }
         }
     </style>
 </head>
