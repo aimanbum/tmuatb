@@ -54,17 +54,20 @@
         /* --- LAYOUT UTAMA --- */
         .app-container { display: flex; min-height: 100vh; }
 
-        /* --- SIDEBAR --- */
+        /* --- SIDEBAR KEMASKINI FIX MOBILE --- */
         .sidebar {
             width: var(--sidebar-width);
             background: linear-gradient(180deg, var(--primary-color) 0%, var(--secondary-color) 100%);
             color: white;
             padding: 20px;
             position: fixed;
-            height: 100%;
+            top: 0; /* Tambahan wajib untuk mobile */
+            left: 0; /* Tambahan wajib untuk mobile */
+            height: 100vh;
             overflow-y: auto;
-            z-index: 1000;
+            z-index: 1050; /* Pastikan ia paling atas */
             transition: transform 0.3s ease-in-out;
+            box-sizing: border-box; /* Elak sidebar terlebih saiz */
         }
 
         .sidebar::-webkit-scrollbar { width: 5px; }
@@ -112,7 +115,7 @@
         .audio-desc { font-size: 9px; color: rgba(255,255,255,0.6); margin-top: 5px; text-transform: uppercase; letter-spacing: 0.5px;}
 
         /* --- OVERLAY --- */
-        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 999; }
+        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; }
         .overlay.active { display: block; }
 
         /* --- MAIN CONTENT & MODUL --- */
@@ -257,11 +260,16 @@
         /* FOOTER */
         .footer { margin-top: 50px; text-align: center; font-size: 12px; color: #888; border-top: 1px solid #ddd; padding-top: 20px; }
 
-        /* --- RESPONSIVE MOBILE KEMASKINI --- */
+        /* --- RESPONSIVE MOBILE KEMASKINI FIX MENU --- */
         @media (max-width: 768px) {
             .mobile-header { display: flex; } 
-            .sidebar { transform: translateX(-100%); width: 270px; box-shadow: 2px 0 10px rgba(0,0,0,0.2); }
+            
+            /* Sidebar bersembunyi di kiri skrin (-100%) */
+            .sidebar { transform: translateX(-100%); width: 270px; box-shadow: 5px 0 15px rgba(0,0,0,0.5); }
+            
+            /* Apabila class 'active' ditambah, ia masuk ke dalam skrin (0) */
             .sidebar.active { transform: translateX(0); }
+            
             /* Kurangkan padding tepi pada paparan mudah alih */
             .main-content { margin-left: 0; padding: 15px; padding-top: 80px; }
             
