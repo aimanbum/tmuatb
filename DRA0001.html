@@ -734,18 +734,11 @@
         }
 
         // --- 5. FUNGSI PENGUMUMAN DINAMIK DARI GOOGLE SHEETS ---
-        // Letakkan ID Google Sheets Cikgu di dalam tanda petik di bawah
-        const sheetPengumumanID = 'LETAK_ID_GOOGLE_SHEETS_DI_SINI'; 
+        const sheetPengumumanID = '16fOkfgnchflSdi3NjsWxZonXI2lH0X9STiwZgnp6TRw'; 
         const urlPengumuman = `https://docs.google.com/spreadsheets/d/${sheetPengumumanID}/gviz/tq?tqx=out:csv`;
 
         async function fetchPengumuman() {
             try {
-                if (sheetPengumumanID === '16fOkfgnchflSdi3NjsWxZonXI2lH0X9STiwZgnp6TRw') {
-                    // Paparan lalai jika ID belum ditukar
-                    document.getElementById('teks-pengumuman').innerHTML = "Selamat Datang ke Sistem Pengurusan Bersepadu SMKA Tok Bachok. ✦ Sila kemaskini e-RPH sebelum hari Jumaat.";
-                    return;
-                }
-
                 const res = await fetch(urlPengumuman);
                 const data = await res.text();
                 
@@ -753,7 +746,7 @@
                 const baris = data.split('\n');
                 const senaraiPengumuman = baris
                     .map(baris => baris.split(',')[0].replace(/"/g, '').trim()) // Ambil lajur pertama
-                    .filter(teks => teks !== ''); // Buang baris kosong
+                    .filter(teks => teks !== '' && teks !== 'undefined'); // Buang baris kosong atau rosak
 
                 if (senaraiPengumuman.length > 0) {
                     // Gabungkan semua pengumuman dengan ikon pemisah
@@ -764,7 +757,7 @@
 
             } catch (e) {
                 console.error('Ralat menarik data pengumuman:', e);
-                document.getElementById('teks-pengumuman').innerHTML = "Selamat Datang ke Sistem Pengurusan Bersepadu.";
+                document.getElementById('teks-pengumuman').innerHTML = "Selamat Datang ke Sistem Pengurusan Bersepadu SMKA Tok Bachok.";
             }
         }
         
