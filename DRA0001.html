@@ -10,13 +10,13 @@
 
     <style>
         :root {
-            --primary-color: #003366; /* Biru Gelap Induk */
+            --primary-color: #003366;
             --secondary-color: #004080; 
-            --accent-color: #f1c40f; /* Kuning Emas */
-            --hem-color: #064e3b; /* Tema Hijau HEM */
-            --tmua-color: #4c1d95; /* Tema Ungu TMUA */
-            --koku-color: #c2410c; /* Tema Jingga Kokurikulum */
-            --profil-color: #0284c7; /* Tema Biru Muda Profil */
+            --accent-color: #f1c40f; 
+            --hem-color: #064e3b; 
+            --tmua-color: #4c1d95; 
+            --koku-color: #c2410c; 
+            --profil-color: #0284c7; 
             --bg-color: #f0f2f5;
             --card-bg: #ffffff;
             --text-color: #333;
@@ -120,6 +120,50 @@
         .modul-section { display: none; animation: fadeIn 0.4s ease-in-out; }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* --- TICKER PENGUMUMAN --- */
+        .ticker-wrap {
+            width: 100%;
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            padding: 10px 0;
+            overflow: hidden;
+            box-sizing: border-box;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            position: relative;
+        }
+        .ticker-icon {
+            padding: 0 15px;
+            background-color: var(--accent-color);
+            font-weight: 800;
+            z-index: 2;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 5px 0 10px rgba(241, 196, 15, 0.9);
+        }
+        .ticker-content {
+            flex: 1;
+            overflow: hidden;
+        }
+        .ticker {
+            white-space: nowrap;
+            display: inline-block;
+            animation: ticker-scroll 30s linear infinite;
+            padding-left: 100%;
+            font-weight: 600;
+        }
+        .ticker:hover { animation-play-state: paused; }
+        @keyframes ticker-scroll {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-100%, 0, 0); }
+        }
 
         h2.page-title { color: var(--primary-color); border-left: 5px solid var(--accent-color); padding-left: 15px; margin-bottom: 30px; text-transform: uppercase; }
 
@@ -274,6 +318,15 @@
         </div>
 
         <div class="main-content">
+
+            <div class="ticker-wrap">
+                <div class="ticker-icon"><i class="fas fa-bullhorn"></i> PENGUMUMAN</div>
+                <div class="ticker-content">
+                    <div class="ticker" id="teks-pengumuman">
+                        Memuatkan pengumuman terkini...
+                    </div>
+                </div>
+            </div>
             
             <div id="onestop" class="modul-section" style="display: block;">
                 <h2 class="page-title">ONE STOP CENTRE (OSC)</h2>
@@ -679,9 +732,45 @@
                 document.getElementById('grand-total-text').innerText = "Gagal memuatkan data.";
             }
         }
+
+        // --- 5. FUNGSI PENGUMUMAN DINAMIK DARI GOOGLE SHEETS ---
+        // Letakkan ID Google Sheets Cikgu di dalam tanda petik di bawah
+        const sheetPengumumanID = 'LETAK_ID_GOOGLE_SHEETS_DI_SINI'; 
+        const urlPengumuman = `https://docs.google.com/spreadsheets/d/${sheetPengumumanID}/gviz/tq?tqx=out:csv`;
+
+        async function fetchPengumuman() {
+            try {
+                if (sheetPengumumanID === '16fOkfgnchflSdi3NjsWxZonXI2lH0X9STiwZgnp6TRw') {
+                    // Paparan lalai jika ID belum ditukar
+                    document.getElementById('teks-pengumuman').innerHTML = "Selamat Datang ke Sistem Pengurusan Bersepadu SMKA Tok Bachok. ✦ Sila kemaskini e-RPH sebelum hari Jumaat.";
+                    return;
+                }
+
+                const res = await fetch(urlPengumuman);
+                const data = await res.text();
+                
+                // Ambil semua baris di Kolum A
+                const baris = data.split('\n');
+                const senaraiPengumuman = baris
+                    .map(baris => baris.split(',')[0].replace(/"/g, '').trim()) // Ambil lajur pertama
+                    .filter(teks => teks !== ''); // Buang baris kosong
+
+                if (senaraiPengumuman.length > 0) {
+                    // Gabungkan semua pengumuman dengan ikon pemisah
+                    document.getElementById('teks-pengumuman').innerHTML = senaraiPengumuman.join(' &nbsp;&nbsp;&nbsp; <i class="fa-solid fa-star" style="color:var(--primary-color); font-size:10px;"></i> &nbsp;&nbsp;&nbsp; ');
+                } else {
+                    document.getElementById('teks-pengumuman').innerHTML = "Tiada pengumuman baharu pada hari ini.";
+                }
+
+            } catch (e) {
+                console.error('Ralat menarik data pengumuman:', e);
+                document.getElementById('teks-pengumuman').innerHTML = "Selamat Datang ke Sistem Pengurusan Bersepadu.";
+            }
+        }
         
         document.addEventListener("DOMContentLoaded", function() {
             fetchEnrolmen();
+            fetchPengumuman();
         });
     </script>
 </body>
