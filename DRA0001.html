@@ -54,20 +54,17 @@
         /* --- LAYOUT UTAMA --- */
         .app-container { display: flex; min-height: 100vh; }
 
-        /* --- SIDEBAR KEMASKINI FIX MOBILE --- */
+        /* --- SIDEBAR --- */
         .sidebar {
             width: var(--sidebar-width);
             background: linear-gradient(180deg, var(--primary-color) 0%, var(--secondary-color) 100%);
             color: white;
             padding: 20px;
             position: fixed;
-            top: 0; /* Tambahan wajib untuk mobile */
-            left: 0; /* Tambahan wajib untuk mobile */
-            height: 100vh;
+            height: 100%;
             overflow-y: auto;
-            z-index: 1050; /* Pastikan ia paling atas */
+            z-index: 1000;
             transition: transform 0.3s ease-in-out;
-            box-sizing: border-box; /* Elak sidebar terlebih saiz */
         }
 
         .sidebar::-webkit-scrollbar { width: 5px; }
@@ -115,7 +112,7 @@
         .audio-desc { font-size: 9px; color: rgba(255,255,255,0.6); margin-top: 5px; text-transform: uppercase; letter-spacing: 0.5px;}
 
         /* --- OVERLAY --- */
-        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; }
+        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 999; }
         .overlay.active { display: block; }
 
         /* --- MAIN CONTENT & MODUL --- */
@@ -260,45 +257,14 @@
         /* FOOTER */
         .footer { margin-top: 50px; text-align: center; font-size: 12px; color: #888; border-top: 1px solid #ddd; padding-top: 20px; }
 
-        /* --- RESPONSIVE MOBILE KEMASKINI FIX MENU --- */
+        /* --- RESPONSIVE MOBILE --- */
         @media (max-width: 768px) {
             .mobile-header { display: flex; } 
-            
-            /* Sidebar bersembunyi di kiri skrin (-100%) */
-            .sidebar { transform: translateX(-100%); width: 270px; box-shadow: 5px 0 15px rgba(0,0,0,0.5); }
-            
-            /* Apabila class 'active' ditambah, ia masuk ke dalam skrin (0) */
+            .sidebar { transform: translateX(-100%); width: 270px; box-shadow: 2px 0 10px rgba(0,0,0,0.2); }
             .sidebar.active { transform: translateX(0); }
-            
-            /* Kurangkan padding tepi pada paparan mudah alih */
-            .main-content { margin-left: 0; padding: 15px; padding-top: 80px; }
-            
-            /* Susunan Kad - Tetap 2 kolum tapi lebih mesra ruang */
-            .grid-panitia { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-            .card { height: auto; min-height: 100px; padding: 15px 10px; }
-            .card i { font-size: 24px; margin-bottom: 8px; }
-            .card span.title { font-size: 11px; }
-            .card span.desc { font-size: 9px; }
-
-            /* Tajuk & Kategori */
-            h2.page-title { font-size: 1.2rem; margin-bottom: 20px; }
-            .category-header { font-size: 0.85rem; padding: 10px 12px; }
-            .category-header i { font-size: 16px; margin-right: 8px; }
-
-            /* Enrolmen Widget */
-            .stat-grid { grid-template-columns: 1fr; gap: 10px; }
-            .widget-header { flex-direction: column; align-items: flex-start; gap: 10px; }
-            .widget-title { font-size: 1rem; }
-            .grand-total { font-size: 0.75rem; align-self: flex-start; }
-
-            /* TMUA Hero Card */
-            .hero-card { flex-direction: column; text-align: center; padding: 20px; gap: 10px; }
-            .hero-text h3 { font-size: 1.1rem; }
-            .hero-icon { font-size: 2.2rem; margin-top: 5px; }
-            
-            /* Ticker Pengumuman */
-            .ticker-wrap { font-size: 12px; margin-bottom: 20px; }
-            .ticker-icon { padding: 0 10px; font-size: 12px; }
+            .main-content { margin-left: 0; padding: 20px; padding-top: 80px; }
+            .grid-panitia { grid-template-columns: repeat(2, 1fr); }
+            .stat-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
