@@ -9,6 +9,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
+        /* --- KEMASKINI: Elak elemen terlebih lebar --- */
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
         :root {
             --primary-color: #003366;
             --secondary-color: #004080; 
@@ -30,6 +35,8 @@
             padding: 0;
             color: var(--text-color);
             scroll-behavior: smooth;
+            /* --- KEMASKINI: Sekat scroll mendatar (kiri-kanan) --- */
+            overflow-x: hidden; 
         }
 
         /* --- MOBILE NAV BAR --- */
@@ -61,9 +68,11 @@
             color: white;
             padding: 20px;
             position: fixed;
-            height: 100%;
+            top: 0;
+            left: 0;
+            height: 100vh;
             overflow-y: auto;
-            z-index: 1000;
+            z-index: 1050;
             transition: transform 0.3s ease-in-out;
         }
 
@@ -112,11 +121,18 @@
         .audio-desc { font-size: 9px; color: rgba(255,255,255,0.6); margin-top: 5px; text-transform: uppercase; letter-spacing: 0.5px;}
 
         /* --- OVERLAY --- */
-        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 999; }
+        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; }
         .overlay.active { display: block; }
 
         /* --- MAIN CONTENT & MODUL --- */
-        .main-content { margin-left: var(--sidebar-width); flex: 1; padding: 40px; transition: margin 0.3s; }
+        /* --- KEMASKINI: Ubah ukuran lebar supaya muat tepat skrin --- */
+        .main-content { 
+            margin-left: var(--sidebar-width); 
+            width: calc(100% - var(--sidebar-width));
+            padding: 40px; 
+            transition: margin 0.3s, width 0.3s; 
+        }
+        
         .modul-section { display: none; animation: fadeIn 0.4s ease-in-out; }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
@@ -128,7 +144,6 @@
             color: var(--primary-color);
             padding: 10px 0;
             overflow: hidden;
-            box-sizing: border-box;
             font-size: 14px;
             display: flex;
             align-items: center;
@@ -257,14 +272,37 @@
         /* FOOTER */
         .footer { margin-top: 50px; text-align: center; font-size: 12px; color: #888; border-top: 1px solid #ddd; padding-top: 20px; }
 
-        /* --- RESPONSIVE MOBILE --- */
+        /* --- RESPONSIVE MOBILE KEMASKINI FIX MENU --- */
         @media (max-width: 768px) {
             .mobile-header { display: flex; } 
-            .sidebar { transform: translateX(-100%); width: 270px; box-shadow: 2px 0 10px rgba(0,0,0,0.2); }
+            
+            .sidebar { transform: translateX(-100%); width: 270px; box-shadow: 5px 0 15px rgba(0,0,0,0.5); }
             .sidebar.active { transform: translateX(0); }
-            .main-content { margin-left: 0; padding: 20px; padding-top: 80px; }
-            .grid-panitia { grid-template-columns: repeat(2, 1fr); }
-            .stat-grid { grid-template-columns: 1fr; }
+            
+            /* KEMASKINI: Pastikan di skrin kecil ambil 100% penuh tanpa tolak margin sidebar */
+            .main-content { margin-left: 0; width: 100%; padding: 15px; padding-top: 80px; }
+            
+            .grid-panitia { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .card { height: auto; min-height: 100px; padding: 15px 10px; }
+            .card i { font-size: 24px; margin-bottom: 8px; }
+            .card span.title { font-size: 11px; }
+            .card span.desc { font-size: 9px; }
+
+            h2.page-title { font-size: 1.2rem; margin-bottom: 20px; }
+            .category-header { font-size: 0.85rem; padding: 10px 12px; }
+            .category-header i { font-size: 16px; margin-right: 8px; }
+
+            .stat-grid { grid-template-columns: 1fr; gap: 10px; }
+            .widget-header { flex-direction: column; align-items: flex-start; gap: 10px; }
+            .widget-title { font-size: 1rem; }
+            .grand-total { font-size: 0.75rem; align-self: flex-start; }
+
+            .hero-card { flex-direction: column; text-align: center; padding: 20px; gap: 10px; }
+            .hero-text h3 { font-size: 1.1rem; }
+            .hero-icon { font-size: 2.2rem; margin-top: 5px; }
+            
+            .ticker-wrap { font-size: 12px; margin-bottom: 20px; }
+            .ticker-icon { padding: 0 10px; font-size: 12px; }
         }
     </style>
 </head>
