@@ -38,16 +38,23 @@
         input[type="text"], select {
             width: 100%; padding: 15px 20px; border: 2px solid #e2e8f0; border-radius: 10px;
             font-size: 15px; font-family: 'Poppins', sans-serif; background-color: #f8fafc;
+            appearance: none; -webkit-appearance: none;
         }
         input:focus, select:focus { outline: none; border-color: #0077b5; background-color: white; }
         
+        /* Custom Select Arrow */
+        .select-wrapper { position: relative; }
+        .select-wrapper::after {
+            content: '▼'; font-size: 12px; color: #0077b5; position: absolute; right: 20px; top: 18px; pointer-events: none;
+        }
+
         button.action-btn {
             width: 100%; padding: 15px; color: white; border: none; border-radius: 10px;
             cursor: pointer; font-size: 16px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;
             background: linear-gradient(90deg, #0077b5 0%, #00a0dc 100%);
         }
         button.action-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0, 119, 181, 0.3); }
-        button.action-btn.green { background: linear-gradient(90deg, #16a085 0%, #2ecc71 100%); }
+        button.action-btn.green { background: linear-gradient(90deg, #16a085 0%, #2ecc71 100%); margin-top: 10px;}
 
         /* Results */
         #result { margin-top: 25px; padding: 20px; border-radius: 12px; display: none; line-height: 1.8; text-align: left; font-size: 15px; }
@@ -83,26 +90,99 @@
 
     <div id="tab-guru" class="tab-content">
         <div class="form-group">
-            <label>Pilih Kategori:</label>
-            <select id="jenisKategori">
-                <option value="5">Badan Beruniform</option>
-                <option value="6">Kelab & Persatuan</option>
-                <option value="7">Sukan & Permainan</option>
-                <option value="8">Rumah Sukan</option>
-            </select>
+            <label>Kategori Utama:</label>
+            <div class="select-wrapper">
+                <select id="jenisKategori" onchange="tukarPilihanSenarai()">
+                    <option value="5">Badan Beruniform</option>
+                    <option value="6">Kelab & Persatuan</option>
+                    <option value="7">Sukan & Permainan</option>
+                    <option value="8">Rumah Sukan</option>
+                </select>
+            </div>
         </div>
+        
         <div class="form-group">
-            <label>Nama Pasukan / Kelab:</label>
-            <input type="text" id="namaKategori" placeholder="Cth: BOMBA / RUMAH HAMZAH (HIJAU)">
-            <small style="color:#64748b; font-size:12px; display:block; margin-top:5px;">Ejaan mestilah sama seperti di dalam jadual Excel.</small>
+            <label>Pilih Unit / Pasukan:</label>
+            
+            <div id="div-5" class="select-wrapper">
+                <select id="pilihan-5" class="pilihan-khas">
+                    <option value="BOMBA">BOMBA</option>
+                    <option value="BRIGED">BRIGED</option>
+                    <option value="BSMM">BSMM</option>
+                    <option value="KASPA">KASPA</option>
+                    <option value="KRS">KRS</option>
+                    <option value="PENGAKAP">PENGAKAP</option>
+                    <option value="POLIS">POLIS</option>
+                    <option value="PPIM">PPIM</option>
+                </select>
+            </div>
+
+            <div id="div-6" class="select-wrapper" style="display:none;">
+                <select id="pilihan-6" class="pilihan-khas">
+                    <option value="AGAMA ISLAM">AGAMA ISLAM</option>
+                    <option value="BA">BA (BAHASA ARAB)</option>
+                    <option value="BAHASA CINA">BAHASA CINA</option>
+                    <option value="BM">BM (BAHASA MELAYU)</option>
+                    <option value="BI">BI (BAHASA INGGERIS)</option>
+                    <option value="DR MUDA">DOKTOR MUDA</option>
+                    <option value="FALAK">FALAK</option>
+                    <option value="FOTOGRAFI">FOTOGRAFI</option>
+                    <option value="GEOGRAFI">GEOGRAFI</option>
+                    <option value="KERJAYA">KERJAYA</option>
+                    <option value="KITAR SEMULA">KITAR SEMULA</option>
+                    <option value="KOMPUTER">KOMPUTER</option>
+                    <option value="KOPERASI">KOPERASI</option>
+                    <option value="MALAYSIAKU">MALAYSIAKU</option>
+                    <option value="NADI QURRA">NADI QURRA</option>
+                    <option value="PENCEGAHAN JENAYAH">PENCEGAHAN JENAYAH</option>
+                    <option value="PENGGUNA">PENGGUNA</option>
+                    <option value="PERANCIS">PERANCIS</option>
+                    <option value="PSV">PSV</option>
+                    <option value="SEJARAH">SEJARAH</option>
+                    <option value="SETEM FILATELI">SETEM FILATELI</option>
+                    <option value="SPBT">SPBT</option>
+                    <option value="STEM SAINS MATH">STEM SAINS MATH</option>
+                    <option value="ULUL ALBAB">ULUL ALBAB</option>
+                </select>
+            </div>
+
+            <div id="div-7" class="select-wrapper" style="display:none;">
+                <select id="pilihan-7" class="pilihan-khas">
+                    <option value="BADMINTON">BADMINTON</option>
+                    <option value="BERKUDA EKUESTRIAN">BERKUDA EKUESTRIAN</option>
+                    <option value="BOLA BALING">BOLA BALING</option>
+                    <option value="BOLA JARING">BOLA JARING</option>
+                    <option value="BOLA SEPAK">BOLA SEPAK</option>
+                    <option value="BOLA TAMPAR">BOLA TAMPAR</option>
+                    <option value="CATUR">CATUR</option>
+                    <option value="HOKI">HOKI</option>
+                    <option value="MEMANAH">MEMANAH</option>
+                    <option value="OLAHRAGA">OLAHRAGA</option>
+                    <option value="PING PONG">PING PONG</option>
+                    <option value="RENANG">RENANG</option>
+                    <option value="SEPAK TAKRAW">SEPAK TAKRAW</option>
+                    <option value="SILAT">SILAT</option>
+                    <option value="TAEKWANDO">TAEKWANDO</option>
+                </select>
+            </div>
+
+            <div id="div-8" class="select-wrapper" style="display:none;">
+                <select id="pilihan-8" class="pilihan-khas">
+                    <option value="RUMAH AMRU (KUNING)">RUMAH AMRU (KUNING)</option>
+                    <option value="RUMAH HAMZAH (HIJAU)">RUMAH HAMZAH (HIJAU)</option>
+                    <option value="RUMAH KHALID (MERAH)">RUMAH KHALID (MERAH)</option>
+                    <option value="RUMAH TARIQ (BIRU)">RUMAH TARIQ (BIRU)</option>
+                </select>
+            </div>
         </div>
+
         <button class="action-btn green" onclick="muatTurunExcel()">Muat Turun Excel</button>
     </div>
 
 </div>
 
 <script>
-    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxz_Y4eBJGxtyYxYObto5LRn9csmYx-cuvdo7oK3SupHfLAQYzn32fDTt9kKwB-FstUug/exec";
+    const WEB_APP_URL = "https://script.google.com/macros/library/d/1o_uuZ-O8M9GGf5oVJ8xC3aTe_fqFZX7eCBySPMjdYvu1Dwee3IhHT_kT/4";
 
     // Fungsi Tukar Tab
     function switchTab(tabName) {
@@ -110,6 +190,19 @@
         document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
         document.getElementById('tab-' + tabName).classList.add('active');
         event.target.classList.add('active');
+    }
+
+    // Fungsi Tukar Dropdown berdasarkan Kategori Utama
+    function tukarPilihanSenarai() {
+        // Sembunyikan semua dropdown khas
+        document.getElementById('div-5').style.display = 'none';
+        document.getElementById('div-6').style.display = 'none';
+        document.getElementById('div-7').style.display = 'none';
+        document.getElementById('div-8').style.display = 'none';
+        
+        // Paparkan dropdown yang dipilih sahaja
+        const jenisTerpilih = document.getElementById('jenisKategori').value;
+        document.getElementById('div-' + jenisTerpilih).style.display = 'block';
     }
 
     // Fungsi Carian IC Asal
@@ -149,22 +242,14 @@
             });
     }
 
-    // Fungsi Baharu: Muat Turun Data
+    // Fungsi Muat Turun Data
     function muatTurunExcel() {
         const jenis = document.getElementById("jenisKategori").value;
-        const nama = document.getElementById("namaKategori").value.trim();
+        const nama = document.getElementById("pilihan-" + jenis).value;
 
-        if (!nama) {
-            alert("Sila masukkan Nama Pasukan/Kelab yang ingin dimuat turun.");
-            return;
-        }
-
-        // Tunjuk notifikasi ringkas
-        alert(`Fail Excel/CSV untuk ${nama.toUpperCase()} sedang dijana. Muat turun akan bermula sebentar lagi...`);
-
-        // Buka URL dalam tetingkap baru untuk paksa pelayar muat turun fail CSV
+        // Menggunakan location.href memaksa browser terus muat turun fail berbanding window.open
         const downloadUrl = `${WEB_APP_URL}?action=export&jenis=${jenis}&nama=${encodeURIComponent(nama)}`;
-        window.open(downloadUrl, '_blank');
+        window.location.href = downloadUrl;
     }
 </script>
 
