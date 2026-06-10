@@ -73,11 +73,13 @@
     <h2>Sistem Koko T1</h2>
     <p class="subtitle">SMKA Tok Bachok</p>
     
+    <!-- Tab Navigation -->
     <div class="tabs">
         <button class="tab-btn active" onclick="switchTab('semakan')">Semakan Pelajar</button>
         <button class="tab-btn" onclick="switchTab('guru')">Muat Turun (Guru)</button>
     </div>
 
+    <!-- TAB 1: Carian IC (Untuk Pelajar) -->
     <div id="tab-semakan" class="tab-content active">
         <div class="form-group">
             <input type="text" id="icInput" placeholder="Sila masukkan No. IC (Tanpa Sengkang)" maxlength="12">
@@ -88,6 +90,7 @@
         <div id="result"></div>
     </div>
 
+    <!-- TAB 2: Muat Turun (Untuk Guru Penasihat) -->
     <div id="tab-guru" class="tab-content">
         <div class="form-group">
             <label>Kategori Utama:</label>
@@ -104,6 +107,7 @@
         <div class="form-group">
             <label>Pilih Unit / Pasukan:</label>
             
+            <!-- Dropdown Badan Beruniform (Kolum 5) -->
             <div id="div-5" class="select-wrapper">
                 <select id="pilihan-5" class="pilihan-khas">
                     <option value="BOMBA">BOMBA</option>
@@ -117,6 +121,7 @@
                 </select>
             </div>
 
+            <!-- Dropdown Kelab & Persatuan (Kolum 6) -->
             <div id="div-6" class="select-wrapper" style="display:none;">
                 <select id="pilihan-6" class="pilihan-khas">
                     <option value="AGAMA ISLAM">AGAMA ISLAM</option>
@@ -146,6 +151,7 @@
                 </select>
             </div>
 
+            <!-- Dropdown Sukan & Permainan (Kolum 7) -->
             <div id="div-7" class="select-wrapper" style="display:none;">
                 <select id="pilihan-7" class="pilihan-khas">
                     <option value="BADMINTON">BADMINTON</option>
@@ -166,6 +172,7 @@
                 </select>
             </div>
 
+            <!-- Dropdown Rumah Sukan (Kolum 8) -->
             <div id="div-8" class="select-wrapper" style="display:none;">
                 <select id="pilihan-8" class="pilihan-khas">
                     <option value="RUMAH AMRU (KUNING)">RUMAH AMRU (KUNING)</option>
@@ -182,7 +189,8 @@
 </div>
 
 <script>
-    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxz_Y4eBJGxtyYxYObto5LRn9csmYx-cuvdo7oK3SupHfLAQYzn32fDTt9kKwB-FstUug/exec";
+    // URL Web App Baharu
+    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyg_lzL0TWod6tX5ah7uYy_9OOEbc4JFoVwORJLTMIJ7UteNqFl1SaCfpvlexLX5p6M/exec";
 
     // Fungsi Tukar Tab
     function switchTab(tabName) {
