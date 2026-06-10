@@ -3,276 +3,168 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Semakan Kokurikulum SMKA Tok Bachok</title>
-    <!-- Guna font Google Poppins untuk gaya moden -->
+    <title>Sistem Kokurikulum SMKA Tok Bachok</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            box-sizing: border-box;
-            transition: all 0.3s ease;
-        }
-
+        * { box-sizing: border-box; transition: all 0.3s ease; }
         body {
             font-family: 'Poppins', sans-serif;
-            /* Latar belakang gradient yang halus */
             background: linear-gradient(135deg, #e0f2fe 0%, #ffffff 100%);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            padding: 20px;
+            display: flex; justify-content: center; align-items: center; min-height: 100vh;
+            margin: 0; padding: 20px;
         }
-
         .container {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 40px;
-            border-radius: 20px;
-            /* Bayang-bayang kontena yang lebih lembut */
-            box-shadow: 0 10px 30px rgba(0, 119, 181, 0.15);
-            width: 100%;
-            max-width: 500px;
-            border-top: 5px solid #0077b5;
-            text-align: center;
+            background: rgba(255, 255, 255, 0.95); padding: 40px; border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 119, 181, 0.15); width: 100%; max-width: 500px;
+            border-top: 5px solid #0077b5; text-align: center;
         }
-
-        /* Gaya Logo */
-        .school-logo {
-            max-width: 120px;
-            height: auto;
-            margin-bottom: 20px;
-            /* Sedikit bayang pada logo */
-            filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.1));
+        .school-logo { max-width: 120px; height: auto; margin-bottom: 20px; filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.1)); }
+        h2 { margin-top: 0; color: #1e3a8a; font-weight: 700; font-size: 24px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
+        .subtitle { color: #64748b; font-size: 14px; margin-bottom: 20px; font-weight: 300; }
+        
+        /* Tab Navigation */
+        .tabs { display: flex; justify-content: center; margin-bottom: 25px; border-radius: 50px; background: #f1f5f9; padding: 5px; }
+        .tab-btn {
+            flex: 1; padding: 10px; border: none; background: transparent; cursor: pointer;
+            font-family: 'Poppins', sans-serif; font-weight: 600; color: #64748b; border-radius: 50px; font-size: 14px;
         }
+        .tab-btn.active { background: #0077b5; color: white; box-shadow: 0 4px 6px rgba(0, 119, 181, 0.2); }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
 
-        h2 {
-            margin-top: 0;
-            color: #1e3a8a; /* Biru gelap profesional */
-            font-weight: 700;
-            font-size: 24px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 10px;
+        /* Form Elements */
+        .form-group { position: relative; margin-bottom: 20px; text-align: left; }
+        .form-group label { display: block; margin-bottom: 8px; color: #475569; font-weight: 600; font-size: 14px; }
+        input[type="text"], select {
+            width: 100%; padding: 15px 20px; border: 2px solid #e2e8f0; border-radius: 10px;
+            font-size: 15px; font-family: 'Poppins', sans-serif; background-color: #f8fafc;
         }
-
-        .subtitle {
-            color: #64748b;
-            font-size: 14px;
-            margin-bottom: 30px;
-            font-weight: 300;
-        }
-
-        .form-group {
-            position: relative;
-            margin-bottom: 20px;
-            text-align: left;
-        }
-
-        input[type="text"] {
-            width: 100%;
-            padding: 15px 20px;
-            border: 2px solid #e2e8f0;
-            border-radius: 50px; /* Input berbentuk pil */
-            font-size: 16px;
-            font-family: 'Poppins', sans-serif;
-            background-color: #f8fafc;
-        }
-
-        input[type="text"]:focus {
-            outline: none;
-            border-color: #0077b5;
-            background-color: white;
-            box-shadow: 0 0 10px rgba(0, 119, 181, 0.1);
-        }
-
-        button {
-            width: 100%;
-            padding: 15px;
+        input:focus, select:focus { outline: none; border-color: #0077b5; background-color: white; }
+        
+        button.action-btn {
+            width: 100%; padding: 15px; color: white; border: none; border-radius: 10px;
+            cursor: pointer; font-size: 16px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;
             background: linear-gradient(90deg, #0077b5 0%, #00a0dc 100%);
-            color: white;
-            border: none;
-            border-radius: 50px; /* Butang berbentuk pil */
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 4px 6px rgba(0, 119, 181, 0.2);
         }
+        button.action-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0, 119, 181, 0.3); }
+        button.action-btn.green { background: linear-gradient(90deg, #16a085 0%, #2ecc71 100%); }
 
-        button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0, 119, 181, 0.3);
-            background: linear-gradient(90deg, #00a0dc 0%, #0077b5 100%);
-        }
-
-        button:active {
-            transform: translateY(1px);
-        }
-
-        #result {
-            margin-top: 25px;
-            padding: 20px;
-            border-radius: 12px;
-            display: none;
-            line-height: 1.8;
-            text-align: left;
-            font-size: 15px;
-        }
-
-        .result-item {
-            display: flex;
-            justify-content: space-between;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-            padding: 8px 0;
-        }
-
-        .result-label {
-            font-weight: 600;
-            color: #475569;
-            flex-shrink: 0;
-            margin-right: 15px;
-        }
-
-        .result-value {
-            color: #1e293b;
-            text-align: right;
-            word-break: break-word;
-        }
-
-        .success {
-            background-color: #f0fdf4;
-            color: #166534;
-            border: 1px solid #b91c1c20;
-            border-left: 5px solid #166534;
-        }
-
-        .success strong {
-            color: #166534;
-        }
-
-        .error {
-            background-color: #fef2f2;
-            color: #991b1b;
-            border: 1px solid #f8717150;
-            border-left: 5px solid #991b1b;
-        }
-
-        .error strong {
-            color: #991b1b;
-        }
-
-        .loading {
-            text-align: center;
-            font-style: italic;
-            color: #0077b5;
-            margin-top: 20px;
-            display: none;
-            font-weight: 300;
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 480px) {
-            .container {
-                padding: 25px;
-            }
-            h2 {
-                font-size: 20px;
-            }
-            .result-item {
-                flex-direction: column;
-                align-items: flex-start;
-                padding: 10px 0;
-            }
-            .result-value {
-                text-align: left;
-                margin-top: 2px;
-            }
-        }
+        /* Results */
+        #result { margin-top: 25px; padding: 20px; border-radius: 12px; display: none; line-height: 1.8; text-align: left; font-size: 15px; }
+        .result-item { display: flex; justify-content: space-between; border-bottom: 1px solid rgba(0,0,0,0.05); padding: 8px 0; }
+        .result-label { font-weight: 600; color: #475569; flex-shrink: 0; margin-right: 15px; }
+        .result-value { color: #1e293b; text-align: right; }
+        .success { background-color: #f0fdf4; border: 1px solid #b91c1c20; border-left: 5px solid #166534; }
+        .error { background-color: #fef2f2; color: #991b1b; border: 1px solid #f8717150; border-left: 5px solid #991b1b; padding:15px; margin-top:20px; text-align:left; border-radius:8px;}
+        .loading { text-align: center; font-style: italic; color: #0077b5; margin-top: 20px; display: none; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <!-- Masukkan logo sekolah anda di sini -->
     <img src="logo.png" alt="Logo SMKA Tok Bachok" class="school-logo" onerror="this.style.display='none'">
+    <h2>Sistem Koko T1</h2>
+    <p class="subtitle">SMKA Tok Bachok</p>
     
-    <h2>Semakan Kokurikulum T1</h2>
-    <p class="subtitle">SMKA Tok Bachok - Sistem Semakan Maklumat</p>
-    
-    <div class="form-group">
-        <input type="text" id="icInput" placeholder="Contoh: 080101031234 (Tanpa Sengkang)" maxlength="12">
+    <div class="tabs">
+        <button class="tab-btn active" onclick="switchTab('semakan')">Semakan Pelajar</button>
+        <button class="tab-btn" onclick="switchTab('guru')">Muat Turun (Guru)</button>
     </div>
-    
-    <button onclick="semakData()">Semak Rekod</button>
-    
-    <div id="loading" class="loading">
-        <img src="https://i.gifer.com/ZZ5H.gif" alt="loading" style="width: 20px; margin-right: 10px; vertical-align: middle;">
-        Sila tunggu, sedang menyemak pangkalan data...
+
+    <div id="tab-semakan" class="tab-content active">
+        <div class="form-group">
+            <input type="text" id="icInput" placeholder="Sila masukkan No. IC (Tanpa Sengkang)" maxlength="12">
+        </div>
+        <button class="action-btn" onclick="semakData()">Cari Rekod</button>
+        
+        <div id="loading" class="loading">Sedang menyemak pangkalan data...</div>
+        <div id="result"></div>
     </div>
-    <div id="result"></div>
+
+    <div id="tab-guru" class="tab-content">
+        <div class="form-group">
+            <label>Pilih Kategori:</label>
+            <select id="jenisKategori">
+                <option value="5">Badan Beruniform</option>
+                <option value="6">Kelab & Persatuan</option>
+                <option value="7">Sukan & Permainan</option>
+                <option value="8">Rumah Sukan</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Nama Pasukan / Kelab:</label>
+            <input type="text" id="namaKategori" placeholder="Cth: BOMBA / RUMAH HAMZAH (HIJAU)">
+            <small style="color:#64748b; font-size:12px; display:block; margin-top:5px;">Ejaan mestilah sama seperti di dalam jadual Excel.</small>
+        </div>
+        <button class="action-btn green" onclick="muatTurunExcel()">Muat Turun Excel</button>
+    </div>
+
 </div>
 
 <script>
-    // URL Web App Google Apps Script yang telah dimasukkan (Tidak diubah)
     const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxz_Y4eBJGxtyYxYObto5LRn9csmYx-cuvdo7oK3SupHfLAQYzn32fDTt9kKwB-FstUug/exec";
 
+    // Fungsi Tukar Tab
+    function switchTab(tabName) {
+        document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        document.getElementById('tab-' + tabName).classList.add('active');
+        event.target.classList.add('active');
+    }
+
+    // Fungsi Carian IC Asal
     function semakData() {
-        const icInput = document.getElementById("icInput");
-        const ic = icInput.value.trim();
+        const ic = document.getElementById("icInput").value.trim();
         const resultDiv = document.getElementById("result");
         const loadingDiv = document.getElementById("loading");
 
-        // Input validation
-        if (!ic) {
-            alert("Sila masukkan nombor IC.");
-            return;
-        }
-        
-        if (!/^\d+$/.test(ic)) {
-            alert("Sila masukkan nombor sahaja (tanpa sengkang atau huruf).");
-            return;
+        if (!ic || !/^\d+$/.test(ic) || ic.length !== 12) {
+            alert("Sila masukkan 12 digit nombor IC sahaja."); return;
         }
 
-        if (ic.length !== 12) {
-            alert("Nombor IC mestilah 12 digit.");
-            return;
-        }
-
-        // Tunjuk status loading
         resultDiv.style.display = "none";
         loadingDiv.style.display = "block";
 
-        // Panggil data dari Google Sheets API
-        fetch(`${WEB_APP_URL}?ic=${encodeURIComponent(ic)}`)
+        fetch(`${WEB_APP_URL}?action=semak&ic=${encodeURIComponent(ic)}`)
             .then(response => response.json())
             .then(data => {
-                loadingDiv.style.display = "none";
-                resultDiv.style.display = "block";
-
+                loadingDiv.style.display = "none"; resultDiv.style.display = "block";
                 if (data.status === "Berjaya") {
                     resultDiv.className = "success";
-                    // Format output yang lebih cantik
                     resultDiv.innerHTML = `
-                        <div style="text-align: center; margin-bottom: 15px; font-size: 1.1em; color: #1e3a8a;"><strong>Keputusan Carian</strong></div>
+                        <div style="text-align: center; margin-bottom: 15px; color: #1e3a8a;"><strong>Keputusan Carian</strong></div>
                         <div class="result-item"><span class="result-label">Nama:</span> <span class="result-value">${data.nama}</span></div>
-                        <div class="result-item"><span class="result-label">Unit Beruniform:</span> <span class="result-value">${data.uniform || 'Tiada Data'}</span></div>
-                        <div class="result-item"><span class="result-label">Rumah Sukan:</span> <span class="result-value">${data.rumahSukan || 'Tiada Data'}</span></div>
-                        <div class="result-item"><span class="result-label">Kelab/Persatuan:</span> <span class="result-value">${data.kelab || 'Tiada Data'}</span></div>
-                        <div class="result-item"><span class="result-label">Sukan/Permainan:</span> <span class="result-value">${data.sukan || 'Tiada Data'}</span></div>
+                        <div class="result-item"><span class="result-label">Unit Beruniform:</span> <span class="result-value">${data.uniform || '-'}</span></div>
+                        <div class="result-item"><span class="result-label">Rumah Sukan:</span> <span class="result-value">${data.rumahSukan || '-'}</span></div>
+                        <div class="result-item"><span class="result-label">Kelab/Persatuan:</span> <span class="result-value">${data.kelab || '-'}</span></div>
+                        <div class="result-item"><span class="result-label">Sukan/Permainan:</span> <span class="result-value">${data.sukan || '-'}</span></div>
                     `;
                 } else {
-                    resultDiv.className = "error";
-                    resultDiv.innerHTML = `<strong>Ralat:</strong> ${data.mesej}`;
+                    resultDiv.className = "error"; resultDiv.innerHTML = `<strong>Ralat:</strong> ${data.mesej}`;
                 }
             })
             .catch(error => {
-                loadingDiv.style.display = "none";
-                resultDiv.style.display = "block";
-                resultDiv.className = "error";
-                resultDiv.innerHTML = `<strong>Ralat Sambungan:</strong> Gagal menyambung ke pangkalan data Google Sheets. Sila cuba sebentar lagi.`;
-                console.error("Error:", error);
+                loadingDiv.style.display = "none"; resultDiv.style.display = "block";
+                resultDiv.className = "error"; resultDiv.innerHTML = `<strong>Ralat:</strong> Gagal menyambung ke pangkalan data.`;
             });
+    }
+
+    // Fungsi Baharu: Muat Turun Data
+    function muatTurunExcel() {
+        const jenis = document.getElementById("jenisKategori").value;
+        const nama = document.getElementById("namaKategori").value.trim();
+
+        if (!nama) {
+            alert("Sila masukkan Nama Pasukan/Kelab yang ingin dimuat turun.");
+            return;
+        }
+
+        // Tunjuk notifikasi ringkas
+        alert(`Fail Excel/CSV untuk ${nama.toUpperCase()} sedang dijana. Muat turun akan bermula sebentar lagi...`);
+
+        // Buka URL dalam tetingkap baru untuk paksa pelayar muat turun fail CSV
+        const downloadUrl = `${WEB_APP_URL}?action=export&jenis=${jenis}&nama=${encodeURIComponent(nama)}`;
+        window.open(downloadUrl, '_blank');
     }
 </script>
 
