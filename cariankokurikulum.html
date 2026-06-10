@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semakan Kokurikulum SMKA Tok Bachok</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 450px;
+        }
+        h2 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #2980b9;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: #3498db;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 6px;
+            display: none;
+            line-height: 1.6;
+        }
+        .success {
+            background-color: #e8f8f5;
+            color: #117a65;
+            border: 1px solid #a3e4d7;
+        }
+        .error {
+            background-color: #fdedec;
+            color: #c0392b;
+            border: 1px solid #f5b7b1;
+        }
+        .loading {
+            text-align: center;
+            font-style: italic;
+            color: #7f8c8d;
+            margin-top: 15px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Semakan Kokurikulum T1</h2>
+    <input type="text" id="icInput" placeholder="Sila masukkan No. IC Pelajar (Tanpa Sengkang)">
+    <button onclick="semakData()">Semak Rekod</button>
+    <div id="loading" class="loading">Sila tunggu, sedang menyemak pangkalan data...</div>
+    <div id="result"></div>
+</div>
+
+<script>
+    // URL Web App Google Apps Script yang telah dimasukkan
+    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxCfeEvDfQhTix1Zln16vdwP5vTKAkxwwEizZsQJglSNmYo57EXPzxRxZCnq-s1ryrR/exec";
+
+    function semakData() {
+        const ic = document.getElementById("icInput").value;
+        const resultDiv = document.getElementById("result");
+        const loadingDiv = document.getElementById("loading");
+
+        if (!ic) {
+            alert("Sila masukkan nombor IC.");
+            return;
+        }
+
+        // Tunjuk status loading
+        resultDiv.style.display = "none";
+        loadingDiv.style.display = "block";
+
+        // Panggil data dari Google Sheets API
+        fetch(`${WEB_APP_URL}?ic=${encodeURIComponent(ic)}`)
+            .then(response => response.json())
+            .then(data => {
+                loadingDiv.style.display = "none";
+                resultDiv.style.display = "block";
+
+                if (data.status === "Berjaya") {
+                    resultDiv.className = "success";
+                    resultDiv.innerHTML = `
+                        <strong>Nama:</strong> ${data.nama}<br>
+                        <strong>Unit Beruniform:</strong> ${data.uniform}<br>
+                        <strong>Rumah Sukan:</strong> ${data.rumahSukan}<br>
+                        <strong>Kelab/Persatuan:</strong> ${data.kelab}<br>
+                        <strong>Sukan/Permainan:</strong> ${data.sukan}
+                    `;
+                } else {
+                    resultDiv.className = "error";
+                    resultDiv.innerHTML = `<strong>Ralat:</strong> ${data.mesej}`;
+                }
+            })
+            .catch(error => {
+                loadingDiv.style.display = "none";
+                resultDiv.style.display = "block";
+                resultDiv.className = "error";
+                resultDiv.innerHTML = `<strong>Ralat Sambungan:</strong> Gagal menyambung ke pangkalan data Google Sheets.`;
+                console.error("Error:", error);
+            });
+    }
+</script>
+
+</body>
+</html>
