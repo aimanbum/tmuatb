@@ -125,6 +125,7 @@
         .overlay.active { display: block; }
 
         /* --- MAIN CONTENT & MODUL --- */
+        /* --- KEMASKINI: Ubah ukuran lebar supaya muat tepat skrin --- */
         .main-content { 
             margin-left: var(--sidebar-width); 
             width: calc(100% - var(--sidebar-width));
@@ -271,13 +272,14 @@
         /* FOOTER */
         .footer { margin-top: 50px; text-align: center; font-size: 12px; color: #888; border-top: 1px solid #ddd; padding-top: 20px; }
 
-        /* --- RESPONSIVE MOBILE FIX MENU --- */
+        /* --- RESPONSIVE MOBILE KEMASKINI FIX MENU --- */
         @media (max-width: 768px) {
             .mobile-header { display: flex; } 
             
             .sidebar { transform: translateX(-100%); width: 270px; box-shadow: 5px 0 15px rgba(0,0,0,0.5); }
             .sidebar.active { transform: translateX(0); }
             
+            /* KEMASKINI: Pastikan di skrin kecil ambil 100% penuh tanpa tolak margin sidebar */
             .main-content { margin-left: 0; width: 100%; padding: 15px; padding-top: 80px; }
             
             .grid-panitia { grid-template-columns: repeat(2, 1fr); gap: 10px; }
@@ -530,13 +532,11 @@
 
                 <div class="grid-panitia">
                     <a href="https://drive.google.com/drive/folders/15cDlqN3TpNJPTo_a8I0dYWcxf_6dZ8Dd?usp=sharing" target="_blank" class="card card-koku">
-                        <i class="fas fa-folder-open"></i><span class="title">Folder Induk</span><span class="desc">Carta Organisasi Unit Kokurikulum</span>
+                        <i class="fas fa-folder-open"></i><span class="title">Folder Induk</span><span class="desc">Dokumen & Fail Sokongan</span>
                     </a>
+                    
                     <a href="https://docs.google.com/spreadsheets/d/17FQsNO0WEioodiPQpReu6znqt2RiLbISuJLQip8WTfc/edit?gid=0#gid=0" target="_blank" class="card card-koku">
                         <i class="fas fa-calendar-days"></i><span class="title">Takwim Kokurikulum</span><span class="desc">Tarikh Perjumpaan Koku 2026</span>
-                    </a>
-                    <a href="https://docs.google.com/document/d/1etcOXH11-7DrxuqhVQLQJwJ95Rb__9E6/edit" target="_blank" class="card card-koku">
-                        <i class="fas fa-file-signature"></i><span class="title">MPS Kokurikulum</span><span class="desc">Manual Pengurusan Kokurikulum 2026</span>
                     </a>
                 </div>
 
@@ -655,6 +655,7 @@
     </div>
 
     <script>
+        // --- 1. FUNGSI TUKAR MODUL (SPA) ---
         function bukaModul(modulId, elemenBtn, tajukMobile) {
             let moduls = document.querySelectorAll('.modul-section');
             moduls.forEach(m => m.style.display = 'none');
@@ -683,6 +684,7 @@
             }
         }
 
+        // --- 2. FUNGSI JAM & TARIKH ---
         let offset = 0;
         async function syncTime() {
             try {
@@ -698,6 +700,7 @@
         }, 1000);
         syncTime();
 
+        // --- 3. FUNGSI WAKTU SOLAT JAKIM ---
         async function fetchSolat() {
             try {
                 const res = await fetch('./jadual_waktu_solat_JAKIM.csv');
@@ -721,6 +724,7 @@
         }
         fetchSolat();
 
+        // --- 4. FUNGSI ENROLMEN PELAJAR ---
         const ssID = '1M5HM5y6qgWshsLqB8CoReXiF54sFiUBiS_dVqUtK0gk';
         const url = `https://docs.google.com/spreadsheets/d/${ssID}/gviz/tq?tqx=out:csv`;
 
@@ -771,6 +775,7 @@
             }
         }
 
+        // --- 5. FUNGSI PENGUMUMAN DINAMIK DARI GOOGLE SHEETS ---
         const sheetPengumumanID = '16fOkfgnchflSdi3NjsWxZonXI2lH0X9STiwZgnp6TRw'; 
         const urlPengumuman = `https://docs.google.com/spreadsheets/d/${sheetPengumumanID}/gviz/tq?tqx=out:csv`;
 
@@ -778,12 +783,15 @@
             try {
                 const res = await fetch(urlPengumuman);
                 const data = await res.text();
+                
+                // Ambil semua baris di Kolum A
                 const baris = data.split('\n');
                 const senaraiPengumuman = baris
-                    .map(baris => baris.split(',')[0].replace(/"/g, '').trim())
-                    .filter(teks => teks !== '' && teks !== 'undefined');
+                    .map(baris => baris.split(',')[0].replace(/"/g, '').trim()) // Ambil lajur pertama
+                    .filter(teks => teks !== '' && teks !== 'undefined'); // Buang baris kosong atau rosak
 
                 if (senaraiPengumuman.length > 0) {
+                    // Gabungkan semua pengumuman dengan ikon pemisah
                     document.getElementById('teks-pengumuman').innerHTML = senaraiPengumuman.join(' &nbsp;&nbsp;&nbsp; <i class="fa-solid fa-star" style="color:var(--primary-color); font-size:10px;"></i> &nbsp;&nbsp;&nbsp; ');
                 } else {
                     document.getElementById('teks-pengumuman').innerHTML = "Tiada pengumuman baharu pada hari ini.";
