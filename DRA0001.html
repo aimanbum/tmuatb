@@ -196,182 +196,217 @@
 
         /* ENROLMEN WIDGET STYLE */
         .enrolmen-widget { background: var(--card-bg); border-radius: 12px; padding: 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 40px; border-top: 4px solid var(--accent-color); }
-        .widget-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
-        .widget-header h3 { margin: 0; color: var(--primary-color); font-size: 16px; display: flex; align-items: center; gap: 8px; }
-        .update-time { font-size: 11px; color: #777; background: #f1f3f5; padding: 4px 10px; border-radius: 20px; }
-        .grid-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; }
-        .stat-box { display: flex; align-items: center; background: var(--bg-color); padding: 15px; border-radius: 8px; border-left: 4px solid var(--primary-color); }
-        .stat-icon { background: rgba(0,51,102,0.1); color: var(--primary-color); width: 40px; height: 40px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 18px; margin-right: 15px; }
-        .stat-info { display: flex; flex-direction: column; }
-        .stat-label { font-size: 11px; color: #666; font-weight: 600; text-transform: uppercase; margin-bottom: 3px; }
-        .stat-value { font-size: 20px; font-weight: 800; color: var(--text-color); }
-        .total-box { border-left-color: var(--accent-color); background: linear-gradient(to right, rgba(241, 196, 15, 0.1), transparent); }
-        .total-box .stat-icon { background: var(--accent-color); color: var(--primary-color); }
-        .total-box .stat-value { color: var(--primary-color); }
+        .widget-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #eee; }
+        .widget-title { font-size: 1.2rem; font-weight: 800; color: var(--primary-color); display: flex; align-items: center; gap: 10px; }
+        .grand-total { font-size: 0.85rem; font-weight: bold; color: var(--secondary-color); background: #e6f0fa; padding: 6px 15px; border-radius: 8px; }
 
-        .category-header { font-size: 16px; font-weight: 700; color: #444; margin: 30px 0 15px; border-bottom: 2px solid #ddd; padding-bottom: 8px; display: flex; align-items: center;}
-        .category-header i { margin-right: 10px; color: var(--primary-color); }
+        .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px 30px; }
+        .stat-row { display: flex; align-items: center; font-size: 0.85rem; gap: 10px; }
+        .stat-left { width: 45px; display: flex; flex-direction: column; }
+        .stat-label { font-weight: bold; color: var(--text-color); }
+        .stat-detail-mini { font-size: 0.65rem; color: #777; white-space: nowrap; }
+        .stat-bar-bg { flex: 1; height: 8px; background: #eee; border-radius: 4px; overflow: hidden; }
+        .stat-bar-fill { height: 100%; background: var(--secondary-color); border-radius: 4px; width: 0%; transition: width 1s ease-out; }
+        .stat-value { font-weight: bold; color: var(--secondary-color); width: 35px; text-align: right; }
 
-        /* KAD MENU UTAMA */
-        .grid-panitia { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
+        /* SECTION HEADERS */
+        .category-header {
+            background: #e6f0fa; color: var(--primary-color); padding: 12px 15px; border-radius: 8px;
+            margin-top: 30px; margin-bottom: 15px; font-weight: bold; display: flex; align-items: center; border-left: 4px solid var(--secondary-color);
+        }
+        .header-profil { background: #e0f2fe; color: var(--profil-color); border-left-color: #0ea5e9; }
+        .header-hem { background: #dcfce7; color: var(--hem-color); border-left-color: #10b981; }
+        .header-tmua { background: #f3e8ff; color: var(--tmua-color); border-left-color: #a855f7; }
+        .header-koku { background: #ffedd5; color: var(--koku-color); border-left-color: #f97316; }
+        .category-header i { margin-right: 10px; font-size: 18px; }
+
+        /* GRID SYSTEM */
+        .grid-panitia { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; }
+
+        /* CARD STYLE */
         .card {
-            background: var(--card-bg); border-radius: 12px; padding: 20px 15px;
-            text-align: center; text-decoration: none; color: var(--text-color);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.04); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative; overflow: hidden; border: 1px solid #f1f3f5;
-            display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 120px;
+            background: var(--card-bg); border-radius: 10px; padding: 20px 15px; text-align: center;
+            text-decoration: none; color: var(--primary-color); box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border: 1px solid transparent; transition: all 0.3s ease; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; height: 120px;
         }
-
-        .card::before {
-            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px;
-            background: var(--primary-color); transform: scaleX(0); transition: 0.3s; transform-origin: left;
-        }
-        .card:hover::before { transform: scaleX(1); }
-        .card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,51,102,0.15); border-color: transparent; }
-
-        .card i { font-size: 28px; color: var(--primary-color); margin-bottom: 12px; transition: 0.3s; }
-        .card:hover i { transform: scale(1.1); color: var(--accent-color); }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 8px 15px rgba(0,51,102,0.1); border-color: var(--primary-color); }
         
-        .card .title { font-weight: 700; font-size: 14px; margin-bottom: 5px; }
-        .card .desc { font-size: 11px; color: #777; line-height: 1.3; }
-
-        /* WARNA KAD MENGIKUT MODUL */
-        .card.hem::before { background: var(--hem-color); }
-        .card.hem:hover i { color: var(--hem-color); }
+        .card-hem { color: var(--hem-color); }
+        .card-hem:hover { box-shadow: 0 8px 15px rgba(6, 78, 59, 0.1); border-color: var(--hem-color); }
         
-        .card.koku::before { background: var(--koku-color); }
-        .card.koku:hover i { color: var(--koku-color); }
+        .card-tmua { color: var(--tmua-color); }
+        .card-tmua:hover { box-shadow: 0 8px 15px rgba(107, 33, 168, 0.1); border-color: var(--tmua-color); }
 
-        .card.profil::before { background: var(--profil-color); }
-        .card.profil:hover i { color: var(--profil-color); }
+        .card-koku { color: var(--koku-color); }
+        .card-koku:hover { box-shadow: 0 8px 15px rgba(234, 88, 12, 0.1); border-color: var(--koku-color); }
 
-        .loader {
-            display: inline-block; width: 14px; height: 14px;
-            border: 2px solid rgba(0,0,0,0.1); border-top: 2px solid var(--primary-color);
-            border-radius: 50%; animation: spin 1s linear infinite; margin-left: 5px;
+        .card-profil { cursor: default; } /* Kad yang tak boleh di-klik */
+        .card-profil:hover { transform: none; box-shadow: 0 2px 5px rgba(0,0,0,0.05); border-color: transparent; }
+
+        .card i { font-size: 28px; margin-bottom: 12px; color: var(--secondary-color); }
+        .card-hem i { color: #059669; }
+        .card-tmua i { color: #9333ea; }
+        .card-koku i { color: #f97316; }
+        .card-profil i { color: #0ea5e9; }
+
+        .card span.title { font-size: 13px; font-weight: bold; line-height: 1.2; margin-bottom: 4px; }
+        .card span.desc { font-size: 10px; color: #666; line-height: 1.2; }
+
+        /* GAMBAR KONTENA PENTADBIR/CARTA */
+        .img-pentadbir-container {
+            background: var(--card-bg);
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            margin-bottom: 30px;
         }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-
-        /* --- RESPONSIVE DESIGN --- */
-        @media (max-width: 992px) {
-            .grid-stats { grid-template-columns: 1fr 1fr; }
+        .img-pentadbir-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
         }
 
+        /* FOOTER */
+        .footer { margin-top: 50px; text-align: center; font-size: 12px; color: #888; border-top: 1px solid #ddd; padding-top: 20px; }
+
+        /* --- RESPONSIVE MOBILE FIX MENU --- */
         @media (max-width: 768px) {
-            .sidebar { transform: translateX(-100%); }
+            .mobile-header { display: flex; } 
+            
+            .sidebar { transform: translateX(-100%); width: 270px; box-shadow: 5px 0 15px rgba(0,0,0,0.5); }
             .sidebar.active { transform: translateX(0); }
-            .mobile-header { display: flex; }
-            .main-content { margin-left: 0; width: 100%; padding: 80px 20px 30px; }
-            .prayer-list { grid-template-columns: 1fr; }
             
-            .ticker-icon { display: none; }
-            .ticker-wrap { border-radius: 0; margin-left: -20px; margin-right: -20px; width: calc(100% + 40px); margin-bottom: 20px;}
+            .main-content { margin-left: 0; width: 100%; padding: 15px; padding-top: 80px; }
             
-            .grid-panitia { grid-template-columns: repeat(2, 1fr); }
-            .hero-text h3 { font-size: 1.1rem; }
-            .enrolmen-widget { padding: 15px; }
-        }
+            .grid-panitia { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .card { height: auto; min-height: 100px; padding: 15px 10px; }
+            .card i { font-size: 24px; margin-bottom: 8px; }
+            .card span.title { font-size: 11px; }
+            .card span.desc { font-size: 9px; }
 
-        @media (max-width: 480px) {
-            .grid-panitia { grid-template-columns: 1fr; }
-            .grid-stats { grid-template-columns: 1fr; }
+            h2.page-title { font-size: 1.2rem; margin-bottom: 20px; }
+            .category-header { font-size: 0.85rem; padding: 10px 12px; }
+            .category-header i { font-size: 16px; margin-right: 8px; }
+
+            .stat-grid { grid-template-columns: 1fr; gap: 10px; }
+            .widget-header { flex-direction: column; align-items: flex-start; gap: 10px; }
+            .widget-title { font-size: 1rem; }
+            .grand-total { font-size: 0.75rem; align-self: flex-start; }
+
+            .hero-card { flex-direction: column; text-align: center; padding: 20px; gap: 10px; }
+            .hero-text h3 { font-size: 1.1rem; }
+            .hero-icon { font-size: 2.2rem; margin-top: 5px; }
+            
+            .ticker-wrap { font-size: 12px; margin-bottom: 20px; }
+            .ticker-icon { padding: 0 10px; font-size: 12px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- HEADER MOBILE -->
     <div class="mobile-header">
+        <div class="mobile-title" id="mobileTitle">SISTEM SMKATB</div>
         <button class="menu-btn" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
-        <div class="mobile-title" id="mobileTitle">One Stop Centre</div>
-        <div style="width: 24px;"></div>
     </div>
 
-    <!-- OVERLAY UNTUK MOBILE -->
     <div class="overlay" onclick="toggleMenu()"></div>
 
     <div class="app-container">
         
-        <!-- SIDEBAR -->
         <div class="sidebar" id="sidebar">
             <div class="sidebar-header">
-                <img src="https://smkatb.edu.my/wp-content/uploads/2021/04/Logo-SMKATB-300x296.png" alt="Logo SMKATB" class="logo-sekolah">
-                <div style="font-weight: 800; font-size: 16px; letter-spacing: 1px;">SISTEM SMKATB</div>
-                <div style="font-size: 11px; opacity: 0.8;">Integriti & Kualiti</div>
+                <img src="logo.png" alt="Logo" class="logo-sekolah">
+                <div style="font-weight:bold; font-size:14px;">SMKA TOK BACHOK</div>
+                <div style="font-size:11px; opacity:0.8;">Sistem Pengurusan Bersepadu</div>
             </div>
 
-            <!-- Widget Jam -->
             <div class="clock-widget">
-                <div class="clock-time" id="clock">00:00</div>
-                <div class="clock-date" id="date">Memuatkan tarikh...</div>
-                <div class="hijri-date" id="hijri-date">...</div>
+                <div class="clock-time" id="jam">--:--:--</div>
+                <div class="clock-date" id="tarikh">Memuatkan...</div>
+                <div class="hijri-date" id="tarikh-hijri"></div>
+                <div class="prayer-list" id="senarai-solat"></div>
             </div>
-            
-            <!-- Widget Audio -->
+
             <div class="audio-container">
-                <audio controls>
-                    <source src="https://aimanst1.github.io/SMKATBMuzik/02%20Asmaul%20Husna%20SMKA%20Tok%20Bachok.mp3" type="audio/mpeg">
-                    Browser anda tidak menyokong elemen audio.
+                <div style="font-size: 11px; font-weight: bold; margin-bottom: 8px; color: #fff;"><i class="fa-solid fa-headphones"></i> RADIO AL-QURAN</div>
+                <audio controls preload="none">
+                    <source src="https://Qurango.net/radio/mishary_alafasi" type="audio/mpeg">
                 </audio>
-                <div class="audio-desc"><i class="fas fa-music"></i> Asmaul Husna SMKATB</div>
+                <div class="audio-desc">Syeikh Mishary Alafasy</div>
             </div>
 
-            <div class="menu-title">Papan Pemuka</div>
-            <a class="nav-link active-nav" onclick="bukaModul('onestop', this, 'One Stop Centre')"><i class="fas fa-home"></i> Laman Utama</a>
-            <a class="nav-link" onclick="bukaModul('profil', this, 'Profil Sekolah')"><i class="fas fa-school"></i> Profil Sekolah</a>
-
-            <div class="menu-title">Modul Pengurusan</div>
-            <a class="nav-link" onclick="bukaModul('kurikulum', this, 'Kurikulum')"><i class="fas fa-book-open"></i> Kurikulum</a>
-            <a href="http://eoperasi.moe.gov.my/" target="_blank" class="nav-link"><i class="fas fa-chalkboard-user"></i> e-Operasi</a>
-            <a href="https://idme.moe.gov.my/" target="_blank" class="nav-link"><i class="fas fa-id-card"></i> idME MOE</a>
-            <a href="https://sps1.moe.gov.my/" target="_blank" class="nav-link"><i class="fas fa-users-cog"></i> HRMIS</a>
+            <div class="menu-title">MENU MODUL UTAMA</div>
+            <a onclick="bukaModul('onestop', this, 'ONE STOP CENTRE')" class="nav-link active-nav"><i class="fas fa-home"></i> One Stop Centre</a>
+            <a onclick="bukaModul('profil', this, 'PROFIL SEKOLAH')" class="nav-link"><i class="fas fa-school"></i> Profil Sekolah</a>
+            <a onclick="bukaModul('kurikulum', this, 'UNIT KURIKULUM')" class="nav-link"><i class="fas fa-book-open"></i> Unit Kurikulum</a>
+            <a onclick="bukaModul('kokurikulum', this, 'UNIT KOKURIKULUM')" class="nav-link"><i class="fas fa-person-running"></i> Unit Kokurikulum</a>
+            <a onclick="bukaModul('hem', this, 'UNIT HEM')" class="nav-link"><i class="fas fa-hand-holding-heart"></i> Unit HEM</a>
+            <a onclick="bukaModul('tmua', this, 'LAMAN TMUA')" class="nav-link"><i class="fas fa-book-quran"></i> Laman TMUA</a>
+            
+            <div class="menu-title">Aplikasi KPM</div>
+            <a href="https://idme.moe.gov.my/" target="_blank" class="nav-link"><i class="fas fa-id-card"></i> IDME</a>
+            <a href="https://hrmis2.eghrmis.gov.my/HRMISNET/Common/Main/Login.aspx" target="_blank" class="nav-link"><i class="fas fa-user-graduate"></i> HRMIS</a>
+            <a href="https://eoperasi.moe.gov.my/index.cfm" target="_blank" class="nav-link"><i class="fas fa-server"></i> e-Operasi</a>
+            
+            <div style="height: 40px;"></div>
         </div>
 
-        <!-- MAIN CONTENT -->
         <div class="main-content">
-            
-            <!-- TICKER INFO (Kelihatan di semua modul) -->
+
             <div class="ticker-wrap">
-                <div class="ticker-icon"><i class="fas fa-bullhorn"></i> INFO</div>
+                <div class="ticker-icon"><i class="fas fa-bullhorn"></i> PENGUMUMAN</div>
                 <div class="ticker-content">
-                    <div class="ticker">
-                        Sistem e-RPH perlu dihantar sebelum hari Khamis 11.59PM setiap minggu. • Sila kemaskini data idME sebelum hujung bulan ini. • Tempahan Dewan Abu Bakar As Siddiq tertakluk kepada kekosongan.
+                    <div class="ticker" id="teks-pengumuman">
+                        Memuatkan pengumuman terkini...
                     </div>
                 </div>
             </div>
-
-            <!-- MODUL: ONE STOP CENTRE -->
+            
             <div id="onestop" class="modul-section" style="display: block;">
-                <h2 class="page-title">One Stop Centre SMKATB</h2>
-                
-                <!-- WIDGET ENROLMEN MURID DYNAMIC -->
+                <h2 class="page-title">ONE STOP CENTRE (OSC)</h2>
+
                 <div class="enrolmen-widget">
                     <div class="widget-header">
-                        <h3><i class="fas fa-users"></i> Enrolmen Murid Semasa</h3>
-                        <span class="update-time" id="last-update">Mengemaskini...</span>
+                        <div class="widget-title"><i class="fa-solid fa-chart-simple"></i> ENROLMEN PELAJAR 2026</div>
+                        <div class="grand-total" id="grand-total-text">Memuatkan data...</div>
                     </div>
-                    
-                    <div class="grid-stats">
-                        <div class="stat-box">
-                            <div class="stat-icon"><i class="fas fa-male"></i></div>
-                            <div class="stat-info">
-                                <span class="stat-label">Lelaki</span>
-                                <span class="stat-value" id="stat-lelaki"><span class="loader"></span></span>
-                            </div>
+                    <div class="stat-grid">
+                        <div class="stat-row">
+                            <div class="stat-left"><span class="stat-label">PRA</span><span class="stat-detail-mini" id="pra-detail"></span></div>
+                            <div class="stat-bar-bg"><div class="stat-bar-fill" id="bar-pra" style="width: 0%"></div></div>
+                            <span class="stat-value" id="pra-total">0</span>
                         </div>
-                        <div class="stat-box">
-                            <div class="stat-icon"><i class="fas fa-female"></i></div>
-                            <div class="stat-info">
-                                <span class="stat-label">Perempuan</span>
-                                <span class="stat-value" id="stat-perempuan"><span class="loader"></span></span>
-                            </div>
+                        <div class="stat-row">
+                            <div class="stat-left"><span class="stat-label">T1</span><span class="stat-detail-mini" id="t1-detail"></span></div>
+                            <div class="stat-bar-bg"><div class="stat-bar-fill" id="bar-t1" style="width: 0%"></div></div>
+                            <span class="stat-value" id="t1-total">0</span>
                         </div>
-                        <div class="stat-box total-box">
-                            <div class="stat-icon"><i class="fas fa-users"></i></div>
-                            <div class="stat-info">
-                                <span class="stat-label">Jumlah Keseluruhan</span>
-                                <span class="stat-value" id="stat-jumlah"><span class="loader"></span></span>
-                            </div>
+                        <div class="stat-row">
+                            <div class="stat-left"><span class="stat-label">T2</span><span class="stat-detail-mini" id="t2-detail"></span></div>
+                            <div class="stat-bar-bg"><div class="stat-bar-fill" id="bar-t2" style="width: 0%"></div></div>
+                            <span class="stat-value" id="t2-total">0</span>
+                        </div>
+                        <div class="stat-row">
+                            <div class="stat-left"><span class="stat-label">T3</span><span class="stat-detail-mini" id="t3-detail"></span></div>
+                            <div class="stat-bar-bg"><div class="stat-bar-fill" id="bar-t3" style="width: 0%"></div></div>
+                            <span class="stat-value" id="t3-total">0</span>
+                        </div>
+                        <div class="stat-row">
+                            <div class="stat-left"><span class="stat-label">T4</span><span class="stat-detail-mini" id="t4-detail"></span></div>
+                            <div class="stat-bar-bg"><div class="stat-bar-fill" id="bar-t4" style="width: 0%"></div></div>
+                            <span class="stat-value" id="t4-total">0</span>
+                        </div>
+                        <div class="stat-row">
+                            <div class="stat-left"><span class="stat-label">T5</span><span class="stat-detail-mini" id="t5-detail"></span></div>
+                            <div class="stat-bar-bg"><div class="stat-bar-fill" id="bar-t5" style="width: 0%"></div></div>
+                            <span class="stat-value" id="t5-total">0</span>
+                        </div>
+                        <div class="stat-row">
+                            <div class="stat-left"><span class="stat-label">T6</span><span class="stat-detail-mini" id="t6-detail"></span></div>
+                            <div class="stat-bar-bg"><div class="stat-bar-fill" id="bar-t6" style="width: 0%"></div></div>
+                            <span class="stat-value" id="t6-total">0</span>
                         </div>
                     </div>
                 </div>
@@ -396,161 +431,400 @@
                     <a href="https://script.google.com/macros/s/AKfycbwd9s4TOTyYtdqMA3dg7Q5Gti6JFYfbbMLRcPRd9qbqgIsYl3rHRsCSywKikUVfHOJyLw/exec" target="_blank" class="card">
                         <i class="fas fa-file-arrow-up"></i><span class="title">TEMPAHAN DEWAN</span><span class="desc">Tempah Dewan Abu Bakar As Siddiq</span>
                     </a>
-                    <!-- TAMBAHAN BARU: LINK PENGISIAN SKPMG4 -->
-                    <a href="https://aimanbum.github.io/skpmg4/dashboard" target="_blank" class="card">
-                        <i class="fas fa-clipboard-list"></i><span class="title">PENGISIAN SKPMG4</span><span class="desc">Dashboard SKPMG4</span>
+                </div>
+
+                <div class="category-header"><i class="fas fa-server"></i> DATA & PEREKODAN PUSAT</div>
+                <div class="grid-panitia">
+                    <a href="https://lookerstudio.google.com/u/0/reporting/7231566a-0bb7-46c6-a499-580111eff1e2/page/S0JeC" target="_blank" class="card">
+                        <i class="fas fa-chart-pie"></i><span class="title">DASHBOARD MMI</span><span class="desc">Masa Instruksional</span>
+                    </a>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdxxIGJOlqA3TubZeUoRm-bSXnQMkyP2IVc7ZoaY3XQSgBBEA/viewform" target="_blank" class="card">
+                        <i class="fas fa-users-rectangle"></i><span class="title">PERHIMPUNAN</span><span class="desc">Rekod Kehadiran</span>
+                    </a>
+                     <a href="https://docs.google.com/spreadsheets/d/12Os7kNzvjGIt2oNyryEdtYl-FJyDB9PdhrCRR0WaXUg/edit?gid=0#gid=0" target="_blank" class="card">
+                        <i class="fas fa-users"></i><span class="title">WARGA SMKATB</span><span class="desc">Senarai nama guru & AKP SMKATB</span>
+                    </a>
+                    <a href="https://drive.google.com/drive/folders/1UJBAwL0ctB9TV9YKfd61B_cG2MGX8SsN" target="_blank" class="card">
+                        <i class="fas fa-users"></i><span class="title">DATA ENROLMEN</span><span class="desc">Senarai nama pelajar SMKATB</span>
                     </a>
                 </div>
 
-                <div class="category-header"><i class="fas fa-users-viewfinder"></i> PENGURUSAN MURID</div>
+                <!-- =================================================================== -->
+                <!-- TAMBAHAN KOD LENSA TOK BACHOK (CADANGAN 2)                          -->
+                <!-- =================================================================== -->
+                <div class="category-header" style="background: #fce7f3; color: #be185d; border-left-color: #db2777; margin-top: 25px;">
+                    <i class="fas fa-photo-film"></i> PORTAL MEDIA & INFORMASI
+                </div>
                 <div class="grid-panitia">
-                    <a href="https://lookerstudio.google.com/u/0/reporting/c04b563f-7e9b-43af-8d69-dc34ba3d7907/page/1M" target="_blank" class="card">
-                        <i class="fas fa-database"></i><span class="title">DATA MURID</span><span class="desc">Pangkalan Data (APDM)</span>
-                    </a>
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLScwE3B4l0pP08kH2fO8X2V3g3z4h9Z7A4t2y5c8L6b1_0nQ/viewform" target="_blank" class="card">
-                        <i class="fas fa-car-side"></i><span class="title">PERGERAKAN PELAJAR</span><span class="desc">Borang Kebenaran Keluar</span>
+                    <a href="https://sites.google.com/moe-dl.edu.my/tbmediacenter/home?authuser=0" target="_blank" class="card" style="color: #be185d; border: 1px solid #fbcfe8;">
+                        <i class="fas fa-camera-retro" style="color: #db2777;"></i>
+                        <span class="title">LENSA TOK BACHOK</span>
+                        <span class="desc">Pusat Media SMKATB</span>
                     </a>
                 </div>
+                <!-- =================================================================== -->
+                
             </div>
 
-            <!-- MODUL: PROFIL -->
             <div id="profil" class="modul-section">
-                <h2 class="page-title">Profil & Data Maklumat</h2>
+                <h2 class="page-title" style="color: var(--primary-color); border-left-color: #0ea5e9;">PROFIL SMKA TOK BACHOK</h2>
+
+                <div class="category-header header-profil"><i class="fas fa-users-tie"></i> BARISAN PENTADBIR 2026</div>
                 
+                <div class="img-pentadbir-container">
+                    <img src="10.png" alt="Barisan Pentadbir SMKA Tok Bachok 2026">
+                </div>
+
+                <div class="category-header header-profil"><i class="fas fa-info-circle"></i> MAKLUMAT KORPORAT</div>
                 <div class="grid-panitia">
-                    <a href="https://lookerstudio.google.com/u/0/reporting/f829a2c2-841f-44eb-b68d-8a2b53b8f106/page/p_h6x332yfcd?s=sA5T8r2aT0s" target="_blank" class="card profil">
-                        <i class="fas fa-id-badge"></i><span class="title">PROFIL GURU</span><span class="desc">Maklumat Kakitangan</span>
+                    <div class="card card-profil">
+                        <i class="fas fa-eye"></i><span class="title">VISI SEKOLAH</span>
+                        <span class="desc" style="font-size: 11px;">"Pendidikan Berkualiti Insan Terdidik Negara Sejahtera"</span>
+                    </div>
+                    <div class="card card-profil">
+                        <i class="fas fa-bullseye"></i><span class="title">MISI SEKOLAH</span>
+                        <span class="desc" style="font-size: 11px;">"Melestarikan Sistem Pendidikan Yang Berkualiti Untuk Membangunkan Potensi Individu Bagi Memenuhi Aspirasi Negara"</span>
+                    </div>
+                    <div class="card card-profil">
+                        <i class="fas fa-music"></i><span class="title">MOTTO SEKOLAH</span>
+                        <span class="desc" style="font-size: 11px;">Beriman Beristiqamah</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="kurikulum" class="modul-section">
+                <h2 class="page-title">e-FOLDER PENGURUSAN KURIKULUM</h2>
+
+                <div class="category-header"><i class="fas fa-folder-tree"></i> PENGURUSAN INDUK</div>
+                <div class="grid-panitia">
+                    <a href="https://drive.google.com/drive/folders/1NGtUawUK77_cG2XjFUgOt3DM1o2xh0fj?usp=drive_link" target="_blank" class="card">
+                        <i class="fas fa-folder-open"></i><span class="title">Folder Induk</span><span class="desc">Pengurusan Kurikulum</span>
                     </a>
-                    <a href="https://lookerstudio.google.com/u/0/reporting/f829a2c2-841f-44eb-b68d-8a2b53b8f106/page/p_3g0r12yfcd" target="_blank" class="card profil">
-                        <i class="fas fa-chart-pie"></i><span class="title">ANALISA GURU</span><span class="desc">Statistik & Analisa</span>
+                </div>
+
+                <div class="category-header"><i class="fas fa-language"></i> JABATAN BAHASA</div>
+                <div class="grid-panitia">
+                    <a href="https://drive.google.com/drive/folders/16M1v4WqU91wGBR9GNZmwE_YhcSKfvdRd?usp=drive_link" target="_blank" class="card"><i class="fas fa-book"></i><span class="title">B. Melayu</span></a>
+                    <a href="https://drive.google.com/drive/folders/1vedzmsC-_ZBfsMKDIXWAYBieRrfuiZP7?usp=drive_link" target="_blank" class="card"><i class="fas fa-flag-usa"></i><span class="title">B. Inggeris</span></a>
+                    <a href="https://drive.google.com/drive/folders/1jZI1UNZNvk6thojEduU3s62jOtPol7oM?usp=drive_link" target="_blank" class="card"><i class="fas fa-kaaba"></i><span class="title">B. Arab</span></a>
+                    <a href="https://drive.google.com/drive/folders/1DzcSZSjtrd3drwGMtLcDKPaJgh6Tdx5X?usp=drive_link" target="_blank" class="card"><i class="fas fa-globe"></i><span class="title">B. Antarabangsa</span></a>
+                </div>
+
+                <div class="category-header"><i class="fas fa-atom"></i> JABATAN STEM</div>
+                <div class="grid-panitia">
+                    <a href="https://drive.google.com/drive/folders/1AjRQa5v0VKBTTv2GhsGD_00AyHGOMq9H?usp=drive_link" target="_blank" class="card"><i class="fas fa-flask"></i><span class="title">Sains Teras</span></a>
+                    <a href="https://drive.google.com/drive/folders/16T8kx7iPjDTe6pTvsly_Nlh_ncQrNeGx?usp=drive_link" target="_blank" class="card"><i class="fas fa-calculator"></i><span class="title">Matematik</span></a>
+                    <a href="https://drive.google.com/drive/folders/19XSaWXG41AEDxGMfd512I85A5RQJMfHv?usp=drive_link" target="_blank" class="card"><i class="fas fa-square-root-alt"></i><span class="title">Mate. Tambahan</span></a>
+                    <a href="https://drive.google.com/drive/folders/1bl_UVOHaajLwxL9kIFn8pUS7jeLeKyrM?usp=drive_link" target="_blank" class="card"><i class="fas fa-magnet"></i><span class="title">Fizik</span></a>
+                    <a href="https://drive.google.com/drive/folders/1QZ-srKM7JA573FTfrolHXQUzqtniMgxI?usp=drive_link" target="_blank" class="card"><i class="fas fa-vial"></i><span class="title">Kimia</span></a>
+                    <a href="https://drive.google.com/drive/folders/1fgzxtkiFJ4dnD00TlM3gpKeg-y9MRVPX?usp=drive_link" target="_blank" class="card"><i class="fas fa-dna"></i><span class="title">Biologi</span></a>
+                    <a href="https://sites.google.com/moe-dl.edu.my/my-science-roomjpnk/home" target="_blank" class="card"><i class="fas fa-flask"></i><span class="title">My Science Room</span></a>
+                </div>
+
+                <div class="category-header"><i class="fas fa-quran"></i> JABATAN AGAMA & TAHFIZ</div>
+                <div class="grid-panitia">
+                    <a href="https://drive.google.com/drive/folders/1ZTo3uxAHX_6CjmiGS6wUkUHkS3stzvrG?usp=drive_link" target="_blank" class="card"><i class="fas fa-praying-hands"></i><span class="title">Pend. Islam</span></a>
+                    <a href="https://drive.google.com/drive/folders/17ifVYqiVf2za9Dc-9cy6AKlG67nm0D_y?usp=drive_link" target="_blank" class="card"><i class="fas fa-balance-scale"></i><span class="title">Syariah (PSI)</span></a>
+                    <a href="https://drive.google.com/drive/folders/1DoQqTwYfGJoZ6ZHnxNOenH4SMxvfC-eq?usp=drive_link" target="_blank" class="card"><i class="fas fa-book-open"></i><span class="title">Al-Quran (PQS)</span></a>
+                    <a href="https://drive.google.com/drive/folders/1-MDYtXOLl8dr1ihea_zo1o7pixxVsP2x?usp=drive_link" target="_blank" class="card"><i class="fas fa-star-and-crescent"></i><span class="title">Hifz Al-Quran</span></a>
+                    <a href="https://drive.google.com/drive/folders/1teQi_X5cL-vA1JyvIOykp0Mvqm0CLNL7?usp=drive_link" target="_blank" class="card"><i class="fas fa-mosque"></i><span class="title">Maharat Al-Quran</span></a>
+                </div>
+
+                <div class="category-header"><i class="fas fa-shapes"></i> KEMANUSIAAN & TEKNIKAL</div>
+                <div class="grid-panitia">
+                    <a href="https://drive.google.com/drive/folders/1OeCWzpErwPoIpJDtA1oCZ7BtrxkaKwXh?usp=drive_link" target="_blank" class="card"><i class="fas fa-landmark"></i><span class="title">Sejarah</span></a>
+                    <a href="https://drive.google.com/drive/folders/1tGgY0OI779JuljYTpBYz5NzE1IF-sD0R?usp=drive_link" target="_blank" class="card"><i class="fas fa-globe-asia"></i><span class="title">Geografi</span></a>
+                    <a href="https://drive.google.com/drive/folders/1ok8RCNVodD9wVUmXnaaEZHvEVYIr5Dww?usp=drive_link" target="_blank" class="card"><i class="fas fa-running"></i><span class="title">PJK</span></a>
+                    <a href="https://drive.google.com/drive/folders/1FLA6rF3CyDuSxz6cryDgsc8nZnezF8x7?usp=drive_link" target="_blank" class="card"><i class="fas fa-palette"></i><span class="title">PSV</span></a>
+                    <a href="https://drive.google.com/drive/folders/1uBownqxlQ6XHj4OJ8qsT4CKOS0Fg-85O?usp=drive_link" target="_blank" class="card"><i class="fas fa-tools"></i><span class="title">RBT</span></a>
+                    <a href="https://drive.google.com/drive/folders/1rcSuI-wMdhEdDh9J0yvToozUAEYwar-o?usp=drive_link" target="_blank" class="card"><i class="fas fa-drafting-compass"></i><span class="title">GKT</span></a>
+                    <a href="https://drive.google.com/drive/folders/1YA7xUhHkX93E-PS65qr4HP98xYr3l1kA?usp=drive_link" target="_blank" class="card"><i class="fas fa-file-invoice-dollar"></i><span class="title">P. Akaun</span></a>
+                </div>
+            </div>
+
+            <div id="kokurikulum" class="modul-section">
+                <h2 class="page-title" style="color: var(--koku-color); border-left-color: #f97316;">e-FOLDER UNIT KOKURIKULUM</h2>
+
+                <div class="category-header header-koku"><i class="fas fa-sitemap"></i> PENGURUSAN INDUK</div>
+                
+                <div class="img-pentadbir-container">
+                    <img src="carta koku.jpg" alt="Carta Organisasi Unit Kokurikulum">
+                </div>
+
+                <div class="grid-panitia">
+                    <a href="https://drive.google.com/drive/folders/15cDlqN3TpNJPTo_a8I0dYWcxf_6dZ8Dd?usp=sharing" target="_blank" class="card card-koku">
+                        <i class="fas fa-folder-open"></i><span class="title">Folder Induk</span><span class="desc">Carta Organisasi Unit Kokurikulum</span>
                     </a>
-                    <a href="https://lookerstudio.google.com/reporting/803dc4d1-8d26-448f-9a70-8b1b9e075cde/page/p_3g0r12yfcd" target="_blank" class="card profil">
-                        <i class="fas fa-medal"></i><span class="title">SUMBANGAN GURU</span><span class="desc">Rekod Penglibatan</span>
+                    <a href="https://docs.google.com/spreadsheets/d/17FQsNO0WEioodiPQpReu6znqt2RiLbISuJLQip8WTfc/edit?gid=0#gid=0" target="_blank" class="card card-koku">
+                        <i class="fas fa-calendar-days"></i><span class="title">Takwim Kokurikulum</span><span class="desc">Tarikh Perjumpaan Koku 2026</span>
                     </a>
-                    <a href="https://lookerstudio.google.com/u/0/reporting/f829a2c2-841f-44eb-b68d-8a2b53b8f106/page/p_z7n95yagcd" target="_blank" class="card profil">
-                        <i class="fas fa-chalkboard-teacher"></i><span class="title">Opsyen vs Ajar</span><span class="desc">Pemetaan Subjek</span>
+                    <a href="https://docs.google.com/document/d/1etcOXH11-7DrxuqhVQLQJwJ95Rb__9E6/edit" target="_blank" class="card card-koku">
+                        <i class="fas fa-file-signature"></i><span class="title">MPS Kokurikulum</span><span class="desc">Manual Pengurusan Kokurikulum 2026</span>
+                    </a>
+                    <a href="https://aimanbum.github.io/tmuatb/cariankokurikulum.html" target="_blank" class="card card-koku">
+                        <i class="fas fa-search"></i><span class="title">Sistem Semakan</span><span class="desc">Semakan Kokurikulum SMKATB</span>
+                    </a>
+                </div>
+
+                <div class="category-header header-koku"><i class="fas fa-clipboard-list"></i> KEHADIRAN & PELAPORAN</div>
+                <div class="grid-panitia">
+                    <a href="https://forms.gle/e2y6PzBhFG3Q5QrL7" target="_blank" class="card card-koku">
+                        <i class="fas fa-user-check"></i><span class="title">Kehadiran Guru</span><span class="desc">Perjumpaan Kokurikulum</span>
+                    </a>
+                    <a href="https://forms.gle/DMMyimWzwdioYnG46" target="_blank" class="card card-koku">
+                        <i class="fas fa-shield-halved"></i><span class="title">Badan Beruniform</span><span class="desc">Laporan Aktiviti</span>
+                    </a>
+                    <a href="https://forms.gle/mPLCxGVDRpxfjdcy6" target="_blank" class="card card-koku">
+                        <i class="fas fa-users-gear"></i><span class="title">Kelab & Persatuan</span><span class="desc">Laporan Aktiviti</span>
+                    </a>
+                    <a href="https://forms.gle/Qn2FguWA2EkYx9Rr7" target="_blank" class="card card-koku">
+                        <i class="fas fa-futbol"></i><span class="title">Sukan & Permainan</span><span class="desc">Laporan Aktiviti 1M1S</span>
+                    </a>
+                    <a href="https://forms.gle/HWzSQokfEUbVkAnVA" target="_blank" class="card card-koku">
+                        <i class="fas fa-house-flag"></i><span class="title">Rumah Sukan</span><span class="desc">Laporan Latihan/Aktiviti</span>
                     </a>
                 </div>
             </div>
 
-            <!-- MODUL: KURIKULUM -->
-            <div id="kurikulum" class="modul-section">
-                <h2 class="page-title">Pengurusan Kurikulum</h2>
-                
-                <a href="https://lookerstudio.google.com/reporting/41d8e124-b152-411a-8c34-eb139cf1af57/page/p_3r4t5y6u" target="_blank" class="hero-card">
+            <div id="hem" class="modul-section">
+                <h2 class="page-title" style="color: var(--hem-color); border-left-color: #10b981;">e-FOLDER UNIT HAL EHWAL MURID</h2>
+
+                <div class="category-header header-hem"><i class="fas fa-folder-tree"></i> PENGURUSAN INDUK & KEHADIRAN</div>
+                <div class="grid-panitia">
+                    <a href="https://drive.google.com/drive/folders/1qDpz8Skx-PKU-e74pEm3drA70UlyHxyo?usp=sharing" target="_blank" class="card card-hem"><i class="fas fa-folder-open"></i><span class="title">Pengurusan HEM</span></a>
+                    <a href="https://drive.google.com/drive/folders/16m8lmdZbgEKU6sZWjJV9a1px4W4VfTA9?usp=sharing" target="_blank" class="card card-hem"><i class="fas fa-users-rectangle"></i><span class="title">Pengurusan Murid</span></a>
+                    <a href="https://drive.google.com/drive/folders/11zZKuJmIAXm00foJiJWyDR4SUkBw89nN?usp=sharing" target="_blank" class="card card-hem"><i class="fas fa-chalkboard-user"></i><span class="title">Pengurusan Kelas</span></a>
+                    <a href="https://drive.google.com/drive/folders/18Wcm1afpQlvMcdoWId8BK3vbSkSGEqed?usp=sharing" target="_blank" class="card card-hem"><i class="fas fa-calendar-check"></i><span class="title">Laporan Kehadiran</span></a>
+                </div>
+
+                <div class="category-header header-hem"><i class="fas fa-scale-balanced"></i> DISIPLIN & KEPIMPINAN</div>
+                <div class="grid-panitia">
+                    <a href="https://drive.google.com/drive/folders/1iR0f1GAYog21vlWyNkoMWNlnPC4fZrAC?usp=drive_link" target="_blank" class="card card-hem"><i class="fas fa-gavel"></i><span class="title">Unit Disiplin</span></a>
+                    <a href="https://drive.google.com/drive/folders/1M1A8-WVWN-foPuV2xNkA8zi0Jos6YXc2?usp=sharing" target="_blank" class="card card-hem"><i class="fas fa-user-shield"></i><span class="title">Unit Pengawas</span></a>
+                    <a href="https://drive.google.com/drive/folders/1O5hXHrpqduUTx-a2T_ZjqWKVM3fH9Qxb?usp=sharing" target="_blank" class="card card-hem"><i class="fas fa-user-xmark"></i><span class="title">Unit Ponteng</span></a>
+                    <a href="https://drive.google.com/drive/folders/1tJNwfbQiMWj4gi2O9SqX4BS3yhtFUGXW?usp=sharing" target="_blank" class="card card-hem"><i class="fas fa-handcuffs"></i><span class="title">Unit KPJ</span></a>
+                </div>
+
+                <div class="category-header header-hem"><i class="fas fa-hands-holding-child"></i> BIMBINGAN & SAHSIAH</div>
+                <div class="grid-panitia">
+                    <a href="https://drive.google.com/drive/folders/1Fl11BsOTgViTaP7dNgMW1LP9m_Kwghh-?usp=drive_link" target="_blank" class="card card-hem"><i class="fas fa-comments"></i><span class="title">Unit UBK</span></a>
+                    <a href="https://drive.google.com/drive/folders/16KKFbD3aUhEKyGS73Gm5I-lbUqA0PDap?usp=sharing" target="_blank" class="card card-hem"><i class="fas fa-people-arrows"></i><span class="title">Unit PRS</span></a>
+                    <a href="https://drive.google.com/drive/folders/1bKy8x88q_Id2DYpzn3N3KARLsHCZgJdt?usp=sharing" target="_blank" class="card card-hem"><i class="fas fa-star-and-crescent"></i><span class="title">Unit SUMUR</span></a>
+                    <a href="https://drive.google.com/drive/folders/1B0vXXKfwi5OQXZS8ndt3naMnfgaLkiIT?usp=sharing" target="_blank" class="card card-hem"><i class="fas fa-mosque"></i><span class="title">Unit Surau</span></a>
+                </div>
+
+                <div class="category-header header-hem"><i class="fas fa-hand-holding-dollar"></i> KEBAJIKAN & BANTUAN</div>
+                <div class="grid-panitia">
+                    <a href="https://drive.google.com/drive/folders/1nvpLHfCStm7-XKIAyhnUpJDyfXZqhBMb" target="_blank" class="card card-hem"><i class="fas fa-hand-holding-heart"></i><span class="title">Unit Kebajikan</span></a>
+                    <a href="https://drive.google.com/drive/folders/1opuxefG2kAfaj4ZmR9VC4QXaSoyZ3TpM" target="_blank" class="card card-hem"><i class="fas fa-graduation-cap"></i><span class="title">Unit Biasiswa</span></a>
+                    <a href="https://drive.google.com/drive/folders/1gyq6wXS2FA7ju45Pa65a3sFtpyegtzB6?usp=sharing" target="_blank" class="card card-hem"><i class="fas fa-book"></i><span class="title">Unit SPBT</span></a>
+                </div>
+
+                <div class="category-header header-hem"><i class="fas fa-building-user"></i> FASILITI & KESIHATAN</div>
+                <div class="grid-panitia">
+                    <a href="https://drive.google.com/drive/folders/1xmG_sccFB9kWKGEWjgwSTpyK_4aLnBgW?usp=sharing" target="_blank" class="card card-hem"><i class="fas fa-bed"></i><span class="title">Unit Asrama</span></a>
+                    <a href="https://drive.google.com/drive/folders/1LsaJGLaoLcTvGXle7Yv9-aATWA16rKJ-?usp=sharing" target="_blank" class="card card-hem"><i class="fas fa-kit-medical"></i><span class="title">Kesihatan Murid</span></a>
+                    <a href="https://drive.google.com/drive/folders/1v9Q6Bxr1JWrJrie7tvSrFhFq-omLPow3?usp=sharing" target="_blank" class="card card-hem"><i class="fas fa-broom"></i><span class="title">Program 3K</span></a>
+                    <a href="https://drive.google.com/drive/folders/1KmCZvw-rAPImbSYeusQPKn3__gYWxk_q?usp=sharing" target="_blank" class="card card-hem"><i class="fas fa-utensils"></i><span class="title">Unit Kantin</span></a>
+                    <a href="https://drive.google.com/drive/folders/1dqeZJhYRe9_0DrTANxsQW-n-3lLOQakR?usp=sharing" target="_blank" class="card card-hem"><i class="fas fa-ban"></i><span class="title">Unit PPDA</span></a>
+                </div>
+            </div>
+
+            <div id="tmua" class="modul-section">
+                <h2 class="page-title" style="color: var(--tmua-color); border-left-color: #8b5cf6;">PORTAL TAHFIZ MODEL ULUL ALBAB</h2>
+
+                <a href="https://drive.google.com/drive/folders/1R4FdjBu_MviJWC51DVcEiyQpBSGGm-PG?usp=sharing" class="hero-card" target="_blank">
                     <div class="hero-text">
-                        <h3>DASHBOARD TMUA</h3>
-                        <p>Akses kepada sistem pengurusan Tahfiz Model Ulul Albab</p>
+                        <h3>REKOD PRESTASI HAFAZAN INDIVIDU</h3>
+                        <p>Pengisian rekod hafazan dan murajaah harian pelajar</p>
                     </div>
-                    <i class="fas fa-quran hero-icon"></i>
+                    <div class="hero-icon"><i class="fa-solid fa-pen-to-square"></i></div>
                 </a>
 
-                <div class="category-header"><i class="fas fa-folder-open"></i> E-FAIL PANITIA</div>
+                <div class="category-header header-tmua"><i class="fas fa-folder-tree"></i> APLIKASI & e-HAFAZAN</div>
                 <div class="grid-panitia">
-                    <a href="https://drive.google.com/drive/folders/1w1R2A4tJvX6h7j5g9zVqX2p5u3r6Fw0y?usp=drive_link" target="_blank" class="card">
-                        <i class="fas fa-language"></i><span class="title">Bahasa Melayu</span>
+                    <a href="https://aimanbum.github.io/dashboardhafazan/" target="_blank" class="card card-tmua">
+                        <i class="fas fa-chart-pie"></i><span class="title">Dashboard</span><span class="desc">Statistik prestasi bulanan</span>
                     </a>
-                    <a href="https://drive.google.com/drive/folders/1mR8k3hA4gP2w5Z8z9x2Y7c3D4y9H2z6g?usp=drive_link" target="_blank" class="card">
-                        <i class="fas fa-globe-americas"></i><span class="title">English</span>
+                    <a href="https://quran.com/ms" target="_blank" class="card card-tmua">
+                        <i class="fas fa-book-quran"></i><span class="title">Al-Quran Digital</span><span class="desc">Bacaan & audio interaktif</span>
                     </a>
-                    <a href="https://drive.google.com/drive/folders/1pW4v5rT6y8U9i2o3p5a7s1d4f6g8h0j2?usp=drive_link" target="_blank" class="card">
-                        <i class="fas fa-history"></i><span class="title">Sejarah</span>
+                    <a href="https://aimanbum.github.io/ehafazantokbachok/guru.html" target="_blank" class="card card-tmua">
+                        <i class="fas fa-file-signature"></i><span class="title">Prestasi Bulanan</span><span class="desc">Pengisian setiap akhir bulan</span>
                     </a>
-                    <a href="https://drive.google.com/drive/folders/1sF8d2g3h4j5k6l7m8n9p0q1r2s3t4u5v?usp=drive_link" target="_blank" class="card">
-                        <i class="fas fa-calculator"></i><span class="title">Matematik</span>
+                    <a href="https://forms.gle/MZYJB4YxUYbUkG238" target="_blank" class="card card-tmua">
+                        <i class="fas fa-medal"></i><span class="title">Rekod Khatam</span><span class="desc">Pengesahan khatam Al-Quran</span>
                     </a>
-                    <a href="https://drive.google.com/drive/folders/1x9c8v7b6n5m4l3k2j1h0g9f8d7s6a5p4?usp=drive_link" target="_blank" class="card">
-                        <i class="fas fa-flask"></i><span class="title">Sains</span>
+                </div>
+
+                <div class="category-header header-tmua"><i class="fas fa-server"></i> DOKUMEN & PENGURUSAN TMUA</div>
+                <div class="grid-panitia">
+                    <a href="https://drive.google.com/drive/folders/1Z07QYsqg-YRuqNiR4YXg7hQLwHGhCt8p?usp=sharing" target="_blank" class="card card-tmua">
+                        <i class="fas fa-users-rectangle"></i><span class="title">Halaqah 2026</span><span class="desc">Kumpulan & guru tasmik</span>
                     </a>
-                    <a href="https://drive.google.com/drive/folders/1z0x9c8v7b6n5m4l3k2j1h0g9f8d7s6a5p?usp=drive_link" target="_blank" class="card">
-                        <i class="fas fa-atom"></i><span class="title">Fizik</span>
+                    <a href="https://docs.google.com/spreadsheets/d/1xx5BP8lhLu6eqke5RfqEZUs3BnPgLS9u/edit?gid=1105382656#gid=1105382656" target="_blank" class="card card-tmua">
+                        <i class="fas fa-calendar-days"></i><span class="title">RPT HIFZ 2026</span><span class="desc">Rancangan Pelajaran Tahunan</span>
                     </a>
-                    <a href="https://drive.google.com/drive/folders/1a2s3d4f5g6h7j8k9l0p0o9i8u7y6t5r?usp=drive_link" target="_blank" class="card">
-                        <i class="fas fa-vial"></i><span class="title">Kimia</span>
+                    <a href="https://drive.google.com/drive/folders/10hzshOvUihDCpQ-v_4nYq1GUiXlx32Gw?usp=drive_link" target="_blank" class="card card-tmua">
+                        <i class="fas fa-book-open"></i><span class="title">DSKP Hifz</span><span class="desc">Dokumen & pentaksiran</span>
                     </a>
-                    <a href="https://drive.google.com/drive/folders/1q2w3e4r5t6y7u8i9o0p0a9s8d7f6g5h?usp=drive_link" target="_blank" class="card">
-                        <i class="fas fa-dna"></i><span class="title">Biologi</span>
-                    </a>
-                    <a href="https://drive.google.com/drive/folders/1p0o9i8u7y6t5r4e3w2q1a2s3d4f5g6h?usp=drive_link" target="_blank" class="card">
-                        <i class="fas fa-laptop-code"></i><span class="title">Asas Sains Komputer</span>
-                    </a>
-                    <a href="https://drive.google.com/drive/folders/1m0n9b8v7c6x5z4l3k2j1h0g9f8d7s6a?usp=drive_link" target="_blank" class="card">
-                        <i class="fas fa-briefcase"></i><span class="title">Perniagaan</span>
-                    </a>
-                    <a href="https://drive.google.com/drive/folders/1l2k3j4h5g6f7d8s9a0p9o8i7u6y5t4r?usp=drive_link" target="_blank" class="card">
-                        <i class="fas fa-chart-line"></i><span class="title">Prinsip Perakaunan</span>
-                    </a>
-                    <a href="https://drive.google.com/drive/folders/1q1w2e3r4t5y6u7i8o9p0a1s2d3f4g5h?usp=drive_link" target="_blank" class="card">
-                        <i class="fas fa-kaaba"></i><span class="title">B. Arab (KBD)</span>
-                    </a>
-                    <a href="https://drive.google.com/drive/folders/1ZTo3uxAHX_6CjmiGS6wUkUHkS3stzvrG?usp=drive_link" target="_blank" class="card">
-                        <i class="fas fa-praying-hands"></i><span class="title">Pend. Islam</span>
-                    </a>
-                    <a href="https://drive.google.com/drive/folders/17ifVYqiVf2za9Dc-9cy6AKlG67nm0D_y?usp=drive_link" target="_blank" class="card">
-                        <i class="fas fa-balance-scale"></i><span class="title">Syariah (PSI)</span>
-                    </a>
-                    <a href="https://drive.google.com/drive/folders/1DoQqTwYfGJoZ6ZHnxNOenH4SMxvfC-eq?usp=drive_link" target="_blank" class="card">
-                        <i class="fas fa-book-open"></i><span class="title">Al-Quran (PQS)</span>
-                    </a>
-                    <a href="https://drive.google.com/drive/folders/1-MDYtXOLl8dr1ihea_zo1o7pixxVsP2x?usp=drive_link" target="_blank" class="card">
-                        <i class="fas fa-book"></i><span class="title">Usuluddin</span>
+                    <a href="https://drive.google.com/drive/folders/1UJBAwL0ctB9TV9YKfd61B_cG2MGX8SsN?usp=drive_link" target="_blank" class="card card-tmua">
+                        <i class="fas fa-folder-open"></i><span class="title">Enrolmen TMUA</span><span class="desc">Senarai nama pelajar</span>
                     </a>
                 </div>
             </div>
 
-        </div> <!-- END MAIN CONTENT -->
-    </div> <!-- END APP CONTAINER -->
+            <div class="footer">
+                Sistem Pengurusan Bersepadu &copy; 2026 | SMKA TOK BACHOK
+            </div>
+        </div>
+    </div>
 
-    <!-- JAVASCRIPT ASAS -->
     <script>
-        // Fungsi untuk menukar (toggle) paparan sidebar di peranti mudah alih
+        function bukaModul(modulId, elemenBtn, tajukMobile) {
+            let moduls = document.querySelectorAll('.modul-section');
+            moduls.forEach(m => m.style.display = 'none');
+
+            let links = document.querySelectorAll('.nav-link');
+            links.forEach(l => l.classList.remove('active-nav'));
+
+            document.getElementById(modulId).style.display = 'block';
+
+            if(elemenBtn) { elemenBtn.classList.add('active-nav'); }
+            if(tajukMobile) { document.getElementById('mobileTitle').innerText = tajukMobile; }
+
+            if (window.innerWidth <= 768) {
+                document.getElementById('sidebar').classList.remove('active');
+                document.querySelector('.overlay').classList.remove('active');
+            }
+            window.scrollTo(0, 0);
+        }
+
         function toggleMenu() {
-            document.getElementById('sidebar').classList.toggle('active');
-            document.querySelector('.overlay').classList.toggle('active');
-        }
-
-        // Fungsi pertukaran Modul (Tab)
-        function bukaModul(id, el, title) {
-            // Sembunyikan semua modul
-            document.querySelectorAll('.modul-section').forEach(mod => mod.style.display = 'none');
-            // Paparkan modul yang dipilih
-            document.getElementById(id).style.display = 'block';
-            
-            // Kemaskini menu yang aktif di sidebar
-            document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active-nav'));
-            el.classList.add('active-nav');
-            
-            // Kemaskini tajuk di header (untuk peranti mudah alih)
-            if(document.getElementById('mobileTitle')) {
-                document.getElementById('mobileTitle').innerText = title;
-            }
-            
-            // Tutup sidebar jika di skrin kecil selepas memilih
-            if(window.innerWidth <= 768) {
-                toggleMenu();
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.querySelector('.overlay');
+            if (window.innerWidth <= 768) {
+                sidebar.classList.toggle('active');
+                overlay.classList.toggle('active');
             }
         }
 
-        // Fungsi memaparkan Jam Berfungsi (Live Clock)
-        function updateClock() {
-            const now = new Date();
-            let hours = now.getHours();
-            let minutes = now.getMinutes();
-            const ampm = hours >= 12 ? 'PM' : 'AM';
-            
-            hours = hours % 12;
-            hours = hours ? hours : 12; // paparkan '12' ganti '0'
-            minutes = minutes < 10 ? '0' + minutes : minutes;
-            
-            const timeString = hours + ':' + minutes + ' ' + ampm;
-            document.getElementById('clock').innerText = timeString;
+        let offset = 0;
+        async function syncTime() {
+            try {
+                const res = await fetch('https://worldtimeapi.org/api/timezone/Asia/Kuala_Lumpur');
+                const d = await res.json();
+                offset = new Date(d.datetime).getTime() - Date.now();
+            } catch(e){}
+        }
+        setInterval(() => {
+            const now = new Date(Date.now() + offset);
+            document.getElementById('jam').innerText = now.toLocaleTimeString('ms-MY', {hour12:true});
+            document.getElementById('tarikh').innerText = now.toLocaleDateString('ms-MY', {weekday:'long', day:'numeric', month:'long', year:'numeric'});
+        }, 1000);
+        syncTime();
 
-            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-            document.getElementById('date').innerText = now.toLocaleDateString('ms-MY', options);
+        async function fetchSolat() {
+            try {
+                const res = await fetch('./jadual_waktu_solat_JAKIM.csv');
+                const txt = await res.text();
+                const lines = txt.split('\n');
+                const today = new Date();
+                const search = `${String(today.getDate()).padStart(2,'0')}-${["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][today.getMonth()]}-${today.getFullYear()}`;
+                
+                const f = lines.find(l => l.startsWith(search));
+                if(f) {
+                    const d = f.split(',');
+                    document.getElementById('tarikh-hijri').innerText = d[1] + " Hijrah";
+                    const s = {"Subuh": d[4], "Zohor": d[6], "Asar": d[7], "Maghrib": d[8], "Isyak": d[9]};
+                    document.getElementById('senarai-solat').innerHTML = Object.entries(s).map(([n,t])=>`<div class="prayer-row"><span>${n}</span><b>${t}</b></div>`).join('');
+                } else {
+                    document.getElementById('senarai-solat').innerHTML = "<div style='font-size:10px; opacity:0.7; grid-column:span 2;'>Tiada data waktu solat hari ini.</div>";
+                }
+            } catch(e){
+                console.log("Waktu solat tidak dapat dimuatkan. Pastikan fail CSV wujud.");
+            }
+        }
+        fetchSolat();
+
+        const ssID = '1M5HM5y6qgWshsLqB8CoReXiF54sFiUBiS_dVqUtK0gk';
+        const url = `https://docs.google.com/spreadsheets/d/${ssID}/gviz/tq?tqx=out:csv`;
+
+        async function fetchEnrolmen() {
+            try {
+                const response = await fetch(url);
+                const data = await response.text();
+                const rows = data.split('\n').map(row => row.split(',').map(cell => cell.replace(/"/g, '')));
+                const getData = (r, c) => parseInt(rows[r][c]) || 0;
+
+                let grandL = 0; let grandP = 0;
+                let maxVal = 160;
+
+                const processTingkatan = (id, row) => {
+                    const l = getData(row - 1, 2);
+                    const p = getData(row - 1, 3);
+                    const total = l + p;
+                    grandL += l; grandP += p;
+
+                    const elTotal = document.getElementById(`${id}-total`);
+                    if(elTotal) elTotal.innerText = total;
+
+                    const elBar = document.getElementById(`bar-${id}`);
+                    if(elBar) {
+                        let percent = (total / maxVal) * 100;
+                        if(percent > 100) percent = 100;
+                        elBar.style.width = `${percent}%`;
+                    }
+
+                    const elDetail = document.getElementById(`${id}-detail`);
+                    if(elDetail) elDetail.innerText = `L:${l} P:${p}`;
+                };
+
+                processTingkatan('pra', 37);
+                processTingkatan('t1', 7);
+                processTingkatan('t2', 13);
+                processTingkatan('t3', 19);
+                processTingkatan('t4', 25);
+                processTingkatan('t5', 31);
+                processTingkatan('t6', 36);
+
+                const totalSemua = grandL + grandP;
+                document.getElementById('grand-total-text').innerText = `JUMLAH: ${totalSemua} PELAJAR (L:${grandL} P:${grandP})`;
+
+            } catch (e) { 
+                console.error('Ralat menarik data enrolmen:', e); 
+                document.getElementById('grand-total-text').innerText = "Gagal memuatkan data.";
+            }
         }
 
-        setInterval(updateClock, 1000);
-        updateClock(); // Panggil sekali semasa mula
+        const sheetPengumumanID = '16fOkfgnchflSdi3NjsWxZonXI2lH0X9STiwZgnp6TRw'; 
+        const urlPengumuman = `https://docs.google.com/spreadsheets/d/${sheetPengumumanID}/gviz/tq?tqx=out:csv`;
+
+        async function fetchPengumuman() {
+            try {
+                const res = await fetch(urlPengumuman);
+                const data = await res.text();
+                const baris = data.split('\n');
+                const senaraiPengumuman = baris
+                    .map(baris => baris.split(',')[0].replace(/"/g, '').trim())
+                    .filter(teks => teks !== '' && teks !== 'undefined');
+
+                if (senaraiPengumuman.length > 0) {
+                    document.getElementById('teks-pengumuman').innerHTML = senaraiPengumuman.join(' &nbsp;&nbsp;&nbsp; <i class="fa-solid fa-star" style="color:var(--primary-color); font-size:10px;"></i> &nbsp;&nbsp;&nbsp; ');
+                } else {
+                    document.getElementById('teks-pengumuman').innerHTML = "Tiada pengumuman baharu pada hari ini.";
+                }
+
+            } catch (e) {
+                console.error('Ralat menarik data pengumuman:', e);
+                document.getElementById('teks-pengumuman').innerHTML = "Selamat Datang ke Sistem Pengurusan Bersepadu SMKA Tok Bachok.";
+            }
+        }
+        
+        document.addEventListener("DOMContentLoaded", function() {
+            fetchEnrolmen();
+            fetchPengumuman();
+        });
     </script>
 </body>
 </html>
