@@ -1,0 +1,50 @@
+/* SMKATB Minimalist Premium v3.0 – NON-DESTRUCTIVE STYLING LAYER */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap');
+:root{--primary-color:#193b63;--secondary-color:#326897;--accent-color:#c9a35f;--bg-color:#f6f8fb;--card-bg:#fff;--text-color:#22354d;--sidebar-width:254px;--hem-color:#256c62;--tmua-color:#6d6397;--koku-color:#916946;--profil-color:#427e9e}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}body{font-family:'DM Sans','Segoe UI',Arial,sans-serif!important;background:#f6f8fb!important;color:#22354d!important;line-height:1.5}
+a,button{ -webkit-tap-highlight-color:transparent }a:focus-visible,button:focus-visible{outline:2px solid #386fa8!important;outline-offset:3px}
+/* Calm, compact navy sidebar */
+.sidebar{width:var(--sidebar-width)!important;background:#152b45!important;border-right:1px solid #263e56!important;padding:19px 13px!important;box-shadow:none!important}
+.sidebar-header{padding:7px 7px 17px!important;margin-bottom:13px!important;border-bottom:1px solid #35506b!important}
+.sidebar-header h2,.sidebar-header h3,.sidebar-header h4{font-family:inherit!important;letter-spacing:0!important}
+.sidebar-header .logo-sekolah,.logo-sekolah{box-shadow:none!important;max-width:66px!important;border:0!important}
+.sidebar .menu-title,.menu-title{font-size:10px!important;font-weight:700!important;color:#92a8c0!important;letter-spacing:1px!important;margin:19px 10px 8px!important}
+.sidebar .nav-link,.nav-link{padding:10px 11px!important;margin-bottom:3px!important;min-height:41px!important;border-radius:8px!important;border:1px solid transparent!important;color:#d9e3ef!important;font-size:12.5px!important;font-weight:500!important;background:transparent!important;box-shadow:none!important;transform:none!important;transition:background .16s ease!important}
+.sidebar .nav-link i{width:20px!important;margin-right:8px!important;color:#abbfd2!important;font-size:14px!important}
+.sidebar .nav-link:hover{background:#263f5b!important;color:#fff!important}
+.sidebar .nav-link.active-nav{background:#e9f0f8!important;color:#163c62!important;font-weight:700!important;border-color:#e9f0f8!important;box-shadow:none!important}
+.sidebar .nav-link.active-nav i{color:#244f7a!important}
+.clock-widget,.audio-container{background:#203a55!important;border:1px solid #36516b!important;border-radius:10px!important;box-shadow:none!important;padding:13px!important}
+.clock-time,.hijri-date{color:#f0f4f9!important}.prayer-row{background:rgba(255,255,255,.055)!important;border-radius:6px!important}.prayer-row b{color:#e4d2af!important}
+/* Clean content – original structure stays intact */
+.main-content{margin-left:var(--sidebar-width)!important;padding:27px clamp(18px,3vw,45px) 44px!important;max-width:none!important;min-width:0!important}
+.main-content .modul-section{animation:none!important}
+h2.page-title,.page-title{font-family:inherit!important;font-size:clamp(21px,2vw,27px)!important;font-weight:800!important;line-height:1.3!important;letter-spacing:-.65px!important;color:#1b3652!important;background:none!important;border:0!important;padding:0 0 15px!important;margin:5px 0 23px!important;border-bottom:1px solid #e5ebf0!important}
+.ticker-wrap{background:#fff!important;color:#40546a!important;border:1px solid #e7ebf0!important;border-radius:9px!important;box-shadow:none!important;margin:0 0 25px!important;min-height:43px!important;overflow:hidden!important}
+.ticker-icon{background:#eaf0f6!important;color:#264e75!important;box-shadow:none!important;padding:0 13px!important;font-size:11px!important}
+.ticker{font-size:12px!important}
+/* Quiet modules in a denser, clearer grid */
+.category-header,.category-header.header-profil,.category-header.header-hem,.category-header.header-koku,.category-header.header-tmua{font-family:inherit!important;color:#294765!important;background:transparent!important;border:0!important;border-bottom:1px solid #e3e9f0!important;border-radius:0!important;font-size:12.5px!important;font-weight:800!important;letter-spacing:.15px!important;padding:0 0 10px!important;margin:27px 0 13px!important;box-shadow:none!important}
+.category-header i{font-size:14px!important;color:#547594!important;margin-right:6px!important}
+.grid-panitia{display:grid;grid-template-columns:repeat(auto-fill,minmax(171px,1fr))!important;gap:11px!important;margin-bottom:18px!important}
+.card,.card.card-hem,.card.card-koku,.card.card-tmua,.card.card-profil{position:relative!important;min-height:113px!important;height:auto!important;background:#fff!important;border:1px solid #e5eaf0!important;border-radius:11px!important;padding:17px 13px 14px!important;box-shadow:0 1px 3px rgba(24,49,75,.035)!important;color:#223d59!important;transform:none!important;transition:border-color .18s,box-shadow .18s!important;overflow:hidden!important}
+a.card:hover,.card[onclick]:hover{border-color:#9fb6cb!important;box-shadow:0 5px 17px rgba(27,56,89,.08)!important;transform:none!important}
+a.card::after{content:none!important}
+.card i{width:36px!important;height:36px!important;display:grid!important;place-items:center!important;background:#edf3f9!important;color:#315b81!important;border-radius:9px!important;font-size:17px!important;margin:0 0 11px!important;box-shadow:none!important}
+.card-hem i{background:#eaf5f1!important;color:#326e63!important}.card-koku i{background:#f7f2eb!important;color:#956e4d!important}.card-tmua i{background:#f1eef8!important;color:#77649d!important}.card-profil i{background:#edf4f8!important;color:#426f8d!important}
+.card span.title{font-family:inherit!important;font-size:12px!important;font-weight:700!important;line-height:1.42!important;color:#233d58!important;letter-spacing:0!important;overflow-wrap:anywhere!important}
+.card span.desc{font-size:10.5px!important;color:#7a8897!important;line-height:1.45!important}
+/* Information boxes – understated */
+.enrolmen-widget,.img-pentadbir-container{background:#fff!important;border:1px solid #e3e9ef!important;border-radius:12px!important;box-shadow:none!important;padding:20px!important;margin-bottom:23px!important}
+.widget-header{border-color:#edf0f4!important}.widget-title{font-family:inherit!important;font-size:15px!important;color:#29435e!important;font-weight:700!important}.widget-title i{color:#587996!important}
+.grand-total{background:#f1f5f9!important;color:#244963!important;border:1px solid #e1eaf1!important;border-radius:7px!important;box-shadow:none!important}
+.stat-grid{gap:11px 16px!important}.stat-row{background:#fafbfd!important;border:1px solid #ecf0f4!important;border-radius:9px!important;padding:11px!important}.stat-bar-bg{background:#e6eef5!important;height:7px!important}.stat-bar-fill{background:#6a94b9!important}.stat-value{font-family:inherit!important}
+.hero-card{background:#294b70!important;border:0!important;border-radius:12px!important;padding:21px 23px!important;box-shadow:none!important}.hero-text h3{font-family:inherit!important}.img-pentadbir-container img{border-radius:9px!important}.footer{border-color:#e3e8ee!important;color:#8492a2!important;font-size:11px!important}
+/* Very small unobtrusive page label; no hero, search, or extra widgets */
+.v3-topline{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:22px;color:#6a7f91;font-size:11px;font-weight:600}
+.v3-topline .v3-tag{background:#fff;border:1px solid #e3eaf0;border-radius:999px;padding:5px 10px;color:#355775}
+.mobile-header{background:#152b45!important;box-shadow:none!important;border-bottom:1px solid #284562!important}.mobile-title{font-family:inherit!important}
+@media(max-width:768px){:root{--sidebar-width:254px}.sidebar{width:254px!important;max-width:87vw!important}.main-content{margin-left:0!important;width:100%!important;padding:76px 15px 32px!important}.grid-panitia{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}.card{min-height:108px!important;padding:14px 11px!important}.card span.title{font-size:11.5px!important}.card span.desc{font-size:10px!important}.enrolmen-widget,.img-pentadbir-container{padding:15px!important}.ticker-wrap{margin-bottom:19px!important}.category-header{margin-top:23px!important}.v3-topline{margin-bottom:12px}.v3-topline .v3-tag{display:none}}
+@media(max-width:370px){.grid-panitia{gap:8px!important}.card{padding:12px 9px!important}.card span.title{font-size:11px!important}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
