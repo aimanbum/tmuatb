@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ms">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>e-RPH SMKATB</title>
+<style>
+:root{--navy:#14283f;--navy2:#203b56;--gold:#d9b66f;--bg:#f3f6fa;--ink:#172b43;--muted:#64748b;--line:#e3e9f0;--white:#fff;--green:#217346}
+*{box-sizing:border-box}body{margin:0;font:16px/1.5 Inter,Segoe UI,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+.layout{min-height:100vh;display:grid;grid-template-columns:250px 1fr}.sidebar{background:var(--navy);color:#fff;padding:22px 14px;display:flex;flex-direction:column;gap:26px}
+.brand{display:flex;align-items:center;gap:11px;padding:0 9px}.logo{width:42px;height:42px;border-radius:12px;background:var(--gold);color:var(--navy);display:grid;place-items:center;font-weight:900;font-size:20px}.brand strong{display:block;font-size:17px}.brand small{color:#c4d0dc}
+.navlabel{color:#8fa3b9;font-size:11px;letter-spacing:1.5px;padding:0 12px;margin-bottom:5px}.nav{display:grid;gap:5px}.nav button{border:0;background:transparent;color:#dce5ee;text-align:left;padding:12px;border-radius:10px;font-size:15px;cursor:pointer;display:flex;gap:12px;align-items:center}.nav button.active,.nav button:hover{background:var(--navy2);color:#fff}.nav button.active{box-shadow:inset 3px 0 var(--gold)}.nav .ico{width:22px;text-align:center}.sidefoot{margin-top:auto;border-top:1px solid #40556a;padding:15px 10px;color:#c4d0dc;font-size:13px}
+main{min-width:0}.topbar{background:#fff;border-bottom:1px solid var(--line);padding:18px 28px;display:flex;justify-content:space-between;align-items:center;gap:15px}.topbar h1{margin:0;font-size:22px}.topbar p{margin:2px 0 0;color:var(--muted);font-size:13px}.userpill{background:#edf2f7;padding:8px 12px;border-radius:999px;font-size:13px;white-space:nowrap}
+.content{padding:26px;max-width:1300px;margin:auto}.welcome{background:linear-gradient(120deg,#14283f,#2b4d6b);color:#fff;padding:25px;border-radius:18px;margin-bottom:22px;display:flex;justify-content:space-between;align-items:center;gap:20px}.welcome h2{margin:0 0 5px;font-size:24px}.welcome p{margin:0;color:#d5e0e9}.btn{border:0;border-radius:10px;padding:11px 16px;font-size:14px;font-weight:650;cursor:pointer}.btn-primary{background:var(--gold);color:#172b43}.btn-dark{background:var(--navy);color:#fff}.btn-light{background:#eef2f7;color:var(--ink)}.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px;margin-bottom:22px}.stat,.panel{background:#fff;border:1px solid var(--line);border-radius:15px;padding:19px}.stat .label{color:var(--muted);font-size:13px}.stat .num{font-size:29px;font-weight:750;margin-top:5px}.panel h3{margin:0 0 15px;font-size:17px}.actions{display:flex;gap:10px;flex-wrap:wrap}.grid2{display:grid;grid-template-columns:1.15fr .85fr;gap:17px}.muted{color:var(--muted)}.page{display:none}.page.active{display:block}.formgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.field{display:flex;flex-direction:column;gap:6px}.field.full{grid-column:1/-1}.field label{font-weight:650;font-size:13px}.field input,.field select,.field textarea{width:100%;padding:11px 12px;border:1px solid #ccd6e1;border-radius:9px;font:inherit;background:#fff;color:var(--ink)}textarea{min-height:90px;resize:vertical}.formactions{display:flex;gap:9px;flex-wrap:wrap;margin-top:18px}.tablewrap{overflow:auto}table{width:100%;border-collapse:collapse;font-size:14px}th,td{text-align:left;padding:12px 10px;border-bottom:1px solid var(--line);vertical-align:top}th{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.4px}.badge{display:inline-block;border-radius:999px;background:#fff1d7;color:#835b11;padding:4px 9px;font-size:12px}.badge.sent{background:#e5f5ea;color:#216b42}.notice{background:#fff7e6;border:1px solid #f0d9a5;padding:12px 14px;border-radius:10px;font-size:13px;color:#74551a;margin-bottom:16px}.empty{padding:22px;text-align:center;color:var(--muted)}
+@media(max-width:850px){.layout{grid-template-columns:1fr}.sidebar{padding:12px;gap:12px}.brand{padding:4px}.nav{display:flex;overflow:auto}.navlabel,.sidefoot{display:none}.nav button{white-space:nowrap;padding:10px}.topbar{padding:15px 18px}.content{padding:18px}.grid2{grid-template-columns:1fr}}
+@media(max-width:560px){.stats{grid-template-columns:1fr}.formgrid{grid-template-columns:1fr}.field.full{grid-column:auto}.welcome{align-items:flex-start;flex-direction:column}.topbar h1{font-size:19px}.userpill{display:none}}
+@media print{.sidebar,.topbar,.welcome,.formactions,.no-print{display:none!important}.layout{display:block}.content{padding:0}.page{display:none!important}#page-form{display:block!important}.panel{border:0;padding:0}.formgrid{gap:8px}.field input,.field select,.field textarea{border:0;border-bottom:1px solid #bbb;border-radius:0;padding:5px 0}}
+</style>
+</head>
+<body>
+<div class="layout">
+<aside class="sidebar">
+ <div class="brand"><div class="logo">e</div><div><strong>e-RPH SMKATB</strong><small>Pengurusan PdP</small></div></div>
+ <div><div class="navlabel">MENU UTAMA</div><nav class="nav">
+  <button class="active" data-page="dashboard"><span class="ico">▦</span>Dashboard</button>
+  <button data-page="form"><span class="ico">＋</span>Bina RPH</button>
+  <button data-page="records"><span class="ico">▤</span>Rekod RPH</button>
+  <button data-page="planning"><span class="ico">▦</span>Perancangan Mingguan</button>
+  <button data-page="admin"><span class="ico">◫</span>Pemantauan Admin</button>
+ </nav></div>
+ <div class="sidefoot">SMKA Tok Bachok<br><small>e-RPH • Versi permulaan</small></div>
+</aside>
+<main>
+ <header class="topbar"><div><h1 id="pageTitle">Dashboard</h1><p>Rancangan Pengajaran Harian • Standard KPM</p></div><div class="userpill" id="userPill">Mod demo · Guru</div></header>
+ <div class="content">
+  <section id="page-dashboard" class="page active">
+   <div class="welcome"><div><h2>Assalamualaikum, Guru!</h2><p>Urus RPH anda dengan lebih mudah dan sistematik.</p></div><button class="btn btn-primary" onclick="showPage('form')">＋ Bina RPH baharu</button></div>
+   <div class="stats">
+    <div class="stat"><div class="label">Jumlah RPH</div><div class="num" id="statTotal">0</div></div>
+    <div class="stat"><div class="label">Draf</div><div class="num" id="statDraft">0</div></div>
+    <div class="stat"><div class="label">Dihantar</div><div class="num" id="statSent">0</div></div>
+   </div>
+   <div class="grid2"><div class="panel"><h3>RPH terkini</h3><div id="recentList" class="empty">Belum ada rekod. Mulakan dengan membina RPH baharu.</div></div>
+   <div class="panel"><h3>Tindakan pantas</h3><div class="actions"><button class="btn btn-dark" onclick="showPage('form')">Bina RPH</button><button class="btn btn-light" onclick="showPage('records')">Lihat rekod</button><button class="btn btn-light" onclick="window.print()">Cetak halaman</button></div><p class="muted" style="font-size:13px;margin-top:18px">Versi ini menyimpan rekod dalam pelayar untuk demonstrasi. Sambungan ke Google Sheets perlu dikonfigurasi sebelum penggunaan rasmi.</p></div></div>
+  </section>
+  <section id="page-form" class="page">
+   <div class="notice">Isi semua medan bertanda *. Draf demo disimpan dalam pelayar ini sahaja sehingga backend Google Apps Script disambungkan.</div>
+   <div class="panel"><h3 id="formHeading">Borang RPH standard KPM</h3>
+   <form id="rphForm">
+    <input type="hidden" id="recordId">
+    <div class="formgrid">
+     <div class="field"><label for="tarikh">Tarikh *</label><input id="tarikh" type="date" required></div>
+     <div class="field"><label for="minggu">Minggu persekolahan *</label><input id="minggu" placeholder="Contoh: Minggu 12" required></div>
+     <div class="field"><label for="guru">Nama guru *</label><input id="guru" placeholder="Nama penuh guru" required></div>
+     <div class="field"><label for="subjek">Mata pelajaran *</label><input id="subjek" required></div>
+     <div class="field"><label for="kelas">Kelas *</label><input id="kelas" placeholder="Contoh: 2 Ibnu Sina" required></div>
+     <div class="field"><label for="masa">Masa / tempoh *</label><input id="masa" placeholder="Contoh: 8:00–9:00 pagi" required></div>
+     <div class="field full"><label for="tajuk">Tajuk / bidang pembelajaran *</label><input id="tajuk" required></div>
+     <div class="field full"><label for="sk">Standard Kandungan *</label><textarea id="sk" required></textarea></div>
+     <div class="field full"><label for="sp">Standard Pembelajaran *</label><textarea id="sp" required></textarea></div>
+     <div class="field full"><label for="objektif">Objektif pembelajaran *</label><textarea id="objektif" placeholder="Pada akhir PdP, murid dapat..." required></textarea></div>
+     <div class="field full"><label for="kriteria">Kriteria kejayaan</label><textarea id="kriteria"></textarea></div>
+     <div class="field full"><label for="aktiviti">Aktiviti PdP *</label><textarea id="aktiviti" required></textarea></div>
+     <div class="field"><label for="bbm">Bahan bantu mengajar (BBM)</label><textarea id="bbm"></textarea></div>
+     <div class="field"><label for="pentaksiran">Pentaksiran</label><textarea id="pentaksiran"></textarea></div>
+     <div class="field full"><label for="refleksi">Refleksi / impak PdP</label><textarea id="refleksi" placeholder="Diisi selepas PdP"></textarea></div>
+    </div>
+    <div class="formactions"><button class="btn btn-light" type="button" onclick="saveRecord('Draf')">Simpan draf</button><button class="btn btn-dark" type="button" onclick="saveRecord('Dihantar')">Hantar RPH</button><button class="btn btn-light" type="button" onclick="window.print()">Cetak / PDF</button><button class="btn btn-light" type="reset" onclick="setTimeout(resetRecord,0)">Kosongkan</button></div>
+   </form></div>
+  </section>
+  <section id="page-records" class="page"><div class="panel"><h3>Rekod RPH</h3><div class="actions no-print" style="margin-bottom:14px"><input id="searchRecords" placeholder="Cari guru, kelas, subjek atau tajuk..." style="max-width:360px;padding:10px;border:1px solid #ccd6e1;border-radius:9px" oninput="renderRecords()"><button class="btn btn-light" onclick="exportCsv()">Eksport CSV</button></div><div class="tablewrap"><table><thead><tr><th>Tarikh</th><th>Guru</th><th>Subjek / Kelas</th><th>Tajuk</th><th>Status</th><th class="no-print">Tindakan</th></tr></thead><tbody id="recordsBody"></tbody></table></div><div id="recordsEmpty" class="empty">Belum ada rekod RPH.</div></div></section>
+  <section id="page-planning" class="page"><div class="panel"><h3>Perancangan mingguan</h3><p class="muted">Gunakan minggu persekolahan pada borang RPH untuk mengelompokkan rancangan. Paparan kalendar automatik boleh ditambah selepas kalendar rasmi sekolah dimasukkan.</p><div id="weekList" class="empty">Belum ada perancangan.</div></div></section>
+  <section id="page-admin" class="page"><div class="notice">Mod admin dalam prototaip ini hanya paparan setempat. Jangan gunakan untuk data rasmi sehingga log masuk dan kawalan akses backend dikonfigurasi.</div><div class="panel"><h3>Pemantauan penghantaran</h3><div class="stats"><div class="stat"><div class="label">Jumlah rekod</div><div class="num" id="adminTotal">0</div></div><div class="stat"><div class="label">Draf belum dihantar</div><div class="num" id="adminDraft">0</div></div><div class="stat"><div class="label">Telah dihantar</div><div class="num" id="adminSent">0</div></div></div><div class="tablewrap"><table><thead><tr><th>Guru</th><th>Jumlah</th><th>Draf</th><th>Dihantar</th></tr></thead><tbody id="adminBody"></tbody></table></div></div></section>
+ </div>
+</main>
+</div>
+<script>
+const STORE_KEY='erph-smkatb-demo-v1';
+const fields=['tarikh','minggu','guru','subjek','kelas','masa','tajuk','sk','sp','objektif','kriteria','aktiviti','bbm','pentaksiran','refleksi'];
+let records=[];
+const titles={dashboard:'Dashboard',form:'Bina RPH',records:'Rekod RPH',planning:'Perancangan Mingguan',admin:'Pemantauan Admin'};
+function load(){try{records=JSON.parse(localStorage.getItem(STORE_KEY)||'[]')}catch(e){records=[]}renderAll()}
+function persist(){localStorage.setItem(STORE_KEY,JSON.stringify(records));renderAll()}
+function showPage(name){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById('page-'+name).classList.add('active');document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===name));document.getElementById('pageTitle').textContent=titles[name];if(name==='form'&&!document.getElementById('recordId').value)document.getElementById('tarikh').value ||= new Date().toISOString().slice(0,10);renderAll()}
+document.querySelectorAll('.nav button').forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.page)));
+function formData(){const o={};fields.forEach(f=>o[f]=document.getElementById(f).value.trim());return o}
+function saveRecord(status){const form=document.getElementById('rphForm');if(!form.reportValidity())return;const data=formData();data.status=status;data.updatedAt=new Date().toISOString();let id=document.getElementById('recordId').value;if(id){const i=records.findIndex(r=>r.id===id);if(i>=0)records[i]={...records[i],...data}}else{id=crypto.randomUUID?crypto.randomUUID():String(Date.now());records.unshift({id,...data,createdAt:data.updatedAt})}persist();alert(status==='Dihantar'?'RPH ditandakan sebagai dihantar dalam mod demo.':'Draf disimpan dalam mod demo.');resetRecord();showPage('records')}
+function editRecord(id){const r=records.find(x=>x.id===id);if(!r)return;document.getElementById('recordId').value=id;fields.forEach(f=>document.getElementById(f).value=r[f]||'');document.getElementById('formHeading').textContent='Kemaskini RPH';showPage('form')}
+function deleteRecord(id){if(!confirm('Padam rekod demo ini?'))return;records=records.filter(r=>r.id!==id);persist()}
+function resetRecord(){document.getElementById('recordId').value='';document.getElementById('rphForm').reset();document.getElementById('formHeading').textContent='Borang RPH standard KPM';document.getElementById('tarikh').value=new Date().toISOString().slice(0,10)}
+function esc(s){return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function renderRecords(){const q=(document.getElementById('searchRecords')?.value||'').toLowerCase();const rows=records.filter(r=>[r.guru,r.subjek,r.kelas,r.tajuk,r.minggu].join(' ').toLowerCase().includes(q));document.getElementById('recordsBody').innerHTML=rows.map(r=>`<tr><td>${esc(r.tarikh)}</td><td>${esc(r.guru)}</td><td>${esc(r.subjek)}<br><span class="muted">${esc(r.kelas)}</span></td><td>${esc(r.tajuk)}</td><td><span class="badge ${r.status==='Dihantar'?'sent':''}">${esc(r.status)}</span></td><td class="no-print"><button class="btn btn-light" onclick="editRecord('${r.id}')">Edit</button> <button class="btn btn-light" onclick="deleteRecord('${r.id}')">Padam</button></td></tr>`).join('');document.getElementById('recordsEmpty').style.display=rows.length?'none':'block'}
+function renderAll(){const total=records.length,draft=records.filter(r=>r.status==='Draf').length,sent=records.filter(r=>r.status==='Dihantar').length;document.getElementById('statTotal').textContent=total;document.getElementById('statDraft').textContent=draft;document.getElementById('statSent').textContent=sent;document.getElementById('adminTotal').textContent=total;document.getElementById('adminDraft').textContent=draft;document.getElementById('adminSent').textContent=sent;const recent=records.slice(0,5);document.getElementById('recentList').innerHTML=recent.length?'<div class="tablewrap"><table><tbody>'+recent.map(r=>`<tr><td>${esc(r.tarikh)}<br><span class="muted">${esc(r.subjek)} · ${esc(r.kelas)}</span></td><td><span class="badge ${r.status==='Dihantar'?'sent':''}">${esc(r.status)}</span></td></tr>`).join('')+'</tbody></table></div>':'<div class="empty">Belum ada rekod. Mulakan dengan membina RPH baharu.</div>';renderRecords();const weeks={};records.forEach(r=>{const w=r.minggu||'Minggu belum ditetapkan';weeks[w]=(weeks[w]||0)+1});document.getElementById('weekList').innerHTML=Object.keys(weeks).length?Object.entries(weeks).map(([w,n])=>`<p><strong>${esc(w)}</strong> — ${n} RPH</p>`).join(''):'Belum ada perancangan.';const teachers={};records.forEach(r=>{const t=r.guru||'Tidak dinamakan';teachers[t] ||= {all:0,draft:0,sent:0};teachers[t].all++;teachers[t][r.status==='Dihantar'?'sent':'draft']++});document.getElementById('adminBody').innerHTML=Object.entries(teachers).map(([name,v])=>`<tr><td>${esc(name)}</td><td>${v.all}</td><td>${v.draft}</td><td>${v.sent}</td></tr>`).join('')}
+function exportCsv(){const cols=['tarikh','minggu','guru','subjek','kelas','masa','tajuk','sk','sp','objektif','kriteria','aktiviti','bbm','pentaksiran','refleksi','status'];const quote=v=>'"'+String(v||'').replace(/"/g,'""')+'"';const csv=[cols.join(','),...records.map(r=>cols.map(c=>quote(r[c])).join(','))].join('\r\n');const a=document.createElement('a');a.href=URL.createObjectURL(new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8;'}));a.download='rekod-erph-smkatb.csv';a.click();URL.revokeObjectURL(a.href)}
+document.getElementById('rphForm').addEventListener('reset',()=>setTimeout(()=>document.getElementById('recordId').value='',0));
+load();resetRecord();
+</script>
+</body></html>
